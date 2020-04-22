@@ -1,0 +1,20 @@
+{
+    "Apps": "ऐप्स",
+    "Contacts": "संपर्क",
+    "btnAllApps": "सभी ऐप्स",
+    "btnAllContacts": "सभी संपर्क",
+    "btnAddFavApps": "पसंदीदा एप्लिकेशन जोड़ें",
+    "btnAddFavContacts": "पसंदीदा संपर्क जोड़ें",
+    "btnBackToHome": "वापस जाओ",
+    "btnGrantPermission": "संपर्क अनुमति प्रदान करें",
+    "msgNoData": "एरर: कोई डेटा नहीं",
+    "msgNoFavourites": "आपने कोई पसंदीदा नहीं जोड़ा है",
+    "msgNoContactsPermission": "कोई संपर्क अनुमति नहीं",
+    "dlgCall" : "कॉल",
+    "dlgEditTitle": "पसंदीदा संपादित करें",
+    "dlgCancel": "रद्द करें",
+    "dlgAppsAddRemove": "एप्लिकेशन जोड़ें/निकालें",
+    "dlgAppsReorder": "्यवस्थित करें ऐप्स",
+    "dlgContactsAddRemove": "संपर्क जोड़ें/निकालें",
+    "dlgContactsReorder": "व्यवस्थित करें संपर्क"
+}
