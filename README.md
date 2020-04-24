@@ -16,7 +16,7 @@ The app relies heavily on the following open source Flutter packages:
 * [contact_service](https://pub.dev/packages/contacts_service) - For accessing contacts
 * [device_apps](https://pub.dev/packages/device_apps) - For accessing apps
 
-> Install Flutter Intl Plugin [VS Code](https://marketplace.visualstudio.com/items?itemName=localizely.flutter-intl) [InteliJ](https://plugins.jetbrains.com/plugin/13666-flutter-intl) for generating localisation files. Your editor will throw errors and warning if this is not installed.
+> Install __Flutter Intl plugin__ ([VS Code](https://marketplace.visualstudio.com/items?itemName=localizely.flutter-intl), [InteliJ](https://plugins.jetbrains.com/plugin/13666-flutter-intl)) for generating localisation files. Your editor will throw errors and warning if this is not installed.
 
 License
 ----
