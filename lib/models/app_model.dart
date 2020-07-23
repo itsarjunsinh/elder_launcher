@@ -21,7 +21,8 @@ class AppModel extends ChangeNotifier {
 
   AppModel({@required this.dataRepository}) {
     _loadApps();
-    _refreshTimer = Timer.periodic(Duration(minutes: 10), (Timer timer) => _loadApps());
+    _refreshTimer =
+        Timer.periodic(Duration(minutes: 05), (Timer timer) => _loadApps());
   }
 
   bool get isAppListLoaded => _isAppListLoaded;
