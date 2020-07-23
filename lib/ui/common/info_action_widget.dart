@@ -26,16 +26,20 @@ class InfoActionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(
-              message,
-              style: TextStyles.infoMessage,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: RaisedButton(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Text(
+                  message,
+                  style: TextStyles.infoMessage,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              RaisedButton(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
@@ -58,9 +62,9 @@ class InfoActionWidget extends StatelessWidget {
                       ],
                     ),
                   ),
-                  onPressed: buttonOnClickAction),
-            )
-          ],
+                  onPressed: buttonOnClickAction)
+            ],
+          ),
         ),
       ),
     );
