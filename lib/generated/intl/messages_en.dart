@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "btnAllApps" : MessageLookupByLibrary.simpleMessage("All Apps"),
     "btnAllContacts" : MessageLookupByLibrary.simpleMessage("All Contacts"),
     "btnBackToHome" : MessageLookupByLibrary.simpleMessage("Back to Home"),
-    "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("Grant Contacts Permission"),
+    "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("Grant Permission"),
     "dlgAppsAddRemove" : MessageLookupByLibrary.simpleMessage("Add/Remove Apps"),
     "dlgAppsReorder" : MessageLookupByLibrary.simpleMessage("Reorder Apps"),
     "dlgCall" : MessageLookupByLibrary.simpleMessage("Call"),
@@ -36,8 +36,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "dlgContactsAddRemove" : MessageLookupByLibrary.simpleMessage("Add/Remove Contacts"),
     "dlgContactsReorder" : MessageLookupByLibrary.simpleMessage("Reorder Contacts"),
     "dlgEditTitle" : MessageLookupByLibrary.simpleMessage("Edit Favourites"),
-    "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("No Contacts Permssion"),
-    "msgNoData" : MessageLookupByLibrary.simpleMessage("Error: No Data"),
-    "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("You haven\'t added any favourites")
+    "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("To add favourite contacts to this screen, allow this app access to your contacts."),
+    "msgNoData" : MessageLookupByLibrary.simpleMessage("No data available. Try again in a few seconds."),
+    "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("You haven\'t added any favourites"),
+    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("To make calling easier, allow this app to start phone calls for you.")
   };
 }

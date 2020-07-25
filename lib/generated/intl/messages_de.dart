@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "btnAllApps" : MessageLookupByLibrary.simpleMessage("All Apps"),
     "btnAllContacts" : MessageLookupByLibrary.simpleMessage("All Kontakte"),
     "btnBackToHome" : MessageLookupByLibrary.simpleMessage("Geh zurück"),
-    "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("Erlaubnis für Kontakte erteilen"),
+    "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("Erlaubnis erteilen"),
     "dlgAppsAddRemove" : MessageLookupByLibrary.simpleMessage("Apps hinzufügen/entfernen"),
     "dlgAppsReorder" : MessageLookupByLibrary.simpleMessage("Apps neu anordnen"),
     "dlgCall" : MessageLookupByLibrary.simpleMessage("Anrufen"),
@@ -36,8 +36,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "dlgContactsAddRemove" : MessageLookupByLibrary.simpleMessage("Kontakte hinzufügen/entfernen"),
     "dlgContactsReorder" : MessageLookupByLibrary.simpleMessage("Kontakte neu anordnen"),
     "dlgEditTitle" : MessageLookupByLibrary.simpleMessage("Favoriten bearbeiten"),
-    "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("Keine Kontaktberechtigung"),
-    "msgNoData" : MessageLookupByLibrary.simpleMessage("Fehler: Keine Daten"),
-    "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("Sie haben keine Favoriten hinzugefügt")
+    "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("Um diesem Bildschirm Lieblingskontakte hinzuzufügen, erlauben Sie dieser App den Zugriff auf Ihre Kontakte."),
+    "msgNoData" : MessageLookupByLibrary.simpleMessage("Keine Daten verfügbar. Versuchen Sie es in wenigen Sekunden erneut."),
+    "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("Sie haben keine Favoriten hinzugefügt"),
+    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("Ermöglichen Sie dieser App, Anrufe für Sie zu starten, um das Telefonieren zu vereinfachen.")
   };
 }

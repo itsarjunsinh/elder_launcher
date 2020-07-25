@@ -8,18 +8,24 @@ import 'intl/messages_all.dart';
 // Made by Localizely
 // **************************************************************************
 
+// ignore_for_file: non_constant_identifier_names, lines_longer_than_80_chars
+
 class S {
   S();
+  
+  static S current;
   
   static const AppLocalizationDelegate delegate =
     AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final String name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
-    final String localeName = Intl.canonicalizedLocale(name);
+    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
+    final localeName = Intl.canonicalizedLocale(name); 
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      return S();
+      S.current = S();
+      
+      return S.current;
     });
   } 
 
@@ -27,6 +33,7 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Apps`
   String get Apps {
     return Intl.message(
       'Apps',
@@ -36,6 +43,7 @@ class S {
     );
   }
 
+  /// `Contacts`
   String get Contacts {
     return Intl.message(
       'Contacts',
@@ -45,6 +53,7 @@ class S {
     );
   }
 
+  /// `All Apps`
   String get btnAllApps {
     return Intl.message(
       'All Apps',
@@ -54,6 +63,7 @@ class S {
     );
   }
 
+  /// `All Contacts`
   String get btnAllContacts {
     return Intl.message(
       'All Contacts',
@@ -63,6 +73,7 @@ class S {
     );
   }
 
+  /// `Add Favourite Apps`
   String get btnAddFavApps {
     return Intl.message(
       'Add Favourite Apps',
@@ -72,6 +83,7 @@ class S {
     );
   }
 
+  /// `Add Favourite Contacts`
   String get btnAddFavContacts {
     return Intl.message(
       'Add Favourite Contacts',
@@ -81,6 +93,7 @@ class S {
     );
   }
 
+  /// `Back to Home`
   String get btnBackToHome {
     return Intl.message(
       'Back to Home',
@@ -90,24 +103,27 @@ class S {
     );
   }
 
+  /// `Grant Permission`
   String get btnGrantPermission {
     return Intl.message(
-      'Grant Contacts Permission',
+      'Grant Permission',
       name: 'btnGrantPermission',
       desc: '',
       args: [],
     );
   }
 
+  /// `No data available. Try again in a few seconds.`
   String get msgNoData {
     return Intl.message(
-      'Error: No Data',
+      'No data available. Try again in a few seconds.',
       name: 'msgNoData',
       desc: '',
       args: [],
     );
   }
 
+  /// `You haven't added any favourites`
   String get msgNoFavourites {
     return Intl.message(
       'You haven\'t added any favourites',
@@ -117,15 +133,27 @@ class S {
     );
   }
 
+  /// `To add favourite contacts to this screen, allow this app access to your contacts.`
   String get msgNoContactsPermission {
     return Intl.message(
-      'No Contacts Permssion',
+      'To add favourite contacts to this screen, allow this app access to your contacts.',
       name: 'msgNoContactsPermission',
       desc: '',
       args: [],
     );
   }
 
+  /// `To make calling easier, allow this app to start phone calls for you.`
+  String get msgNoPhonePermission {
+    return Intl.message(
+      'To make calling easier, allow this app to start phone calls for you.',
+      name: 'msgNoPhonePermission',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Call`
   String get dlgCall {
     return Intl.message(
       'Call',
@@ -135,6 +163,7 @@ class S {
     );
   }
 
+  /// `Edit Favourites`
   String get dlgEditTitle {
     return Intl.message(
       'Edit Favourites',
@@ -144,6 +173,7 @@ class S {
     );
   }
 
+  /// `Cancel`
   String get dlgCancel {
     return Intl.message(
       'Cancel',
@@ -153,6 +183,7 @@ class S {
     );
   }
 
+  /// `Add/Remove Apps`
   String get dlgAppsAddRemove {
     return Intl.message(
       'Add/Remove Apps',
@@ -162,6 +193,7 @@ class S {
     );
   }
 
+  /// `Reorder Apps`
   String get dlgAppsReorder {
     return Intl.message(
       'Reorder Apps',
@@ -171,6 +203,7 @@ class S {
     );
   }
 
+  /// `Add/Remove Contacts`
   String get dlgContactsAddRemove {
     return Intl.message(
       'Add/Remove Contacts',
@@ -180,6 +213,7 @@ class S {
     );
   }
 
+  /// `Reorder Contacts`
   String get dlgContactsReorder {
     return Intl.message(
       'Reorder Contacts',
@@ -195,7 +229,14 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale.fromSubtags(languageCode: 'en'), Locale.fromSubtags(languageCode: 'de'), Locale.fromSubtags(languageCode: 'es'), Locale.fromSubtags(languageCode: 'fr'), Locale.fromSubtags(languageCode: 'hi'), Locale.fromSubtags(languageCode: 'pt'),
+      Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'de'),
+      Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
+      Locale.fromSubtags(languageCode: 'es'),
+      Locale.fromSubtags(languageCode: 'fr'),
+      Locale.fromSubtags(languageCode: 'hi'),
+      Locale.fromSubtags(languageCode: 'pt'),
+      Locale.fromSubtags(languageCode: 'ru'),
     ];
   }
 
@@ -208,7 +249,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   bool _isSupported(Locale locale) {
     if (locale != null) {
-      for (Locale supportedLocale in supportedLocales) {
+      for (var supportedLocale in supportedLocales) {
         if (supportedLocale.languageCode == locale.languageCode) {
           return true;
         }

@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "btnAllApps" : MessageLookupByLibrary.simpleMessage("सभी ऐप्स"),
     "btnAllContacts" : MessageLookupByLibrary.simpleMessage("सभी संपर्क"),
     "btnBackToHome" : MessageLookupByLibrary.simpleMessage("वापस जाओ"),
-    "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("संपर्क अनुमति प्रदान करें"),
+    "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("अनुमति प्रदान करें"),
     "dlgAppsAddRemove" : MessageLookupByLibrary.simpleMessage("एप्लिकेशन जोड़ें/निकालें"),
     "dlgAppsReorder" : MessageLookupByLibrary.simpleMessage("्यवस्थित करें ऐप्स"),
     "dlgCall" : MessageLookupByLibrary.simpleMessage("कॉल"),
@@ -36,8 +36,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "dlgContactsAddRemove" : MessageLookupByLibrary.simpleMessage("संपर्क जोड़ें/निकालें"),
     "dlgContactsReorder" : MessageLookupByLibrary.simpleMessage("व्यवस्थित करें संपर्क"),
     "dlgEditTitle" : MessageLookupByLibrary.simpleMessage("पसंदीदा संपादित करें"),
-    "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("कोई संपर्क अनुमति नहीं"),
-    "msgNoData" : MessageLookupByLibrary.simpleMessage("एरर: कोई डेटा नहीं"),
-    "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("आपने कोई पसंदीदा नहीं जोड़ा है")
+    "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("इस स्क्रीन पर पसंदीदा संपर्क जोड़ने के लिए, इस एप्लिकेशन को आपके संपर्क देखने दें।"),
+    "msgNoData" : MessageLookupByLibrary.simpleMessage("कोई डेटा उपलब्ध नहीं है। कुछ क्षण में फिर से कोशिश करें।"),
+    "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("आपने कोई पसंदीदा नहीं जोड़ा है"),
+    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("कॉलिंग को आसान बनाने के लिए, इस ऐप को आपके लिए फ़ोन कॉल शुरू करने की अनुमति दें।")
   };
 }

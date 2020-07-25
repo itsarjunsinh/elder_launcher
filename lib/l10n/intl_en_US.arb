@@ -1,0 +1,7 @@
+{
+    "btnAddFavApps": "Add Favorite Apps",
+    "btnAddFavContacts": "Add Favorite Contacts",
+    "msgNoFavourites": "You haven't added any favorites",
+    "msgNoContactsPermission": "To add favorite contacts to this screen, allow this app access to your contacts.",
+    "dlgEditTitle": "Edit Favorites"
+}

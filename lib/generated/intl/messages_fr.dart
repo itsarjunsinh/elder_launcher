@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "btnAllApps" : MessageLookupByLibrary.simpleMessage("All Apps"),
     "btnAllContacts" : MessageLookupByLibrary.simpleMessage("All Contacts"),
     "btnBackToHome" : MessageLookupByLibrary.simpleMessage("retourner"),
-    "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("Accorder la permission aux contacts"),
+    "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("Donner la permission"),
     "dlgAppsAddRemove" : MessageLookupByLibrary.simpleMessage("Ajouter/supprimer des Apps"),
     "dlgAppsReorder" : MessageLookupByLibrary.simpleMessage("Réorganiser les Apps"),
     "dlgCall" : MessageLookupByLibrary.simpleMessage("Téléphoner"),
@@ -36,8 +36,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "dlgContactsAddRemove" : MessageLookupByLibrary.simpleMessage("Ajouter/supprimer des Aontacts"),
     "dlgContactsReorder" : MessageLookupByLibrary.simpleMessage("Réorganiser les Contacts"),
     "dlgEditTitle" : MessageLookupByLibrary.simpleMessage("Modifier les favoris"),
-    "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("Aucune autorisation de contacts"),
-    "msgNoData" : MessageLookupByLibrary.simpleMessage("Erreur: aucune donnée"),
-    "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("Vous n\'avez ajouté aucun favori")
+    "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("Pour ajouter des contacts favoris à cet écran, autorisez cette application à accéder à vos contacts."),
+    "msgNoData" : MessageLookupByLibrary.simpleMessage("Pas de données disponibles. Réessayez dans quelques secondes."),
+    "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("Vous n\'avez ajouté aucun favori"),
+    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("Pour faciliter les appels, autorisez cette application à démarrer des appels téléphoniques à votre place.")
   };
 }
