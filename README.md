@@ -4,7 +4,11 @@ Elder Launcher is a launcher designed for seniors focused on simplicity and legi
 
 Elder Launcher supports pinning favorite apps and contacts to the homescreen for quick access.
 
-<a href="https://play.google.com/store/apps/details?id=xyz.arjunsinh.elderlauncher"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="80"></a>
+<img src="assets/v1-fav-apps.png" height="300" alt="Homescreen with favourite apps">
+<img src="assets/v1-fav-contacts.png" height="300" alt="Homescreen with favourite contacts">
+<img src="assets/v1-app-drawer.png" height="300" alt="App Drawer">
+
+<a href="https://play.google.com/store/apps/details?id=xyz.arjunsinh.elderlauncher"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="60"></a>
 
 Tech
 ----
