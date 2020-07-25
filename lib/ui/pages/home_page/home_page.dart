@@ -29,87 +29,91 @@ class HomePage extends StatelessWidget {
 
     return WillPopScope(
       onWillPop: () => Future.value(false),
-      child: Scaffold(
-          appBar: AppBar(
-            actions: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: IconButton(
-                  icon: Icon(Icons.edit),
-                  onPressed: () =>
-                      openEditDialog(DefaultTabController.of(context).index),
+      child: ChangeNotifierProvider(
+        create: (_) =>
+            DateTimeModel(MediaQuery.of(context).alwaysUse24HourFormat),
+        child: Scaffold(
+            appBar: AppBar(
+              actions: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: IconButton(
+                    icon: Icon(Icons.edit),
+                    onPressed: () =>
+                        openEditDialog(DefaultTabController.of(context).index),
+                  ),
+                ),
+              ],
+              centerTitle: true,
+              title: Consumer<DateTimeModel>(
+                builder: (_, dateTimeModel, __) => AutoSizeText(
+                  dateTimeModel.time,
+                  maxLines: 1,
+                  style: TextStyles.headerTime,
                 ),
               ),
-            ],
-            centerTitle: true,
-            title: Consumer<DateTimeModel>(
-              builder: (_, dateTimeModel, __) => AutoSizeText(
-                dateTimeModel.time,
-                maxLines: 1,
-                style: TextStyles.headerTime,
-              ),
-            ),
-            bottom: PreferredSize(
-              preferredSize: Size(0, 80),
-              child: Column(
-                children: <Widget>[
-                  Consumer<DateTimeModel>(
-                    builder: (_, dateTimeModel, __) => AutoSizeText(
-                      dateTimeModel.date,
-                      group: _appBarTextSizeGroup,
-                      maxLines: 1,
-                      style: TextStyles.headerDate,
-                    ),
-                  ),
-                  TabBar(tabs: [
-                    Tab(
-                      child: Center(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Icon(Icons.apps),
-                            ),
-                            AutoSizeText(
-                              S.of(context).Apps,
-                              group: _appBarTextSizeGroup,
-                              maxLines: 1,
-                              style: TextStyle(fontSize: 50),
-                            ),
-                          ],
-                        ),
+              bottom: PreferredSize(
+                preferredSize: Size(0, 80),
+                child: Column(
+                  children: <Widget>[
+                    Consumer<DateTimeModel>(
+                      builder: (_, dateTimeModel, __) => AutoSizeText(
+                        dateTimeModel.date,
+                        group: _appBarTextSizeGroup,
+                        maxLines: 1,
+                        style: TextStyles.headerDate,
                       ),
                     ),
-                    Tab(
-                      child: Center(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Icon(Icons.contacts),
-                            ),
-                            Expanded(
-                              child: AutoSizeText(
-                                S.of(context).Contacts,
+                    TabBar(tabs: [
+                      Tab(
+                        child: Center(
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Icon(Icons.apps),
+                              ),
+                              AutoSizeText(
+                                S.of(context).Apps,
                                 group: _appBarTextSizeGroup,
                                 maxLines: 1,
                                 style: TextStyle(fontSize: 50),
                               ),
-                            )
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                ],
+                      Tab(
+                        child: Center(
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Icon(Icons.contacts),
+                              ),
+                              Expanded(
+                                child: AutoSizeText(
+                                  S.of(context).Contacts,
+                                  group: _appBarTextSizeGroup,
+                                  maxLines: 1,
+                                  style: TextStyle(fontSize: 50),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ]),
+                  ],
+                ),
               ),
             ),
-          ),
-          body: TabBarView(children: <Widget>[AppsTab(), ContactsTab()])),
+            body: TabBarView(children: <Widget>[AppsTab(), ContactsTab()])),
+      ),
     );
   }
 }

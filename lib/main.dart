@@ -21,10 +21,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider<AppModel>(
               create: (_) => AppModel(dataRepository: AppRepository())),
           ChangeNotifierProvider<ContactModel>(
-              create: (_) => ContactModel(dataRepository: ContactRepository())),
-          ChangeNotifierProvider<DateTimeModel>(
-            create: (_) => DateTimeModel(),
-          )
+              create: (_) => ContactModel(dataRepository: ContactRepository()))
         ],
         child: MaterialApp(
             title: 'Elder Launcher',
