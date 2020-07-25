@@ -1,9 +1,9 @@
 {
-    "Apps": "приложения",
+    "Apps": "программы",
     "Contacts": "контакты",
-    "btnAllApps": "Все приложения",
+    "btnAllApps": "Все программы",
     "btnAllContacts": "Все контакты",
-    "btnAddFavApps": "Добавить любимые приложения",
+    "btnAddFavApps": "Добавить любимые программы",
     "btnAddFavContacts": "Добавить избранные контакты",
     "btnBackToHome": "Вернуться домой",
     "btnGrantPermission": "Предоставить разрешение",
@@ -14,8 +14,8 @@
     "dlgCall" : "звонок",
     "dlgEditTitle": "Редактировать избранное",
     "dlgCancel": "Отмена",
-    "dlgAppsAddRemove": "Добавить/удалять приложения",
-    "dlgAppsReorder": "Изменение порядка приложения",
+    "dlgAppsAddRemove": "Добавить/удалять программы",
+    "dlgAppsReorder": "Изменение порядка программы",
     "dlgContactsAddRemove": "Добавить/удалять контакты",
     "dlgContactsReorder": "Изменение порядка контакты"
 }

@@ -72,14 +72,16 @@ class HomePage extends StatelessWidget {
                             children: <Widget>[
                               Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                    const EdgeInsets.fromLTRB(0, 0, 4.0, 0),
                                 child: Icon(Icons.apps),
                               ),
-                              AutoSizeText(
-                                S.of(context).Apps,
-                                group: _appBarTextSizeGroup,
-                                maxLines: 1,
-                                style: TextStyle(fontSize: 50),
+                              Flexible(
+                                child: AutoSizeText(
+                                  S.of(context).Apps,
+                                  group: _appBarTextSizeGroup,
+                                  maxLines: 1,
+                                  style: TextStyle(fontSize: 50),
+                                ),
                               ),
                             ],
                           ),
@@ -92,10 +94,10 @@ class HomePage extends StatelessWidget {
                             children: <Widget>[
                               Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                    const EdgeInsets.fromLTRB(0, 0, 4.0, 0),
                                 child: Icon(Icons.contacts),
                               ),
-                              Expanded(
+                              Flexible(
                                 child: AutoSizeText(
                                   S.of(context).Contacts,
                                   group: _appBarTextSizeGroup,

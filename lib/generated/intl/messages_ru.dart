@@ -21,16 +21,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "Apps" : MessageLookupByLibrary.simpleMessage("приложения"),
+    "Apps" : MessageLookupByLibrary.simpleMessage("программы"),
     "Contacts" : MessageLookupByLibrary.simpleMessage("контакты"),
-    "btnAddFavApps" : MessageLookupByLibrary.simpleMessage("Добавить любимые приложения"),
+    "btnAddFavApps" : MessageLookupByLibrary.simpleMessage("Добавить любимые программы"),
     "btnAddFavContacts" : MessageLookupByLibrary.simpleMessage("Добавить избранные контакты"),
-    "btnAllApps" : MessageLookupByLibrary.simpleMessage("Все приложения"),
+    "btnAllApps" : MessageLookupByLibrary.simpleMessage("Все программы"),
     "btnAllContacts" : MessageLookupByLibrary.simpleMessage("Все контакты"),
     "btnBackToHome" : MessageLookupByLibrary.simpleMessage("Вернуться домой"),
     "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("Предоставить разрешение"),
-    "dlgAppsAddRemove" : MessageLookupByLibrary.simpleMessage("Добавить/удалять приложения"),
-    "dlgAppsReorder" : MessageLookupByLibrary.simpleMessage("Изменение порядка приложения"),
+    "dlgAppsAddRemove" : MessageLookupByLibrary.simpleMessage("Добавить/удалять программы"),
+    "dlgAppsReorder" : MessageLookupByLibrary.simpleMessage("Изменение порядка программы"),
     "dlgCall" : MessageLookupByLibrary.simpleMessage("звонок"),
     "dlgCancel" : MessageLookupByLibrary.simpleMessage("Отмена"),
     "dlgContactsAddRemove" : MessageLookupByLibrary.simpleMessage("Добавить/удалять контакты"),
