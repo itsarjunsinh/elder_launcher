@@ -38,3 +38,7 @@ lib/generated_plugin_registrant.dart
 
 # Android Keystore
 android/key.properties
+
+#IDE
+.vscode/
+.idea/
