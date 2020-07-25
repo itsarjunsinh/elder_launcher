@@ -24,47 +24,45 @@ class InfoActionWidget extends StatelessWidget {
         buttonOnClickAction = buttonOnClickAction;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  message,
-                  style: TextStyles.infoMessage,
-                  textAlign: TextAlign.center,
-                ),
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Text(
+                message,
+                style: TextStyles.infoMessage,
+                textAlign: TextAlign.center,
               ),
-              RaisedButton(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: Icon(
-                            buttonIcon,
-                            size: 35,
-                          ),
+            ),
+            RaisedButton(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Icon(
+                          buttonIcon,
+                          size: 35,
                         ),
-                        Flexible(
-                          child: AutoSizeText(
-                            buttonLabel,
-                            style: TextStyles.actionButtonLabel,
-                            textAlign: TextAlign.start,
-                          ),
+                      ),
+                      Flexible(
+                        child: AutoSizeText(
+                          buttonLabel,
+                          style: TextStyles.actionButtonLabel,
+                          textAlign: TextAlign.start,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  onPressed: buttonOnClickAction)
-            ],
-          ),
+                ),
+                onPressed: buttonOnClickAction)
+          ],
         ),
       ),
     );

@@ -28,8 +28,7 @@ class ContactsTab extends StatelessWidget {
     }
 
     void openEditScreen() {
-      Navigator.pushNamed(context, EditPageRoute,
-          arguments: EditMode.contacts);
+      Navigator.pushNamed(context, EditPageRoute, arguments: EditMode.contacts);
     }
 
     void requestPermission() {
@@ -48,19 +47,22 @@ class ContactsTab extends StatelessWidget {
                       openEditScreen)
                 ] else if (contactModel.isFavListLoaded &&
                     contactModel.favContacts.isEmpty) ...[
-                  InfoActionWidget.add(
-                    message: S.of(context).msgNoFavourites,
-                    buttonLabel:
-                        S.of(context).btnAddFavContacts,
-                    buttonOnClickAction: openEditScreen,
+                  Expanded(
+                    child: InfoActionWidget.add(
+                      message: S.of(context).msgNoFavourites,
+                      buttonLabel: S.of(context).btnAddFavContacts,
+                      buttonOnClickAction: openEditScreen,
+                    ),
                   ),
                 ] else if (contactModel.isPermissionChecked &&
                     !contactModel.isPermissionGranted) ...[
-                  InfoActionWidget(
-                      S.of(context).msgNoContactsPermission,
-                      S.of(context).btnGrantPermission,
-                      Icons.perm_contact_calendar,
-                      requestPermission)
+                  Expanded(
+                    child: InfoActionWidget(
+                        S.of(context).msgNoContactsPermission,
+                        S.of(context).btnGrantPermission,
+                        Icons.perm_contact_calendar,
+                        requestPermission),
+                  )
                 ] else ...[
                   LoadingWidget(),
                 ],

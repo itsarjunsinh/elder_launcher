@@ -22,8 +22,7 @@ class AppsTab extends StatelessWidget {
     }
 
     void openEditScreen() {
-      Navigator.pushNamed(context, EditPageRoute,
-          arguments: EditMode.apps);
+      Navigator.pushNamed(context, EditPageRoute, arguments: EditMode.apps);
     }
 
     void launchApp(Item app) {
@@ -39,10 +38,12 @@ class AppsTab extends StatelessWidget {
                 FavGridView(appModel.favApps, launchApp, openEditScreen),
               ] else if (appModel.isFavListLoaded &&
                   appModel.favApps.isEmpty) ...[
-                InfoActionWidget.add(
-                  message: S.of(context).msgNoFavourites,
-                  buttonLabel: S.of(context).btnAddFavApps,
-                  buttonOnClickAction: openEditScreen,
+                Expanded(
+                  child: InfoActionWidget.add(
+                    message: S.of(context).msgNoFavourites,
+                    buttonLabel: S.of(context).btnAddFavApps,
+                    buttonOnClickAction: openEditScreen,
+                  ),
                 ),
               ] else ...[
                 LoadingWidget()
@@ -53,8 +54,7 @@ class AppsTab extends StatelessWidget {
       ),
       Align(
         alignment: Alignment.bottomCenter,
-        child: PrimaryButton(
-            S.of(context).btnAllApps, openAllApps),
+        child: PrimaryButton(S.of(context).btnAllApps, openAllApps),
       ),
     ]);
   }
