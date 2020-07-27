@@ -11,6 +11,10 @@ class NativeMethods {
     platform.invokeMethod('launchDialerWithNumber', {'number': number});
   }
 
+  startPhoneCall(String number) {
+    platform.invokeMethod('startPhoneCall', {'number': number});
+  }
+
   Future<List<String>> getDeprecatedPrefsList() async {
     List<String> stringList = [];
     try {

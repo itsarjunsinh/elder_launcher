@@ -25,6 +25,12 @@ class MainActivity : FlutterActivity() {
                         result.success((openDialerWithNumber(number)))
                     }
                 }
+                "startPhoneCall" -> {
+                    if(call.hasArgument("number")) {
+                        val number = call.argument<String>("number")!!
+                        result.success((startPhoneCall(number)))
+                    }
+                }
                 else -> result.notImplemented()
             }
         }
@@ -52,6 +58,17 @@ class MainActivity : FlutterActivity() {
         val intent = Intent(Intent.ACTION_DIAL)
         intent.data = Uri.parse("tel:$number")
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        if (intent != null) {
+            startActivity(intent)
+            return true
+        } else {
+            return false
+        }
+    }
+
+    private fun startPhoneCall(number: String): Boolean {
+        val intent = Intent(Intent.ACTION_CALL)
+        intent.data = Uri.parse("tel:$number")
         if (intent != null) {
             startActivity(intent)
             return true

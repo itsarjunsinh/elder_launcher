@@ -31,8 +31,14 @@ class ContactsTab extends StatelessWidget {
       Navigator.pushNamed(context, EditPageRoute, arguments: EditMode.contacts);
     }
 
-    void requestPermission() {
-      Provider.of<ContactModel>(context, listen: false).requestPermission();
+    void requestContactsPermission() {
+      Provider.of<ContactModel>(context, listen: false)
+          .requestContactsPermission();
+    }
+
+    void requestPhonePermission() {
+      Provider.of<ContactModel>(context, listen: false)
+          .requestPhonePermission();
     }
 
     return Column(
@@ -42,11 +48,27 @@ class ContactsTab extends StatelessWidget {
             builder: (_, contactModel, __) => Column(
               children: <Widget>[
                 if (contactModel.isFavListLoaded &&
-                    contactModel.favContacts.isNotEmpty) ...[
+                    contactModel.favContacts.isNotEmpty &&
+                    contactModel.isPhonePermissionChecked &&
+                    contactModel.isPhonePermissionGranted) ...[
+                  // Show Favourite Contacts
+                  FavGridView(contactModel.favContacts, openContactDialog,
+                      openEditScreen)
+                ] else if (contactModel.isFavListLoaded &&
+                    contactModel.favContacts.isNotEmpty &&
+                    contactModel.isPhonePermissionChecked &&
+                    !contactModel.isPhonePermissionGranted) ...[
+                  // Show Favourite Contacts with Phone Permission Prompt
+                  InfoActionWidget(
+                      S.of(context).msgNoPhonePermission,
+                      S.of(context).btnGrantPermission,
+                      Icons.perm_contact_calendar,
+                      requestPhonePermission),
                   FavGridView(contactModel.favContacts, openContactDialog,
                       openEditScreen)
                 ] else if (contactModel.isFavListLoaded &&
                     contactModel.favContacts.isEmpty) ...[
+                  // Show Add Favourites Prompt
                   Expanded(
                     child: InfoActionWidget.add(
                       message: S.of(context).msgNoFavourites,
@@ -54,14 +76,15 @@ class ContactsTab extends StatelessWidget {
                       buttonOnClickAction: openEditScreen,
                     ),
                   ),
-                ] else if (contactModel.isPermissionChecked &&
-                    !contactModel.isPermissionGranted) ...[
+                ] else if (contactModel.isContactsPermissionChecked &&
+                    !contactModel.isContactsPermissionGranted) ...[
+                  // Show Contacts Permission Prompt
                   Expanded(
                     child: InfoActionWidget(
                         S.of(context).msgNoContactsPermission,
                         S.of(context).btnGrantPermission,
                         Icons.perm_contact_calendar,
-                        requestPermission),
+                        requestContactsPermission),
                   )
                 ] else ...[
                   LoadingWidget(),

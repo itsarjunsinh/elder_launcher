@@ -19,7 +19,7 @@ Future CallDialog(BuildContext context, Item contact) {
                 onPressed: () => {
                   Navigator.pop(context),
                   Provider.of<ContactModel>(context, listen: false)
-                      .launchDialerApp(contact.id)
+                      .callPhoneNumber(contact.id)
                 },
                 isDefaultAction: true,
               ),

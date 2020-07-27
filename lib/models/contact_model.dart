@@ -11,8 +11,10 @@ class ContactModel extends ChangeNotifier {
 
   bool _isContactListLoaded = false;
   bool _isFavListLoaded = false;
-  bool _isPermissionChecked = false;
-  bool _isPermissionGranted = false;
+  bool _isContactsPermissionChecked = false;
+  bool _isContactsPermissionGranted;
+  bool _isPhonePermissionChecked = false;
+  bool _isPhonePermissionGranted;
 
   List<Item> _allContacts = [];
   List<Item> _favContacts = [];
@@ -21,14 +23,17 @@ class ContactModel extends ChangeNotifier {
 
   ContactModel({this.dataRepository}) {
     _loadContactsWithPermissionCheck();
+    _checkPhonePermission();
     _refreshTimer = Timer.periodic(Duration(minutes: 10),
         (Timer timer) => _loadContactsWithPermissionCheck());
   }
 
   bool get isContactListLoaded => _isContactListLoaded;
   bool get isFavListLoaded => _isFavListLoaded;
-  bool get isPermissionChecked => _isPermissionChecked;
-  bool get isPermissionGranted => _isPermissionGranted;
+  bool get isContactsPermissionChecked => _isContactsPermissionChecked;
+  bool get isContactsPermissionGranted => _isContactsPermissionGranted;
+  bool get isPhonePermissionChecked => _isPhonePermissionChecked;
+  bool get isPhonePermissionGranted => _isPhonePermissionGranted;
   UnmodifiableListView<Item> get allContacts =>
       UnmodifiableListView(_allContacts);
   UnmodifiableListView<Item> get favContacts =>
@@ -41,18 +46,19 @@ class ContactModel extends ChangeNotifier {
   }
 
   void _loadContactsWithPermissionCheck() async {
-    PermissionStatus permissionStatus = await PermissionHandler()
+    PermissionStatus contactStatus = await PermissionHandler()
         .checkPermissionStatus(PermissionGroup.contacts);
-    switch (permissionStatus) {
+
+    switch (contactStatus) {
       case PermissionStatus.granted:
         _loadContacts();
-        _isPermissionChecked = true;
-        _isPermissionGranted = true;
+        _isContactsPermissionGranted = true;
+        _isContactsPermissionChecked = true;
         notifyListeners();
         return;
       default:
-        _isPermissionChecked = true;
-        _isPermissionGranted = false;
+        _isContactsPermissionGranted = false;
+        _isContactsPermissionChecked = true;
         notifyListeners();
     }
   }
@@ -74,26 +80,54 @@ class ContactModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void launchContactsApp() async {
-    NativeMethods().launchContactsApp();
+  void _checkPhonePermission() async {
+    PermissionStatus phoneStatus =
+        await PermissionHandler().checkPermissionStatus(PermissionGroup.phone);
+    switch (phoneStatus) {
+      case PermissionStatus.granted:
+        _isPhonePermissionGranted = true;
+        _isPhonePermissionChecked = true;
+        notifyListeners();
+        return;
+      default:
+        _isPhonePermissionGranted = false;
+        _isPhonePermissionChecked = true;
+        notifyListeners();
+    }
   }
 
-  void launchDialerApp(String number) async {
-    NativeMethods().launchDialerApp(number);
-  }
-
-  void requestPermission() async {
-    PermissionStatus permissionStatus = await PermissionHandler()
-        .checkPermissionStatus(PermissionGroup.contacts);
+  void _requestPermission(PermissionGroup permissionGroup) async {
+    PermissionStatus permissionStatus =
+        await PermissionHandler().checkPermissionStatus(permissionGroup);
     switch (permissionStatus) {
       case PermissionStatus.neverAskAgain:
         await PermissionHandler().openAppSettings();
         return;
       default:
-        await PermissionHandler()
-            .requestPermissions([PermissionGroup.contacts]);
-        _loadContactsWithPermissionCheck();
+        await PermissionHandler().requestPermissions([permissionGroup]);
     }
+  }
+
+  void launchContactsApp() async {
+    NativeMethods().launchContactsApp();
+  }
+
+  void callPhoneNumber(String number) async {
+    if (isPhonePermissionGranted) {
+      NativeMethods().startPhoneCall(number);
+    } else {
+      NativeMethods().launchDialerApp(number);
+    }
+  }
+
+  void requestContactsPermission() async {
+    await _requestPermission(PermissionGroup.contacts);
+    _loadContactsWithPermissionCheck();
+  }
+
+  void requestPhonePermission() async {
+    await _requestPermission(PermissionGroup.phone);
+    _checkPhonePermission();
   }
 
   void saveFavContacts(List<String> new_favContacts) async {
