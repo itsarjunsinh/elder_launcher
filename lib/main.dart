@@ -24,16 +24,18 @@ class MyApp extends StatelessWidget {
               create: (_) => ContactModel(dataRepository: ContactRepository()))
         ],
         child: MaterialApp(
-            title: 'Elder Launcher',
-            home: DefaultTabController(length: 2, child: HomePage()),
-            onGenerateRoute: generateRoute,
-            localizationsDelegates: [
-              S.delegate,
-              GlobalCupertinoLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-            theme: lightTheme));
+          title: 'Elder Launcher',
+          home: DefaultTabController(length: 2, child: HomePage()),
+          onGenerateRoute: generateRoute,
+          localizationsDelegates: [
+            S.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+          theme: lightTheme,
+          darkTheme: darkTheme,
+        ));
   }
 }

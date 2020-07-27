@@ -42,6 +42,7 @@ class ReorderPage extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => EditModel(favItems: _favItems),
       child: Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
         body: SafeArea(
           child: Column(
             children: <Widget>[

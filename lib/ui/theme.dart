@@ -2,17 +2,19 @@ import 'package:elder_launcher/ui/colors.dart';
 import 'package:flutter/material.dart';
 
 var lightTheme = ThemeData(
-    primarySwatch: Colors.brown,
-    primaryColor: elderBlueGrey,
-    cardColor: elderBlueGreySecondary,
-    accentColor: elderPink);
+    primaryColor: elderTeal,
+    accentColor: elderPink,
+    backgroundColor: elderWhite,
+    cardColor: elderBlueGrey,
+    textTheme: Typography.blackMountainView);
 
-class LightColors {
-  static const elderBlueGrey = Color(0xFF407577);
-  static const elderBlueGreySecondary = Color(0xFFCFD8DC);
-  static const elderPink = Color(0xFFF9316A);
-  static const elderWhite = Color(0xFFFAFAFA);
-}
+var darkTheme = ThemeData(
+    primaryColor: elderDarkGrey,
+    accentColor: elderPink,
+    backgroundColor: elderBlack,
+    cardColor: elderDarkGreySecondary,
+    dividerTheme: DividerThemeData(color: elderBlueGrey),
+    textTheme: Typography.whiteMountainView);
 
 class TextStyles {
   static const cardTitle = TextStyle(fontSize: 30);
@@ -24,6 +26,9 @@ class TextStyles {
   static const primaryButtonLabel =
       TextStyle(color: Colors.white, fontSize: 50, height: 1);
   static const dialogTitle = TextStyle(color: Colors.black, fontSize: 25);
+  static const dialogAction = TextStyle(color: Colors.brown, fontSize: 22);
+  static const dialogActionMain =
+      TextStyle(color: Colors.black87, fontSize: 25);
 }
 
 class Values {

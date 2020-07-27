@@ -28,6 +28,7 @@ class FavGridView extends StatelessWidget {
           crossAxisCount: 2,
           children: favItems.map((item) {
             return Card(
+              color: Theme.of(context).cardColor,
               elevation: 4,
               child: InkWell(
                 splashColor: Colors.blue.withAlpha(50),

@@ -33,6 +33,7 @@ class HomePage extends StatelessWidget {
         create: (_) =>
             DateTimeModel(MediaQuery.of(context).alwaysUse24HourFormat),
         child: Scaffold(
+            backgroundColor: Theme.of(context).backgroundColor,
             appBar: AppBar(
               actions: <Widget>[
                 Padding(

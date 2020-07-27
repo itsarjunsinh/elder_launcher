@@ -45,6 +45,7 @@ class EditPage extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => EditModel(favItems: favItems, allItems: allItems),
       child: Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
         body: SafeArea(
           child: Column(
             children: <Widget>[

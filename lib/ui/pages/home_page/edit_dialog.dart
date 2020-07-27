@@ -14,9 +14,15 @@ Future EditDialog(BuildContext context, EditMode editMode) {
             ),
             actions: [
               CupertinoActionSheetAction(
-                child: Text(editMode == EditMode.apps
-                    ? S.of(context).dlgAppsAddRemove
-                    : S.of(context).dlgContactsAddRemove),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Text(
+                    editMode == EditMode.apps
+                        ? S.of(context).dlgAppsAddRemove
+                        : S.of(context).dlgContactsAddRemove,
+                    style: TextStyles.dialogAction,
+                  ),
+                ),
                 onPressed: () => {
                   Navigator.pop(context),
                   Navigator.pushNamed(context, EditPageRoute,
@@ -25,9 +31,15 @@ Future EditDialog(BuildContext context, EditMode editMode) {
                 isDefaultAction: true,
               ),
               CupertinoActionSheetAction(
-                child: Text(editMode == EditMode.apps
-                    ? S.of(context).dlgAppsReorder
-                    : S.of(context).dlgContactsReorder),
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Text(
+                    editMode == EditMode.apps
+                        ? S.of(context).dlgAppsReorder
+                        : S.of(context).dlgContactsReorder,
+                    style: TextStyles.dialogAction,
+                  ),
+                ),
                 onPressed: () => {
                   Navigator.pop(context),
                   Navigator.pushNamed(context, ReorderPageRoute,
@@ -36,8 +48,11 @@ Future EditDialog(BuildContext context, EditMode editMode) {
                 isDefaultAction: true,
               ),
             ],
-            cancelButton: CupertinoActionSheetAction(
-                child: Text(S.of(context).dlgCancel),
-                onPressed: () => {Navigator.pop(context)}),
+            cancelButton: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: CupertinoActionSheetAction(
+                  child: Text(S.of(context).dlgCancel),
+                  onPressed: () => {Navigator.pop(context)}),
+            ),
           ));
 }

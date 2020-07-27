@@ -21,6 +21,7 @@ class AppDrawerScreen extends StatelessWidget {
     }
 
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
         child: Column(
           children: <Widget>[
