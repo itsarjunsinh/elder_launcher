@@ -16,6 +16,8 @@
     "dlgCancel": "Stornieren",
     "dlgAppsAddRemove": "Apps hinzufügen/entfernen",
     "dlgAppsReorder": "Apps neu anordnen",
+    "dlgAppsReload": "App-Liste neu laden",
     "dlgContactsAddRemove": "Kontakte hinzufügen/entfernen",
-    "dlgContactsReorder": "Kontakte neu anordnen"
+    "dlgContactsReorder": "Kontakte neu anordnen",
+    "dlgContactsReload": "Kontaktliste neu laden"
 }

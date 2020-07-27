@@ -1,8 +1,11 @@
 import 'package:elder_launcher/constants/edit_mode.dart';
 import 'package:elder_launcher/constants/route_names.dart';
 import 'package:elder_launcher/generated/l10n.dart';
+import 'package:elder_launcher/models/app_model.dart';
+import 'package:elder_launcher/models/contact_model.dart';
 import 'package:elder_launcher/ui/theme.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 
 Future EditDialog(BuildContext context, EditMode editMode) {
   return showCupertinoModalPopup(
@@ -28,7 +31,6 @@ Future EditDialog(BuildContext context, EditMode editMode) {
                   Navigator.pushNamed(context, EditPageRoute,
                       arguments: editMode)
                 },
-                isDefaultAction: true,
               ),
               CupertinoActionSheetAction(
                 child: Padding(
@@ -45,7 +47,24 @@ Future EditDialog(BuildContext context, EditMode editMode) {
                   Navigator.pushNamed(context, ReorderPageRoute,
                       arguments: editMode)
                 },
-                isDefaultAction: true,
+              ),
+              CupertinoActionSheetAction(
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Text(
+                    editMode == EditMode.apps
+                        ? S.of(context).dlgAppsReload
+                        : S.of(context).dlgContactsReload,
+                    style: TextStyles.dialogAction,
+                  ),
+                ),
+                onPressed: () => {
+                  editMode == EditMode.apps
+                      ? Provider.of<AppModel>(context, listen: false)
+                          .reloadLists()
+                      : Provider.of<ContactModel>(context, listen: false)
+                          .reloadLists()
+                },
               ),
             ],
             cancelButton: Padding(

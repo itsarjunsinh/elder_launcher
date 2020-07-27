@@ -16,6 +16,8 @@
     "dlgCancel": "Cancel",
     "dlgAppsAddRemove": "Add/Remove Apps",
     "dlgAppsReorder": "Reorder Apps",
+    "dlgAppsReload": "Reload App List",
     "dlgContactsAddRemove": "Add/Remove Contacts",
-    "dlgContactsReorder": "Reorder Contacts"
+    "dlgContactsReorder": "Reorder Contacts",
+    "dlgContactsReload": "Reload Contacts"
 }

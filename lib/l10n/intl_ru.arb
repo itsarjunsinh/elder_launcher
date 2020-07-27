@@ -16,6 +16,8 @@
     "dlgCancel": "Отмена",
     "dlgAppsAddRemove": "Добавить/удалять программы",
     "dlgAppsReorder": "Изменение порядка программы",
+    "dlgAppsReload": "Перезагрузить список программы",
     "dlgContactsAddRemove": "Добавить/удалять контакты",
-    "dlgContactsReorder": "Изменение порядка контакты"
+    "dlgContactsReorder": "Изменение порядка контакты",
+    "dlgContactsReload": "Перезагрузить список контактов"
 }

@@ -71,6 +71,10 @@ class AppModel extends ChangeNotifier {
     DeviceApps.openApp(packageName);
   }
 
+  void reloadLists() {
+    _loadApps();
+  }
+
   void saveFavApps(List<String> newFavPackages) async {
     dataRepository.setFavItems(newFavPackages);
     _loadFavItems();

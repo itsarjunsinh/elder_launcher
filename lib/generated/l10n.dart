@@ -203,6 +203,16 @@ class S {
     );
   }
 
+  /// `Reload App List`
+  String get dlgAppsReload {
+    return Intl.message(
+      'Reload App List',
+      name: 'dlgAppsReload',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add/Remove Contacts`
   String get dlgContactsAddRemove {
     return Intl.message(
@@ -218,6 +228,16 @@ class S {
     return Intl.message(
       'Reorder Contacts',
       name: 'dlgContactsReorder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reload Contacts`
+  String get dlgContactsReload {
+    return Intl.message(
+      'Reload Contacts',
+      name: 'dlgContactsReload',
       desc: '',
       args: [],
     );

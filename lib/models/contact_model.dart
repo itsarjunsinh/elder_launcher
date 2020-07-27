@@ -103,6 +103,10 @@ class ContactModel extends ChangeNotifier {
     }
   }
 
+  void reloadLists() {
+    _loadContactsWithPermissionCheck();
+  }
+
   void requestContactsPermission() async {
     await _requestPermission(Permission.contacts);
     _loadContactsWithPermissionCheck();

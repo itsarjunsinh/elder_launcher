@@ -16,6 +16,8 @@
     "dlgCancel": "Annuler",
     "dlgAppsAddRemove": "Ajouter/supprimer des Apps",
     "dlgAppsReorder": "Réorganiser les Apps",
-    "dlgContactsAddRemove": "Ajouter/supprimer des Aontacts",
-    "dlgContactsReorder": "Réorganiser les Contacts"
+    "dlgAppsReload": "Recharger la liste des Apps",
+    "dlgContactsAddRemove": "Ajouter/supprimer des Contacts",
+    "dlgContactsReorder": "Réorganiser les Contacts",
+    "dlgContactsReload": "Recharger la liste de contacts"
 }
