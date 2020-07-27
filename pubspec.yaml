@@ -17,7 +17,7 @@ dependencies:
   device_apps: ^1.1.0
   intl: ^0.16.1
   pedantic: ^1.9.0
-  permission_handler: ^4.4.0+hotfix.2
+  permission_handler: ^5.0.1+1
   provider: ^4.3.1
   shared_preferences: ^0.5.8
 

@@ -46,21 +46,14 @@ class ContactModel extends ChangeNotifier {
   }
 
   void _loadContactsWithPermissionCheck() async {
-    PermissionStatus contactStatus = await PermissionHandler()
-        .checkPermissionStatus(PermissionGroup.contacts);
-
-    switch (contactStatus) {
-      case PermissionStatus.granted:
-        _loadContacts();
-        _isContactsPermissionGranted = true;
-        _isContactsPermissionChecked = true;
-        notifyListeners();
-        return;
-      default:
-        _isContactsPermissionGranted = false;
-        _isContactsPermissionChecked = true;
-        notifyListeners();
+    if (await Permission.contacts.isGranted) {
+      _isContactsPermissionGranted = true;
+      _loadContacts();
+    } else {
+      _isContactsPermissionGranted = false;
     }
+    _isContactsPermissionChecked = true;
+    notifyListeners();
   }
 
   void _loadContacts() async {
@@ -81,30 +74,20 @@ class ContactModel extends ChangeNotifier {
   }
 
   void _checkPhonePermission() async {
-    PermissionStatus phoneStatus =
-        await PermissionHandler().checkPermissionStatus(PermissionGroup.phone);
-    switch (phoneStatus) {
-      case PermissionStatus.granted:
-        _isPhonePermissionGranted = true;
-        _isPhonePermissionChecked = true;
-        notifyListeners();
-        return;
-      default:
-        _isPhonePermissionGranted = false;
-        _isPhonePermissionChecked = true;
-        notifyListeners();
+    if (await Permission.phone.isGranted) {
+      _isPhonePermissionGranted = true;
+    } else {
+      _isPhonePermissionGranted = false;
     }
+    _isPhonePermissionChecked = true;
+    notifyListeners();
   }
 
-  void _requestPermission(PermissionGroup permissionGroup) async {
-    PermissionStatus permissionStatus =
-        await PermissionHandler().checkPermissionStatus(permissionGroup);
-    switch (permissionStatus) {
-      case PermissionStatus.neverAskAgain:
-        await PermissionHandler().openAppSettings();
-        return;
-      default:
-        await PermissionHandler().requestPermissions([permissionGroup]);
+  void _requestPermission(Permission permission) async {
+    if (await permission.status.isPermanentlyDenied) {
+      await openAppSettings();
+    } else {
+      await permission.request();
     }
   }
 
@@ -121,12 +104,12 @@ class ContactModel extends ChangeNotifier {
   }
 
   void requestContactsPermission() async {
-    await _requestPermission(PermissionGroup.contacts);
+    await _requestPermission(Permission.contacts);
     _loadContactsWithPermissionCheck();
   }
 
   void requestPhonePermission() async {
-    await _requestPermission(PermissionGroup.phone);
+    await _requestPermission(Permission.phone);
     _checkPhonePermission();
   }
 
