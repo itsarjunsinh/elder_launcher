@@ -15,6 +15,8 @@ class ContactModel extends ChangeNotifier {
   bool _isContactsPermissionGranted;
   bool _isPhonePermissionChecked = false;
   bool _isPhonePermissionGranted;
+  bool _isTelephoneFeatureChecked = false;
+  bool _hasTelephoneFeature;
 
   List<Item> _allContacts = [];
   List<Item> _favContacts = [];
@@ -34,6 +36,8 @@ class ContactModel extends ChangeNotifier {
   bool get isContactsPermissionGranted => _isContactsPermissionGranted;
   bool get isPhonePermissionChecked => _isPhonePermissionChecked;
   bool get isPhonePermissionGranted => _isPhonePermissionGranted;
+  bool get isTelephoneFeatureChecked => _isTelephoneFeatureChecked;
+  bool get hasTelephoneFeature => _hasTelephoneFeature;
   UnmodifiableListView<Item> get allContacts =>
       UnmodifiableListView(_allContacts);
   UnmodifiableListView<Item> get favContacts =>
@@ -74,6 +78,7 @@ class ContactModel extends ChangeNotifier {
   }
 
   void _checkPhonePermission() async {
+    _checkTelephoneFeature();
     if (await Permission.phone.isGranted) {
       _isPhonePermissionGranted = true;
     } else {
@@ -81,6 +86,15 @@ class ContactModel extends ChangeNotifier {
     }
     _isPhonePermissionChecked = true;
     notifyListeners();
+  }
+
+  void _checkTelephoneFeature() async {
+    if (await NativeMethods().hasTelephoneFeature()) {
+      _hasTelephoneFeature = true;
+    } else {
+      _hasTelephoneFeature = false;
+    }
+    _isTelephoneFeatureChecked = true;
   }
 
   void _requestPermission(Permission permission) async {
@@ -96,10 +110,12 @@ class ContactModel extends ChangeNotifier {
   }
 
   void callPhoneNumber(String number) async {
-    if (isPhonePermissionGranted) {
-      NativeMethods().startPhoneCall(number);
-    } else {
-      NativeMethods().launchDialerApp(number);
+    if (_isTelephoneFeatureChecked) {
+      if (_isPhonePermissionGranted && _hasTelephoneFeature) {
+        NativeMethods().startPhoneCall(number);
+      } else {
+        NativeMethods().launchDialerApp(number);
+      }
     }
   }
 

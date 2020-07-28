@@ -3,16 +3,20 @@ import 'package:flutter/services.dart';
 class NativeMethods {
   final platform = MethodChannel('arjunsinh.xyz/elder_launcher');
 
-  launchContactsApp() {
+  void launchContactsApp() {
     platform.invokeMethod('launchContactsApp');
   }
 
-  launchDialerApp(String number) {
+  void launchDialerApp(String number) {
     platform.invokeMethod('launchDialerWithNumber', {'number': number});
   }
 
-  startPhoneCall(String number) {
+  void startPhoneCall(String number) {
     platform.invokeMethod('startPhoneCall', {'number': number});
+  }
+
+  Future<bool> hasTelephoneFeature() async {
+    return await platform.invokeMethod<bool>('hasTelephoneFeature');
   }
 
   Future<List<String>> getDeprecatedPrefsList() async {

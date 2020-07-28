@@ -57,12 +57,14 @@ class ContactsTab extends StatelessWidget {
                 ] else if (contactModel.isFavListLoaded &&
                     contactModel.favContacts.isNotEmpty &&
                     contactModel.isPhonePermissionChecked &&
-                    !contactModel.isPhonePermissionGranted) ...[
+                    !contactModel.isPhonePermissionGranted &&
+                    contactModel.isTelephoneFeatureChecked &&
+                    contactModel.hasTelephoneFeature) ...[
                   // Show Favourite Contacts with Phone Permission Prompt
                   InfoActionWidget(
                       S.of(context).msgNoPhonePermission,
                       S.of(context).btnGrantPermission,
-                      Icons.perm_contact_calendar,
+                      Icons.phone,
                       requestPhonePermission),
                   FavGridView(contactModel.favContacts, openContactDialog,
                       openEditScreen)

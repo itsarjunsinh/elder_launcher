@@ -2,6 +2,7 @@ package xyz.arjunsinh.elderlauncher
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.ContactsContract
 import androidx.annotation.NonNull
@@ -18,6 +19,7 @@ class MainActivity : FlutterActivity() {
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler { call, result ->
             when (call.method) {
                 "getDeprecatedFavAppIds" -> result.success(getDeprecatedFavAppIds())
+                "hasTelephoneFeature" -> result.success(hasTelephoneFeature())
                 "launchContactsApp" -> result.success(openContactsApp())
                 "launchDialerWithNumber" -> {
                     if(call.hasArgument("number")) {
@@ -40,6 +42,11 @@ class MainActivity : FlutterActivity() {
         val sharedPrefs = applicationContext.getSharedPreferences("key_apps", Context.MODE_PRIVATE)
         val deprecatedFavAppIds = sharedPrefs.getStringSet("key_favorites", mutableSetOf<String>())
         return deprecatedFavAppIds.toList()
+    }
+
+    private fun hasTelephoneFeature(): Boolean {
+        val pm = applicationContext.packageManager;
+        return pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
     }
 
     // TODO: Fix Contacts App opening twice.
