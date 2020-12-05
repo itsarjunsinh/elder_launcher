@@ -1,0 +1,23 @@
+{
+    "Apps": "Aplikace",
+    "Contacts": "Kontakty",
+    "btnAllApps": "Všechny Aplikace",
+    "btnAllContacts": "Všechny Kontakty",
+    "btnAddFavApps": "Přidat Oblíbené Aplikace",
+    "btnAddFavContacts": "Přidat Oblíbené Kontakty",
+    "btnBackToHome": "Zpět Domů",
+    "btnGrantPermission": "Udělit Oprávnění",
+    "msgNoData": "Žádná data k dispozici. Zkuste znova za pár vteřin.",
+    "msgNoFavourites": "Nepřidali jste žádné oblíbené položky",
+    "msgNoContactsPermission": "Pro přidání oblíbených kontaktů na tuto stránku povolte této aplikaci přístup ke Kontaktům.",
+    "msgNoPhonePermission": "Pro usnadnění volání, povolte této aplikaci zahájení hovorů.",
+    "dlgCall" : "Volat",
+    "dlgEditTitle": "Změnit Oblíbené",
+    "dlgCancel": "Zrušit",
+    "dlgAppsAddRemove": "Přidat/Odebrat Aplikace",
+    "dlgAppsReorder": "Přeuspořádat Aplikace",
+    "dlgAppsReload": "Znovu načíst Seznam Aplikací",
+    "dlgContactsAddRemove": "Přidat/Odebrat Kontakty",
+    "dlgContactsReorder": "Přeuspořádat Kontakty",
+    "dlgContactsReload": "Znovu načíst Kontakty"
+}
