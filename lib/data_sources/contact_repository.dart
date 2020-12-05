@@ -17,12 +17,11 @@ class ContactRepository implements DataRepository {
     List<String> favContactNumbers =
         await SharedPrefs().getList(keyFavContacts);
     List<item.Item> favContacts = [];
+    favContactNumbers.forEach((i) => print(i));
     for (String number in favContactNumbers) {
-      favContacts.addAll(
-          _toDistinctItems(await ContactsService.getContactsForPhone(number)));
+      favContacts.add(
+          _toItem(number, await ContactsService.getContactsForPhone(number)));
     }
-    favContacts
-        .removeWhere((contact) => !favContactNumbers.contains(contact.id));
     return favContacts;
   }
 
@@ -38,6 +37,7 @@ class ContactRepository implements DataRepository {
       Set<String> numbers = <String>{};
 
       for (var number in contact.phones) {
+        print(number.value);
         numbers.add(number.value.replaceAll(
           RegExp('[^a-zA-Z0-9+]+'),
           '',
@@ -45,9 +45,14 @@ class ContactRepository implements DataRepository {
       }
 
       for (String number in numbers) {
+        print(number);
         _contacts.add(item.Item(number, contact.displayName, contact.avatar));
       }
     });
     return _contacts.toList();
+  }
+
+  item.Item _toItem(number, Iterable<Contact> contacts) {
+    return item.Item(number, contacts.first.displayName, contacts.first.avatar);
   }
 }
