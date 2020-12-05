@@ -1,5 +1,6 @@
 import 'package:elder_launcher/models/edit_model.dart';
 import 'package:elder_launcher/models/item.dart';
+import 'package:elder_launcher/ui/theme.dart';
 import 'package:flutter/material.dart';
 
 class ReorderWidget extends StatelessWidget {
@@ -25,6 +26,7 @@ class ReorderWidget extends StatelessWidget {
               ))
           .toList(),
       onReorder: (oldIndex, newIndex) => reorderItems(oldIndex, newIndex),
+      padding: EdgeInsets.symmetric(vertical: 8),
     );
   }
 }
@@ -40,15 +42,21 @@ class ReorderableCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(4),
-      child: ListTile(
-        title: Text(item.name),
-        leading: item.icon.isNotEmpty
-            ? Image(
-                image: MemoryImage(item.icon),
-              )
-            : CircleAvatar(),
-        trailing: Icon(Icons.drag_handle),
+      margin: EdgeInsets.symmetric(horizontal: 2, vertical: 6),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListTile(
+          title: Text(
+            item.name,
+            style: TextStyles.listTitle,
+          ),
+          leading: item.icon.isNotEmpty
+              ? Image(
+                  image: MemoryImage(item.icon),
+                )
+              : CircleAvatar(),
+          trailing: Icon(Icons.drag_handle),
+        ),
       ),
     );
   }

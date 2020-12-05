@@ -44,7 +44,7 @@ class FavGridView extends StatelessWidget {
                     ],
                     Flexible(
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                        padding: const EdgeInsets.fromLTRB(0, 2, 0, 0),
                         child: AutoSizeText(
                           item.name,
                           group: itemName,
