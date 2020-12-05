@@ -40,8 +40,8 @@ class MainActivity : FlutterActivity() {
 
     private fun getDeprecatedFavAppIds(): List<String> {
         val sharedPrefs = applicationContext.getSharedPreferences("key_apps", Context.MODE_PRIVATE)
-        val deprecatedFavAppIds = sharedPrefs.getStringSet("key_favorites", mutableSetOf<String>())
-        return deprecatedFavAppIds.toList()
+        var deprecatedFavAppIds = sharedPrefs.getStringSet("key_favorites", emptySet<String>())
+        return deprecatedFavAppIds!!.toList()
     }
 
     private fun hasTelephoneFeature(): Boolean {
