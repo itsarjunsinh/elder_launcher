@@ -1,7 +1,7 @@
 name: elder_launcher
 description: A launcher focused on simplicity and legibility.
 
-version: 1.1.1+5
+version: 1.2+6
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -14,12 +14,12 @@ dependencies:
     
   auto_size_text: ^2.1.0
   contacts_service: ^0.4.6
-  device_apps: ^1.1.0
+  device_apps: ^1.2.0
   intl: ^0.16.1
-  pedantic: ^1.9.0
+  pedantic: ^1.9.2
   permission_handler: ^5.0.1+1
-  provider: ^4.3.1
-  shared_preferences: ^0.5.8
+  provider: ^4.3.2+2
+  shared_preferences: ^0.5.12+4
 
 dev_dependencies:
   flutter_test:
