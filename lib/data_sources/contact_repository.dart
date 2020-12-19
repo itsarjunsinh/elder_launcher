@@ -37,7 +37,6 @@ class ContactRepository implements DataRepository {
       Set<String> numbers = <String>{};
 
       for (var number in contact.phones) {
-        print(number.value);
         numbers.add(number.value.replaceAll(
           RegExp('[^a-zA-Z0-9+]+'),
           '',
@@ -45,7 +44,6 @@ class ContactRepository implements DataRepository {
       }
 
       for (String number in numbers) {
-        print(number);
         _contacts.add(item.Item(number, contact.displayName, contact.avatar));
       }
     });
