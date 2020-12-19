@@ -23,7 +23,7 @@ class DateTimeModel extends ChangeNotifier {
 
   void _updateDateTime() {
     _time = DateFormat.jm().format(DateTime.now());
-    _date = DateFormat.yMMMMd().format(DateTime.now());
+    _date = DateFormat.MMMMEEEEd().format(DateTime.now());
     notifyListeners();
   }
 }
