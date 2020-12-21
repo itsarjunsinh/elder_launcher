@@ -17,7 +17,6 @@ class ContactRepository implements DataRepository {
     List<String> favContactNumbers =
         await SharedPrefs().getList(keyFavContacts);
     List<item.Item> favContacts = [];
-    favContactNumbers.forEach((i) => print(i));
     for (String number in favContactNumbers) {
       favContacts.add(
           _toItem(number, await ContactsService.getContactsForPhone(number)));
