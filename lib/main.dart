@@ -1,8 +1,5 @@
-import 'package:elder_launcher/data_sources/app_repository.dart';
-import 'package:elder_launcher/data_sources/contact_repository.dart';
 import 'package:elder_launcher/models/app_model.dart';
 import 'package:elder_launcher/models/contact_model.dart';
-import 'package:elder_launcher/models/date_time_model.dart';
 import 'package:elder_launcher/generated/l10n.dart';
 import 'package:elder_launcher/ui/pages/home_page/home_page.dart';
 import 'package:elder_launcher/ui/router.dart';
@@ -18,10 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider<AppModel>(
-              create: (_) => AppModel(dataRepository: AppRepository())),
-          ChangeNotifierProvider<ContactModel>(
-              create: (_) => ContactModel(dataRepository: ContactRepository()))
+          ChangeNotifierProvider<AppModel>(create: (_) => AppModel()),
+          ChangeNotifierProvider<ContactModel>(create: (_) => ContactModel())
         ],
         child: MaterialApp(
           title: 'Elder Launcher',

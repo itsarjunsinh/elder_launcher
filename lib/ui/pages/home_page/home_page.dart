@@ -30,8 +30,7 @@ class HomePage extends StatelessWidget {
     return WillPopScope(
       onWillPop: () => Future.value(false),
       child: ChangeNotifierProvider(
-        create: (_) =>
-            DateTimeModel(MediaQuery.of(context).alwaysUse24HourFormat),
+        create: (_) => DateTimeModel(),
         child: Scaffold(
             backgroundColor: Theme.of(context).backgroundColor,
             appBar: AppBar(

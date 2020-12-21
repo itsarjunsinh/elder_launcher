@@ -56,7 +56,7 @@ packages:
       name: contacts_service
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.6"
+    version: "0.3.10"
   device_apps:
     dependency: "direct main"
     description:

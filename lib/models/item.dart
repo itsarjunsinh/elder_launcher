@@ -1,11 +1,12 @@
-// Generic Data Item class. Used for storing contact and app info.
-
 import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 
+/// Data class used for storing app or contact info.
 @immutable
 class Item {
-  final String id; // Stores Application package name or Phone number
+  /// App package name or Phone number
+  final String id;
+
   final String name;
   final Uint8List icon;
 

@@ -2,15 +2,13 @@ import 'dart:async';
 import 'dart:collection';
 import 'package:device_apps/device_apps.dart';
 import 'package:elder_launcher/constants/keys.dart';
-import 'package:elder_launcher/models/interfaces/data_repository.dart';
+import 'package:elder_launcher/data_sources/app_repository.dart';
 import 'package:elder_launcher/models/item.dart';
 import 'package:elder_launcher/utils/native_methods.dart';
 import 'package:elder_launcher/utils/shared_prefs.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 
 class AppModel extends ChangeNotifier {
-  final DataRepository dataRepository;
-
   bool _isAppListLoaded = false;
   bool _isFavListLoaded = false;
 
@@ -19,7 +17,7 @@ class AppModel extends ChangeNotifier {
 
   Timer _refreshTimer;
 
-  AppModel({@required this.dataRepository}) {
+  AppModel() {
     _loadApps();
     _refreshTimer =
         Timer.periodic(Duration(minutes: 05), (Timer timer) => _loadApps());
@@ -46,18 +44,18 @@ class AppModel extends ChangeNotifier {
   }
 
   void _loadAllItems() async {
-    _allApps = await dataRepository.getAllItems();
+    _allApps = await AppRepository().getAllItems();
     _isAppListLoaded = true;
     notifyListeners();
   }
 
   void _loadFavItems() async {
-    _favApps = await dataRepository.getFavItems();
+    _favApps = await AppRepository().getFavItems();
     _isFavListLoaded = true;
     notifyListeners();
   }
 
-  /// Restore favourite apps saved by previous builds with a different key
+  /// Restore favourite apps saved with different key in builds prior to v1.0
   void _restoreFavAppsFromDeprecatedList() async {
     List<String> deprecatedFavAppIds =
         await NativeMethods().getDeprecatedPrefsList();
@@ -76,7 +74,7 @@ class AppModel extends ChangeNotifier {
   }
 
   void saveFavApps(List<String> newFavPackages) async {
-    dataRepository.setFavItems(newFavPackages);
+    AppRepository().setFavItems(newFavPackages);
     _loadFavItems();
   }
 }
