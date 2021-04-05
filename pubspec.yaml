@@ -14,7 +14,7 @@ dependencies:
   auto_size_text: ^2.1.0
   contacts_service: ^0.3.10
   device_apps: ^1.2.0
-  intl: ^0.16.1
+  intl: ^0.17.0
   pedantic: ^1.9.2
   permission_handler: ^5.0.1+1
   provider: ^4.3.2+2
