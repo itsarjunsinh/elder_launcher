@@ -60,6 +60,7 @@ Future EditDialog(BuildContext context, EditMode editMode) {
                   ),
                 ),
                 onPressed: () => {
+                  Navigator.pop(context),
                   editMode == EditMode.apps
                       ? Provider.of<AppModel>(context, listen: false)
                           .reloadLists()

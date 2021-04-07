@@ -15,12 +15,16 @@ class AppModel extends ChangeNotifier {
   List<Item> _allApps = [];
   List<Item> _favApps = [];
 
+  final _appEvent = DeviceApps.listenToAppsChanges();
   Timer _refreshTimer;
 
   AppModel() {
     _loadApps();
+    _appEvent.listen((event) {
+      _loadApps();
+    });
     _refreshTimer =
-        Timer.periodic(Duration(minutes: 05), (timer) => _loadApps());
+        Timer.periodic(Duration(minutes: 15), (timer) => _loadApps());
   }
 
   bool get isAppListLoaded => _isAppListLoaded;
@@ -30,6 +34,7 @@ class AppModel extends ChangeNotifier {
 
   @override
   void dispose() {
+    _appEvent.listen((event) {}).cancel();
     _refreshTimer.cancel();
     super.dispose();
   }
