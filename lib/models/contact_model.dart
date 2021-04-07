@@ -96,10 +96,9 @@ class ContactModel extends ChangeNotifier {
   }
 
   void _requestPermission(Permission permission) async {
-    if (await permission.status.isPermanentlyDenied) {
+    var permissionStatus = await permission.request();
+    if (permissionStatus == PermissionStatus.permanentlyDenied) {
       await openAppSettings();
-    } else {
-      await permission.request();
     }
   }
 
