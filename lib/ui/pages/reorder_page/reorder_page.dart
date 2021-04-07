@@ -1,15 +1,15 @@
-import 'package:elder_launcher/constants/edit_mode.dart';
-import 'package:elder_launcher/models/app_model.dart';
-import 'package:elder_launcher/models/contact_model.dart';
-import 'package:elder_launcher/models/edit_model.dart';
-import 'package:elder_launcher/models/item.dart';
-import 'package:elder_launcher/generated/l10n.dart';
-import 'package:elder_launcher/ui/common/buttons.dart';
-import 'package:elder_launcher/ui/common/info_action_widget.dart';
-import 'package:elder_launcher/ui/pages/reorder_page/reorder_widget.dart';
-import 'package:elder_launcher/ui/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../constants/edit_mode.dart';
+import '../../../generated/l10n.dart';
+import '../../../models/app_model.dart';
+import '../../../models/contact_model.dart';
+import '../../../models/edit_model.dart';
+import '../../../models/item.dart';
+import '../../../ui/common/buttons.dart';
+import '../../../ui/common/info_action_widget.dart';
+import '../../../ui/pages/reorder_page/reorder_widget.dart';
+import '../../../ui/theme.dart';
 
 class ReorderPage extends StatelessWidget {
   final EditMode editMode;
@@ -18,7 +18,7 @@ class ReorderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Item> _favItems = [];
+    var _favItems = <Item>[];
 
     if (editMode == EditMode.apps) {
       _favItems = Provider.of<AppModel>(context).favApps;

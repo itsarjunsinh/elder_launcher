@@ -1,7 +1,7 @@
-import 'package:elder_launcher/models/edit_model.dart';
-import 'package:elder_launcher/models/item.dart';
-import 'package:elder_launcher/ui/theme.dart';
 import 'package:flutter/material.dart';
+import '../../../models/edit_model.dart';
+import '../../../models/item.dart';
+import '../../../ui/theme.dart';
 
 class ReorderWidget extends StatelessWidget {
   final EditModel editModel;
@@ -12,7 +12,7 @@ class ReorderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Item> _favItems = editModel.sortedItems;
+    final _favItems = editModel.sortedItems;
 
     void reorderItems(int oldIndex, int newIndex) {
       editModel.reorderFavItems(oldIndex, newIndex);
@@ -20,12 +20,12 @@ class ReorderWidget extends StatelessWidget {
 
     return ReorderableListView(
       children: _favItems
-          .map((Item item) => ReorderableCard(
+          .map((item) => ReorderableCard(
                 item: item,
                 key: Key(item.id),
               ))
           .toList(),
-      onReorder: (oldIndex, newIndex) => reorderItems(oldIndex, newIndex),
+      onReorder: reorderItems,
       padding: EdgeInsets.symmetric(vertical: 8),
     );
   }

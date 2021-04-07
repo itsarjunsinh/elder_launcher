@@ -1,5 +1,5 @@
-import 'package:elder_launcher/models/item.dart';
 import 'package:flutter/material.dart';
+import '../models/item.dart';
 
 class EditModel extends ChangeNotifier {
   final sortedItems = <Item>[];
@@ -19,11 +19,11 @@ class EditModel extends ChangeNotifier {
 
   /// Sort favourite items to top of the list
   void _generateSortedList() async {
-    for (int i = 0; i < _favItems.length; i++) {
+    for (var i = 0; i < _favItems.length; i++) {
       sortedItems.add(_favItems[i]);
       _favPositions.add(i);
     }
-    for (Item item in _allItems) {
+    for (var item in _allItems) {
       if (!_favItems.contains(item)) sortedItems.add(item);
     }
     isListLoaded = true;
@@ -54,8 +54,10 @@ class EditModel extends ChangeNotifier {
 
   List<String> getFavIds() {
     _favPositions.sort();
-    List<String> favIds = [];
-    _favPositions.forEach((i) => favIds.add(sortedItems[i].id));
+    var favIds = <String>[];
+    for (var i in _favPositions) {
+      favIds.add(sortedItems[i].id);
+    }
     return favIds;
   }
 }

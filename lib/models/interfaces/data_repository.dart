@@ -1,4 +1,4 @@
-import 'package:elder_launcher/models/item.dart';
+import '../item.dart';
 
 abstract class DataRepository {
   Future<List<Item>> getAllItems();

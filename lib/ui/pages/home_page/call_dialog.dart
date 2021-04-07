@@ -1,11 +1,12 @@
-import 'package:elder_launcher/models/contact_model.dart';
-import 'package:elder_launcher/models/item.dart';
-import 'package:elder_launcher/generated/l10n.dart';
-import 'package:elder_launcher/ui/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../generated/l10n.dart';
+import '../../../models/contact_model.dart';
+import '../../../models/item.dart';
+import '../../../ui/theme.dart';
 
+// ignore: non_constant_identifier_names
 Future CallDialog(BuildContext context, Item contact) {
   return showCupertinoModalPopup(
       context: context,

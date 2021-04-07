@@ -1,14 +1,14 @@
-import 'package:elder_launcher/constants/edit_mode.dart';
-import 'package:elder_launcher/constants/route_names.dart';
-import 'package:elder_launcher/models/app_model.dart';
-import 'package:elder_launcher/models/item.dart';
-import 'package:elder_launcher/generated/l10n.dart';
-import 'package:elder_launcher/ui/common/buttons.dart';
-import 'package:elder_launcher/ui/common/loading_widget.dart';
-import 'package:elder_launcher/ui/pages/home_page/fav_grid_view.dart';
-import 'package:elder_launcher/ui/common/info_action_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../constants/edit_mode.dart';
+import '../../../constants/route_names.dart';
+import '../../../generated/l10n.dart';
+import '../../../models/app_model.dart';
+import '../../../models/item.dart';
+import '../../../ui/common/buttons.dart';
+import '../../../ui/common/info_action_widget.dart';
+import '../../../ui/common/loading_widget.dart';
+import '../../../ui/pages/home_page/fav_grid_view.dart';
 
 class AppsTab extends StatelessWidget {
   const AppsTab({
@@ -18,11 +18,11 @@ class AppsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void openAllApps() {
-      Navigator.pushNamed(context, AppDrawerRoute);
+      Navigator.pushNamed(context, appDrawerRoute);
     }
 
     void openEditScreen() {
-      Navigator.pushNamed(context, EditPageRoute, arguments: EditMode.apps);
+      Navigator.pushNamed(context, editPageRoute, arguments: EditMode.apps);
     }
 
     void launchApp(Item app) {

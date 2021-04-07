@@ -1,19 +1,19 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:elder_launcher/constants/edit_mode.dart';
-import 'package:elder_launcher/models/date_time_model.dart';
-import 'package:elder_launcher/generated/l10n.dart';
-import 'package:elder_launcher/ui/pages/home_page/apps_tab.dart';
-import 'package:elder_launcher/ui/pages/home_page/contacts_tab.dart';
-import 'package:elder_launcher/ui/pages/home_page/edit_dialog.dart';
-import 'package:elder_launcher/ui/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import '../../../constants/edit_mode.dart';
+import '../../../generated/l10n.dart';
+import '../../../models/date_time_model.dart';
+import '../../../ui/pages/home_page/apps_tab.dart';
+import '../../../ui/pages/home_page/contacts_tab.dart';
+import '../../../ui/pages/home_page/edit_dialog.dart';
+import '../../../ui/theme.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    AutoSizeGroup _appBarTextSizeGroup = AutoSizeGroup();
+    var _appBarTextSizeGroup = AutoSizeGroup();
 
     void openEditDialog(int tabIndex) {
       EditMode editMode;

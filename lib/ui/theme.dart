@@ -1,14 +1,14 @@
-import 'package:elder_launcher/ui/colors.dart';
 import 'package:flutter/material.dart';
+import 'colors.dart';
 
-var lightTheme = ThemeData(
+ThemeData lightTheme = ThemeData(
     primaryColor: elderTeal,
     accentColor: elderPink,
     backgroundColor: elderWhite,
     cardColor: elderBlueGrey,
     textTheme: Typography.blackMountainView);
 
-var darkTheme = ThemeData(
+ThemeData darkTheme = ThemeData(
     primaryColor: elderDarkGrey,
     accentColor: elderPink,
     backgroundColor: elderBlack,

@@ -20,7 +20,7 @@ class NativeMethods {
   }
 
   Future<List<String>> getDeprecatedPrefsList() async {
-    List<String> stringList = [];
+    var stringList = <String>[];
     try {
       stringList =
           await platform.invokeListMethod<String>('getDeprecatedFavAppIds');

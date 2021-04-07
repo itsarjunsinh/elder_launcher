@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:collection';
-import 'package:device_apps/device_apps.dart';
-import 'package:elder_launcher/constants/keys.dart';
-import 'package:elder_launcher/data_sources/app_repository.dart';
-import 'package:elder_launcher/models/item.dart';
-import 'package:elder_launcher/utils/native_methods.dart';
-import 'package:elder_launcher/utils/shared_prefs.dart';
 import 'package:flutter/foundation.dart';
+import 'package:device_apps/device_apps.dart';
+import '../constants/keys.dart';
+import '../data_sources/app_repository.dart';
+import '../models/item.dart';
+import '../utils/native_methods.dart';
+import '../utils/shared_prefs.dart';
 
 class AppModel extends ChangeNotifier {
   bool _isAppListLoaded = false;
@@ -20,7 +20,7 @@ class AppModel extends ChangeNotifier {
   AppModel() {
     _loadApps();
     _refreshTimer =
-        Timer.periodic(Duration(minutes: 05), (Timer timer) => _loadApps());
+        Timer.periodic(Duration(minutes: 05), (timer) => _loadApps());
   }
 
   bool get isAppListLoaded => _isAppListLoaded;
@@ -37,7 +37,7 @@ class AppModel extends ChangeNotifier {
   void _loadApps() async {
     _loadAllItems();
     _loadFavItems();
-    bool isFirstRun = await SharedPrefs().getBool(keyIsFirstRun, true);
+    var isFirstRun = await SharedPrefs().getBool(keyIsFirstRun, true);
     if (isFirstRun) {
       _restoreFavAppsFromDeprecatedList();
     }
@@ -57,8 +57,7 @@ class AppModel extends ChangeNotifier {
 
   /// Restore favourite apps saved with different key in builds prior to v1.0
   void _restoreFavAppsFromDeprecatedList() async {
-    List<String> deprecatedFavAppIds =
-        await NativeMethods().getDeprecatedPrefsList();
+    var deprecatedFavAppIds = await NativeMethods().getDeprecatedPrefsList();
     if (deprecatedFavAppIds.isNotEmpty) {
       saveFavApps(deprecatedFavAppIds);
     }

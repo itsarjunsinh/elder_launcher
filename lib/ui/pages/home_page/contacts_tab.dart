@@ -1,16 +1,16 @@
-import 'package:elder_launcher/constants/edit_mode.dart';
-import 'package:elder_launcher/constants/route_names.dart';
-import 'package:elder_launcher/models/contact_model.dart';
-import 'package:elder_launcher/models/item.dart';
-import 'package:elder_launcher/generated/l10n.dart';
-import 'package:elder_launcher/ui/common/buttons.dart';
-import 'package:elder_launcher/ui/common/loading_widget.dart';
-import 'package:elder_launcher/ui/pages/home_page/call_dialog.dart';
-import 'package:elder_launcher/ui/pages/home_page/fav_grid_view.dart';
-import 'package:elder_launcher/ui/common/info_action_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../constants/edit_mode.dart';
+import '../../../constants/route_names.dart';
+import '../../../generated/l10n.dart';
+import '../../../models/contact_model.dart';
+import '../../../models/item.dart';
+import '../../../ui/common/buttons.dart';
+import '../../../ui/common/info_action_widget.dart';
+import '../../../ui/common/loading_widget.dart';
+import '../../../ui/pages/home_page/call_dialog.dart';
+import '../../../ui/pages/home_page/fav_grid_view.dart';
 
 class ContactsTab extends StatelessWidget {
   const ContactsTab({
@@ -28,7 +28,7 @@ class ContactsTab extends StatelessWidget {
     }
 
     void openEditScreen() {
-      Navigator.pushNamed(context, EditPageRoute, arguments: EditMode.contacts);
+      Navigator.pushNamed(context, editPageRoute, arguments: EditMode.contacts);
     }
 
     void requestContactsPermission() {

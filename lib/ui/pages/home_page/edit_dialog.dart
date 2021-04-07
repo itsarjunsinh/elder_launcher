@@ -1,12 +1,13 @@
-import 'package:elder_launcher/constants/edit_mode.dart';
-import 'package:elder_launcher/constants/route_names.dart';
-import 'package:elder_launcher/generated/l10n.dart';
-import 'package:elder_launcher/models/app_model.dart';
-import 'package:elder_launcher/models/contact_model.dart';
-import 'package:elder_launcher/ui/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
+import '../../../constants/edit_mode.dart';
+import '../../../constants/route_names.dart';
+import '../../../generated/l10n.dart';
+import '../../../models/app_model.dart';
+import '../../../models/contact_model.dart';
+import '../../../ui/theme.dart';
 
+// ignore: non_constant_identifier_names
 Future EditDialog(BuildContext context, EditMode editMode) {
   return showCupertinoModalPopup(
       context: context,
@@ -28,7 +29,7 @@ Future EditDialog(BuildContext context, EditMode editMode) {
                 ),
                 onPressed: () => {
                   Navigator.pop(context),
-                  Navigator.pushNamed(context, EditPageRoute,
+                  Navigator.pushNamed(context, editPageRoute,
                       arguments: editMode)
                 },
               ),
@@ -44,7 +45,7 @@ Future EditDialog(BuildContext context, EditMode editMode) {
                 ),
                 onPressed: () => {
                   Navigator.pop(context),
-                  Navigator.pushNamed(context, ReorderPageRoute,
+                  Navigator.pushNamed(context, reorderPageRoute,
                       arguments: editMode)
                 },
               ),

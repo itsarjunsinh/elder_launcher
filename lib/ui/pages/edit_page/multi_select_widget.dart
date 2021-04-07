@@ -1,7 +1,6 @@
-import 'package:elder_launcher/models/edit_model.dart';
-import 'package:elder_launcher/models/item.dart';
-import 'package:elder_launcher/ui/theme.dart';
 import 'package:flutter/material.dart';
+import '../../../models/edit_model.dart';
+import '../../../ui/theme.dart';
 
 class MultiSelectWidget extends StatelessWidget {
   final EditModel editModel;
@@ -12,7 +11,7 @@ class MultiSelectWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Item> _allItems = editModel.sortedItems;
+    final _allItems = editModel.sortedItems;
 
     void toggleFav(int position) {
       editModel.toggleFav(position);
@@ -42,7 +41,7 @@ class MultiSelectWidget extends StatelessWidget {
                 )
               : CircleAvatar(),
           value: isFav,
-          onChanged: (bool isChecked) {
+          onChanged: (isChecked) {
             toggleFav(position);
           },
         );
