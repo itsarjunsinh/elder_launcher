@@ -46,7 +46,7 @@ class AppModel extends ChangeNotifier {
     super.dispose();
   }
 
-  void _loadApps() async {
+  Future<void> _loadApps() async {
     _loadAllItems();
     _loadFavItems();
     var isFirstRun = await SharedPrefs().getBool(keyIsFirstRun, true);
@@ -55,26 +55,26 @@ class AppModel extends ChangeNotifier {
     }
   }
 
-  void _loadAllItems() async {
+  Future<void> _loadAllItems() async {
     _allApps = await AppRepository().getAllItems();
     _isAppListLoaded = true;
     notifyListeners();
   }
 
-  void _loadFavItems() async {
+  Future<void> _loadFavItems() async {
     _favApps = await AppRepository().getFavItems();
     _isFavListLoaded = true;
     notifyListeners();
   }
 
-  void _checkCanSetDefaultLauncher() async {
+  Future<void> _checkCanSetDefaultLauncher() async {
     var result = await NativeMethods().canSetDefaultLauncher();
     if (result != null) _canSetDefaultLauncher = result;
     notifyListeners();
   }
 
   /// Restore favourite apps saved with different key in builds prior to v1.0
-  void _restoreFavAppsFromDeprecatedList() async {
+  Future<void> _restoreFavAppsFromDeprecatedList() async {
     var deprecatedFavAppIds = await NativeMethods().getDeprecatedPrefsList();
     if (deprecatedFavAppIds.isNotEmpty) {
       saveFavApps(deprecatedFavAppIds);
@@ -90,7 +90,7 @@ class AppModel extends ChangeNotifier {
     _loadApps();
   }
 
-  void saveFavApps(List<String> newFavPackages) async {
+  Future<void> saveFavApps(List<String> newFavPackages) async {
     AppRepository().setFavItems(newFavPackages);
     _loadFavItems();
   }

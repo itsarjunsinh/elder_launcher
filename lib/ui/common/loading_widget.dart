@@ -6,9 +6,9 @@ class LoadingWidget extends StatelessWidget {
     return Expanded(
       child: Center(
         child: SizedBox(
-          child: CircularProgressIndicator(),
           height: 150,
           width: 150,
+          child: CircularProgressIndicator(),
         ),
       ),
     );

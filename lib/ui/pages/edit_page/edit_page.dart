@@ -56,8 +56,7 @@ class EditPage extends StatelessWidget {
                       if (editModel.sortedItems.isNotEmpty) ...[
                         Expanded(
                           child: MultiSelectWidget(editModel,
-                              showId:
-                                  editMode == EditMode.contacts ? true : false),
+                              showId: editMode == EditMode.contacts),
                         ),
                       ] else ...[
                         InfoActionWidget.close(

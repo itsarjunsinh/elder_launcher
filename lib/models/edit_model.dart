@@ -18,7 +18,7 @@ class EditModel extends ChangeNotifier {
   }
 
   /// Sort favourite items to top of the list
-  void _generateSortedList() async {
+  Future<void> _generateSortedList() async {
     for (var i = 0; i < _favItems.length; i++) {
       sortedItems.add(_favItems[i]);
       _favPositions.add(i);

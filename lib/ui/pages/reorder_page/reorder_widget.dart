@@ -19,14 +19,14 @@ class ReorderWidget extends StatelessWidget {
     }
 
     return ReorderableListView(
+      onReorder: reorderItems,
+      padding: EdgeInsets.symmetric(vertical: 8),
       children: _favItems
           .map((item) => ReorderableCard(
                 item: item,
                 key: Key(item.id),
               ))
           .toList(),
-      onReorder: reorderItems,
-      padding: EdgeInsets.symmetric(vertical: 8),
     );
   }
 }

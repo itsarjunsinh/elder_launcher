@@ -10,7 +10,7 @@ class NativeMethods {
   */
 
   Future<bool> hasTelephoneFeature() async {
-    return await platformContacts.invokeMethod<bool>('hasTelephoneFeature');
+    return platformContacts.invokeMethod<bool>('hasTelephoneFeature');
   }
 
   void launchContactsApp() {
@@ -30,7 +30,7 @@ class NativeMethods {
   */
 
   Future<bool> canSetDefaultLauncher() async {
-    return await platformCore.invokeMethod<bool>('canSetDefaultLauncher');
+    return platformCore.invokeMethod<bool>('canSetDefaultLauncher');
   }
 
   void setDefaultLauncher() {

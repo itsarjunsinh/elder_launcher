@@ -32,89 +32,88 @@ class HomePage extends StatelessWidget {
       child: ChangeNotifierProvider(
         create: (_) => DateTimeModel(),
         child: Scaffold(
-            backgroundColor: Theme.of(context).backgroundColor,
-            appBar: AppBar(
-              actions: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: IconButton(
-                    icon: Icon(Icons.edit),
-                    onPressed: () =>
-                        openEditDialog(DefaultTabController.of(context).index),
-                  ),
-                ),
-              ],
-              centerTitle: true,
-              title: Consumer<DateTimeModel>(
-                builder: (_, dateTimeModel, __) => AutoSizeText(
-                  dateTimeModel.time,
-                  maxLines: 1,
-                  style: TextStyles.headerTime,
+          backgroundColor: Theme.of(context).backgroundColor,
+          appBar: AppBar(
+            actions: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: IconButton(
+                  icon: Icon(Icons.edit),
+                  onPressed: () =>
+                      openEditDialog(DefaultTabController.of(context).index),
                 ),
               ),
-              bottom: PreferredSize(
-                preferredSize: Size(0, 80),
-                child: Column(
-                  children: <Widget>[
-                    Consumer<DateTimeModel>(
-                      builder: (_, dateTimeModel, __) => AutoSizeText(
-                        dateTimeModel.date,
-                        group: _appBarTextSizeGroup,
-                        maxLines: 1,
-                        style: TextStyles.headerDate,
-                      ),
-                    ),
-                    TabBar(tabs: [
-                      Tab(
-                        child: Center(
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(0, 0, 4.0, 0),
-                                child: Icon(Icons.apps),
-                              ),
-                              Flexible(
-                                child: AutoSizeText(
-                                  S.of(context).Apps,
-                                  group: _appBarTextSizeGroup,
-                                  maxLines: 1,
-                                  style: TextStyle(fontSize: 50),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Tab(
-                        child: Center(
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(0, 0, 4.0, 0),
-                                child: Icon(Icons.contacts),
-                              ),
-                              Flexible(
-                                child: AutoSizeText(
-                                  S.of(context).Contacts,
-                                  group: _appBarTextSizeGroup,
-                                  maxLines: 1,
-                                  style: TextStyle(fontSize: 50),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ]),
-                  ],
-                ),
+            ],
+            centerTitle: true,
+            title: Consumer<DateTimeModel>(
+              builder: (_, dateTimeModel, __) => AutoSizeText(
+                dateTimeModel.time,
+                maxLines: 1,
+                style: TextStyles.headerTime,
               ),
             ),
-            body: TabBarView(children: <Widget>[AppsTab(), ContactsTab()])),
+            bottom: PreferredSize(
+              preferredSize: Size(0, 80),
+              child: Column(
+                children: <Widget>[
+                  Consumer<DateTimeModel>(
+                    builder: (_, dateTimeModel, __) => AutoSizeText(
+                      dateTimeModel.date,
+                      group: _appBarTextSizeGroup,
+                      maxLines: 1,
+                      style: TextStyles.headerDate,
+                    ),
+                  ),
+                  TabBar(tabs: [
+                    Tab(
+                      child: Center(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 4.0, 0),
+                              child: Icon(Icons.apps),
+                            ),
+                            Flexible(
+                              child: AutoSizeText(
+                                S.of(context).Apps,
+                                group: _appBarTextSizeGroup,
+                                maxLines: 1,
+                                style: TextStyle(fontSize: 50),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Tab(
+                      child: Center(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 4.0, 0),
+                              child: Icon(Icons.contacts),
+                            ),
+                            Flexible(
+                              child: AutoSizeText(
+                                S.of(context).Contacts,
+                                group: _appBarTextSizeGroup,
+                                maxLines: 1,
+                                style: TextStyle(fontSize: 50),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ]),
+                ],
+              ),
+            ),
+          ),
+          body: TabBarView(children: <Widget>[AppsTab(), ContactsTab()]),
+        ),
       ),
     );
   }

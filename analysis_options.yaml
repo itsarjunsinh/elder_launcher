@@ -5,4 +5,6 @@ analyzer:
 
 linter:
   rules:
+    avoid_void_async: true
     public_member_api_docs: false
+    sort_child_properties_last: true

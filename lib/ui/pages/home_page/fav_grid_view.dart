@@ -32,6 +32,7 @@ class FavGridView extends StatelessWidget {
               elevation: 4,
               child: InkWell(
                 splashColor: Colors.blue.withAlpha(50),
+                onTap: () => itemOnClickAction(item),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +57,6 @@ class FavGridView extends StatelessWidget {
                     ),
                   ],
                 ),
-                onTap: () => itemOnClickAction(item),
               ),
             );
           }).toList(),
