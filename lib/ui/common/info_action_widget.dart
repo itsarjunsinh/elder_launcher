@@ -37,6 +37,10 @@ class InfoActionWidget extends StatelessWidget {
               ),
             ),
             ElevatedButton(
+                onPressed: buttonOnClickAction,
+                style: ElevatedButton.styleFrom(
+                  primary: Theme.of(context).primaryColor,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -58,8 +62,7 @@ class InfoActionWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
-                onPressed: buttonOnClickAction)
+                ))
           ],
         ),
       ),
