@@ -29,15 +29,33 @@ class AppsTab extends StatelessWidget {
       Provider.of<AppModel>(context, listen: false).launchApp(app.id);
     }
 
+    void setDefaultLauncher() {
+      Provider.of<AppModel>(context, listen: false).setDefaultLauncher();
+    }
+
     return Column(children: <Widget>[
       Flexible(
         child: Consumer<AppModel>(
           builder: (_, appModel, __) => Column(
             children: <Widget>[
-              if (appModel.isFavListLoaded && appModel.favApps.isNotEmpty) ...[
+              if (appModel.isFavListLoaded &&
+                  appModel.favApps.isNotEmpty &&
+                  !appModel.canSetDefaultLauncher) ...[
+                // Show Favourite Apps
                 FavGridView(appModel.favApps, launchApp, openEditScreen),
               ] else if (appModel.isFavListLoaded &&
+                  appModel.favApps.isNotEmpty &&
+                  appModel.canSetDefaultLauncher) ...[
+                // Show Favourite Apps with Set Default Launcher Prompt
+                InfoActionWidget(
+                    S.of(context).msgNotDefaultLauncher,
+                    S.of(context).btnSetDefaultLauncher,
+                    Icons.home,
+                    setDefaultLauncher),
+                FavGridView(appModel.favApps, launchApp, openEditScreen)
+              ] else if (appModel.isFavListLoaded &&
                   appModel.favApps.isEmpty) ...[
+                // Show Add Favourites Prompt
                 Expanded(
                   child: InfoActionWidget.add(
                     message: S.of(context).msgNoFavourites,

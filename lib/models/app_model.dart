@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:collection';
 import 'package:flutter/foundation.dart';
 import 'package:device_apps/device_apps.dart';
+import 'package:flutter/services.dart';
+import '../constants/channels.dart';
 import '../constants/keys.dart';
 import '../data_sources/app_repository.dart';
 import '../models/item.dart';
@@ -11,11 +13,13 @@ import '../utils/shared_prefs.dart';
 class AppModel extends ChangeNotifier {
   bool _isAppListLoaded = false;
   bool _isFavListLoaded = false;
+  bool _canSetDefaultLauncher = false;
 
   List<Item> _allApps = [];
   List<Item> _favApps = [];
 
   final _appEvent = DeviceApps.listenToAppsChanges();
+  final _methodChannel = MethodChannel(channelCore);
   Timer _refreshTimer;
 
   AppModel() {
@@ -25,8 +29,11 @@ class AppModel extends ChangeNotifier {
     });
     _refreshTimer =
         Timer.periodic(Duration(minutes: 15), (timer) => _loadApps());
+    _checkCanSetDefaultLauncher();
+    _methodChannel.setMethodCallHandler(_failedSettingDefaultLauncher);
   }
 
+  bool get canSetDefaultLauncher => _canSetDefaultLauncher;
   bool get isAppListLoaded => _isAppListLoaded;
   bool get isFavListLoaded => _isFavListLoaded;
   UnmodifiableListView<Item> get allApps => UnmodifiableListView(_allApps);
@@ -60,6 +67,12 @@ class AppModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void _checkCanSetDefaultLauncher() async {
+    var result = await NativeMethods().canSetDefaultLauncher();
+    if (result != null) _canSetDefaultLauncher = result;
+    notifyListeners();
+  }
+
   /// Restore favourite apps saved with different key in builds prior to v1.0
   void _restoreFavAppsFromDeprecatedList() async {
     var deprecatedFavAppIds = await NativeMethods().getDeprecatedPrefsList();
@@ -80,5 +93,19 @@ class AppModel extends ChangeNotifier {
   void saveFavApps(List<String> newFavPackages) async {
     AppRepository().setFavItems(newFavPackages);
     _loadFavItems();
+  }
+
+  void setDefaultLauncher() {
+    _canSetDefaultLauncher = false; // Hide the dialog
+    NativeMethods().setDefaultLauncher();
+    notifyListeners();
+  }
+
+  Future<void> _failedSettingDefaultLauncher(MethodCall call) async {
+    switch (call.method) {
+      case 'setDefaultLauncherFailure':
+        // Confirm and show set default dialog
+        _checkCanSetDefaultLauncher();
+    }
   }
 }
