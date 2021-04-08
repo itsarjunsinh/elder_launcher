@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "btnAllContacts" : MessageLookupByLibrary.simpleMessage("Alle contacten"),
     "btnBackToHome" : MessageLookupByLibrary.simpleMessage("Terug"),
     "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("Toestemming verlenen"),
+    "btnSetDefaultLauncher" : MessageLookupByLibrary.simpleMessage("Standaard instellen"),
     "dlgAppsAddRemove" : MessageLookupByLibrary.simpleMessage("Toevoegen/verwijderen apps"),
     "dlgAppsReload" : MessageLookupByLibrary.simpleMessage("App lijst opnieuw laden"),
     "dlgAppsReorder" : MessageLookupByLibrary.simpleMessage("Apps sorteren"),
@@ -41,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("Om favoriete contacten aan dit scherm toe te voegen, moet u deze app toegang geven tot uw contacten."),
     "msgNoData" : MessageLookupByLibrary.simpleMessage("Geen gegevens beschikbaar, probeer over een paar seconden opnieuw"),
     "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("Je hebt nog geen favorieten toegevoegd"),
-    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("Om het bellen te vergemakkelijken, kunt u deze app telefoongesprekken voor u laten starten.")
+    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("Om het bellen te vergemakkelijken, kunt u deze app telefoongesprekken voor u laten starten."),
+    "msgNotDefaultLauncher" : MessageLookupByLibrary.simpleMessage("Open apps en contacten sneller door van Elder Launcher de thuis-app te maken.")
   };
 }

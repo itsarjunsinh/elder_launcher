@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "btnAllContacts" : MessageLookupByLibrary.simpleMessage("Wszystkie Kontakty"),
     "btnBackToHome" : MessageLookupByLibrary.simpleMessage("Wrócić do Domu"),
     "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("Dać Pozwolenie"),
+    "btnSetDefaultLauncher" : MessageLookupByLibrary.simpleMessage("Ustaw jako domyslną"),
     "dlgAppsAddRemove" : MessageLookupByLibrary.simpleMessage("Dodaj/Usuń Aplikacje"),
     "dlgAppsReload" : MessageLookupByLibrary.simpleMessage("Załaduj ponownie listę aplikacji"),
     "dlgAppsReorder" : MessageLookupByLibrary.simpleMessage("Zmień kolejność aplikacji"),
@@ -41,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("Aby dodać ulubione kontakty do tego ekranu, zezwól tej aplikacji na dostęp do swoich kontaktów."),
     "msgNoData" : MessageLookupByLibrary.simpleMessage("Brak dostępnych danych. Spróbuj ponownie za kilka sekund."),
     "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("Nie dodałeś żadnych ulubionych."),
-    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("Aby ułatwić dzwonienie, zezwól tej aplikacji na nawiązywanie połączeń telefonicznych za Ciebie.")
+    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("Aby ułatwić dzwonienie, zezwól tej aplikacji na nawiązywanie połączeń telefonicznych za Ciebie."),
+    "msgNotDefaultLauncher" : MessageLookupByLibrary.simpleMessage("Otwieraj aplikacje i kontakty szybciej, ustawiając Elder Launcher jako aplikację domową.")
   };
 }

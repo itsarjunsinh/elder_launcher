@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "btnAllContacts" : MessageLookupByLibrary.simpleMessage("सभी संपर्क"),
     "btnBackToHome" : MessageLookupByLibrary.simpleMessage("वापस जाओ"),
     "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("अनुमति प्रदान करें"),
+    "btnSetDefaultLauncher" : MessageLookupByLibrary.simpleMessage("डिफ़ॉल्ट लॉन्चर बनाएं"),
     "dlgAppsAddRemove" : MessageLookupByLibrary.simpleMessage("एप्लिकेशन जोड़ें/निकालें"),
     "dlgAppsReload" : MessageLookupByLibrary.simpleMessage("एप्लिकेशन सूची ताज़ा करें"),
     "dlgAppsReorder" : MessageLookupByLibrary.simpleMessage("्यवस्थित करें ऐप्स"),
@@ -41,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("इस स्क्रीन पर पसंदीदा संपर्क जोड़ने के लिए, इस एप्लिकेशन को आपके संपर्क देखने दें।"),
     "msgNoData" : MessageLookupByLibrary.simpleMessage("कोई डेटा उपलब्ध नहीं है। कुछ क्षण में फिर से कोशिश करें।"),
     "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("आपने कोई पसंदीदा नहीं जोड़ा है"),
-    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("कॉलिंग को आसान बनाने के लिए, इस ऐप को आपके लिए फ़ोन कॉल शुरू करने की अनुमति दें।")
+    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("कॉलिंग को आसान बनाने के लिए, इस ऐप को आपके लिए फ़ोन कॉल शुरू करने की अनुमति दें।"),
+    "msgNotDefaultLauncher" : MessageLookupByLibrary.simpleMessage("एल्डर लॉन्चर को होम एप बनाकर एप्स और कॉन्टैक्ट्स को तेजी से खोलें।")
   };
 }

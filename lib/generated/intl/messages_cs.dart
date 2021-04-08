@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "btnAllContacts" : MessageLookupByLibrary.simpleMessage("Všechny Kontakty"),
     "btnBackToHome" : MessageLookupByLibrary.simpleMessage("Zpět Domů"),
     "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("Udělit Oprávnění"),
+    "btnSetDefaultLauncher" : MessageLookupByLibrary.simpleMessage("Změnit na výchozi"),
     "dlgAppsAddRemove" : MessageLookupByLibrary.simpleMessage("Přidat/Odebrat Aplikace"),
     "dlgAppsReload" : MessageLookupByLibrary.simpleMessage("Znovu načíst Seznam Aplikací"),
     "dlgAppsReorder" : MessageLookupByLibrary.simpleMessage("Přeuspořádat Aplikace"),
@@ -41,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("Pro přidání oblíbených kontaktů na tuto stránku povolte této aplikaci přístup ke Kontaktům."),
     "msgNoData" : MessageLookupByLibrary.simpleMessage("Žádná data k dispozici. Zkuste znova za pár vteřin."),
     "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("Nepřidali jste žádné oblíbené položky"),
-    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("Pro usnadnění volání, povolte této aplikaci zahájení hovorů.")
+    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("Pro usnadnění volání, povolte této aplikaci zahájení hovorů."),
+    "msgNotDefaultLauncher" : MessageLookupByLibrary.simpleMessage("Otevírejte aplikace a kontakty rychleji tím, že si Elder Launcher uděláte domácí aplikaci.")
   };
 }
