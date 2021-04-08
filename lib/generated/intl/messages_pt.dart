@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "btnAllContacts" : MessageLookupByLibrary.simpleMessage("Todos os contatos"),
     "btnBackToHome" : MessageLookupByLibrary.simpleMessage("Volte"),
     "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("Conceder permissão"),
+    "btnSetDefaultLauncher" : MessageLookupByLibrary.simpleMessage("Definir como predef."),
     "dlgAppsAddRemove" : MessageLookupByLibrary.simpleMessage("Adicionar/Remover Aplicativos"),
     "dlgAppsReload" : MessageLookupByLibrary.simpleMessage("Recarregar lista de aplicativos"),
     "dlgAppsReorder" : MessageLookupByLibrary.simpleMessage("Reordenar Aplicativos"),
@@ -41,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("Para adicionar contatos favoritos a essa tela, permita que este aplicativo acesse seus contatos."),
     "msgNoData" : MessageLookupByLibrary.simpleMessage("Não há dados disponíveis. Tente novamente em alguns segundos."),
     "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("Você não adicionou nenhum favorito"),
-    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("Para facilitar as chamadas, permita que este aplicativo inicie chamadas telefônicas para você.")
+    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("Para facilitar as chamadas, permita que este aplicativo inicie chamadas telefônicas para você."),
+    "msgNotDefaultLauncher" : MessageLookupByLibrary.simpleMessage("Abra aplicativos e contatos mais rapidamente, tornando o Elder Launcher o aplicativo doméstico.")
   };
 }

@@ -115,6 +115,16 @@ class S {
     );
   }
 
+  /// `Set as Default`
+  String get btnSetDefaultLauncher {
+    return Intl.message(
+      'Set as Default',
+      name: 'btnSetDefaultLauncher',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `No data available. Try again in a few seconds.`
   String get msgNoData {
     return Intl.message(
@@ -150,6 +160,16 @@ class S {
     return Intl.message(
       'To make calling easier, allow this app to start phone calls for you.',
       name: 'msgNoPhonePermission',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Open apps and contacts faster by making Elder Launcher the home app.`
+  String get msgNotDefaultLauncher {
+    return Intl.message(
+      'Open apps and contacts faster by making Elder Launcher the home app.',
+      name: 'msgNotDefaultLauncher',
       desc: '',
       args: [],
     );
@@ -258,6 +278,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
       Locale.fromSubtags(languageCode: 'es'),
       Locale.fromSubtags(languageCode: 'fr'),
       Locale.fromSubtags(languageCode: 'hi'),
+      Locale.fromSubtags(languageCode: 'nl'),
       Locale.fromSubtags(languageCode: 'pl'),
       Locale.fromSubtags(languageCode: 'pt'),
       Locale.fromSubtags(languageCode: 'ru'),

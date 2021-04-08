@@ -1,8 +1,8 @@
 import 'package:contacts_service/contacts_service.dart';
-import 'package:elder_launcher/constants/keys.dart';
-import 'package:elder_launcher/models/interfaces/data_repository.dart';
-import 'package:elder_launcher/models/item.dart' as item;
-import 'package:elder_launcher/utils/shared_prefs.dart';
+import '../constants/keys.dart';
+import '../models/interfaces/data_repository.dart';
+import '../models/item.dart' as item;
+import '../utils/shared_prefs.dart';
 
 class ContactRepository implements DataRepository {
   @override
@@ -14,10 +14,9 @@ class ContactRepository implements DataRepository {
 
   @override
   Future<List<item.Item>> getFavItems() async {
-    List<String> favContactNumbers =
-        await SharedPrefs().getList(keyFavContacts);
-    List<item.Item> favContacts = [];
-    for (String number in favContactNumbers) {
+    var favContactNumbers = await SharedPrefs().getList(keyFavContacts);
+    var favContacts = <item.Item>[];
+    for (var number in favContactNumbers) {
       favContacts.add(
           _toItem(number, await ContactsService.getContactsForPhone(number)));
     }
@@ -30,10 +29,10 @@ class ContactRepository implements DataRepository {
   }
 
   List<item.Item> _toDistinctItems(Iterable<Contact> contacts) {
-    Set<item.Item> _contacts = <item.Item>{};
+    var _contacts = <item.Item>{};
 
-    contacts.forEach((contact) {
-      Set<String> numbers = <String>{};
+    for (var contact in contacts) {
+      var numbers = <String>{};
 
       for (var number in contact.phones) {
         numbers.add(number.value.replaceAll(
@@ -42,14 +41,14 @@ class ContactRepository implements DataRepository {
         ));
       }
 
-      for (String number in numbers) {
+      for (var number in numbers) {
         _contacts.add(item.Item(number, contact.displayName, contact.avatar));
       }
-    });
+    }
     return _contacts.toList();
   }
 
-  item.Item _toItem(number, Iterable<Contact> contacts) {
+  item.Item _toItem(String number, Iterable<Contact> contacts) {
     return item.Item(number, contacts.first.displayName, contacts.first.avatar);
   }
 }

@@ -1,9 +1,9 @@
 import 'dart:typed_data';
 import 'package:device_apps/device_apps.dart';
-import 'package:elder_launcher/constants/keys.dart';
-import 'package:elder_launcher/models/interfaces/data_repository.dart';
-import 'package:elder_launcher/models/item.dart';
-import 'package:elder_launcher/utils/shared_prefs.dart';
+import '../constants/keys.dart';
+import '../models/interfaces/data_repository.dart';
+import '../models/item.dart';
+import '../utils/shared_prefs.dart';
 
 class AppRepository implements DataRepository {
   @override
@@ -17,10 +17,10 @@ class AppRepository implements DataRepository {
 
   @override
   Future<List<Item>> getFavItems() async {
-    List<String> favPackages = await SharedPrefs().getList(keyFavApps);
-    List<ApplicationWithIcon> favApps = [];
+    var favPackages = await SharedPrefs().getList(keyFavApps);
+    var favApps = <ApplicationWithIcon>[];
 
-    for (String packageName in favPackages) {
+    for (var packageName in favPackages) {
       var app = await DeviceApps.getApp(packageName, true);
       favApps.add(app as ApplicationWithIcon);
     }
@@ -34,12 +34,16 @@ class AppRepository implements DataRepository {
   }
 
   Future<List<Item>> _toItems(List<Application> apps) async {
-    List<Item> _apps = [];
+    var _apps = <Item>[];
 
     for (final app in apps) {
       if (app != null) {
-        _apps.add(Item(app.packageName, app.appName,
-            app is ApplicationWithIcon ? app.icon as Uint8List : null));
+        _apps.add(Item(
+            app.packageName,
+            app.appName,
+            app is ApplicationWithIcon
+                ? app.icon as Uint8List // ignore: unnecessary_cast
+                : null));
       }
     }
 

@@ -1,12 +1,12 @@
-import 'package:elder_launcher/constants/custom_functions.dart';
-import 'package:elder_launcher/models/app_model.dart';
-import 'package:elder_launcher/models/item.dart';
-import 'package:elder_launcher/generated/l10n.dart';
-import 'package:elder_launcher/ui/common/buttons.dart';
-import 'package:elder_launcher/ui/common/loading_widget.dart';
-import 'package:elder_launcher/ui/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../constants/custom_functions.dart';
+import '../../../generated/l10n.dart';
+import '../../../models/app_model.dart';
+import '../../../models/item.dart';
+import '../../../ui/common/buttons.dart';
+import '../../../ui/common/loading_widget.dart';
+import '../../../ui/theme.dart';
 
 class AppDrawerScreen extends StatelessWidget {
   @override
@@ -65,7 +65,7 @@ class AppDrawer extends StatelessWidget {
       child: ListView.separated(
         itemCount: allItems.length,
         itemBuilder: (context, position) {
-          Item app = allItems[position];
+          var app = allItems[position];
           return ListTile(
             leading: app.icon != null
                 ? Image(

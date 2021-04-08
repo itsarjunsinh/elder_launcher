@@ -1,23 +1,23 @@
-import 'package:elder_launcher/constants/edit_mode.dart';
-import 'package:elder_launcher/constants/route_names.dart';
-import 'package:elder_launcher/ui/pages/app_drawer/app_drawer.dart';
-import 'package:elder_launcher/ui/pages/edit_page/edit_page.dart';
-import 'package:elder_launcher/ui/pages/home_page/home_page.dart';
-import 'package:elder_launcher/ui/pages/reorder_page/reorder_page.dart';
 import 'package:flutter/material.dart';
+import '../constants/edit_mode.dart';
+import '../constants/route_names.dart';
+import '../ui/pages/app_drawer/app_drawer.dart';
+import '../ui/pages/edit_page/edit_page.dart';
+import '../ui/pages/home_page/home_page.dart';
+import '../ui/pages/reorder_page/reorder_page.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    case HomePageRoute:
+    case homePageRoute:
       return _getPageRoute(routeName: settings.name, viewToShow: HomePage());
-    case AppDrawerRoute:
+    case appDrawerRoute:
       return _getPageRoute(
           routeName: settings.name, viewToShow: AppDrawerScreen());
-    case EditPageRoute:
+    case editPageRoute:
       var editMode = settings.arguments as EditMode;
       return _getPageRoute(
           routeName: settings.name, viewToShow: EditPage(editMode));
-    case ReorderPageRoute:
+    case reorderPageRoute:
       var editMode = settings.arguments as EditMode;
       return _getPageRoute(
           routeName: settings.name, viewToShow: ReorderPage(editMode));

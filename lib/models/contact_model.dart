@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:collection';
-import 'package:elder_launcher/data_sources/contact_repository.dart';
-import 'package:elder_launcher/models/item.dart';
-import 'package:elder_launcher/utils/native_methods.dart';
 import 'package:flutter/foundation.dart';
 import 'package:permission_handler/permission_handler.dart';
+import '../data_sources/contact_repository.dart';
+import '../models/item.dart';
+import '../utils/native_methods.dart';
 
 class ContactModel extends ChangeNotifier {
   bool _isContactListLoaded = false;
@@ -24,8 +24,8 @@ class ContactModel extends ChangeNotifier {
   ContactModel() {
     _loadContactsWithPermissionCheck();
     _checkPhonePermission();
-    _refreshTimer = Timer.periodic(Duration(minutes: 10),
-        (Timer timer) => _loadContactsWithPermissionCheck());
+    _refreshTimer = Timer.periodic(
+        Duration(minutes: 10), (timer) => _loadContactsWithPermissionCheck());
   }
 
   bool get isContactListLoaded => _isContactListLoaded;
@@ -47,7 +47,7 @@ class ContactModel extends ChangeNotifier {
     super.dispose();
   }
 
-  void _loadContactsWithPermissionCheck() async {
+  Future<void> _loadContactsWithPermissionCheck() async {
     if (await Permission.contacts.isGranted) {
       _isContactsPermissionGranted = true;
       _loadContacts();
@@ -58,24 +58,24 @@ class ContactModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void _loadContacts() async {
+  Future<void> _loadContacts() async {
     _loadAllItems();
     _loadFavItems();
   }
 
-  void _loadAllItems() async {
+  Future<void> _loadAllItems() async {
     _allContacts = await ContactRepository().getAllItems();
     _isContactListLoaded = true;
     notifyListeners();
   }
 
-  void _loadFavItems() async {
+  Future<void> _loadFavItems() async {
     _favContacts = await ContactRepository().getFavItems();
     _isFavListLoaded = true;
     notifyListeners();
   }
 
-  void _checkPhonePermission() async {
+  Future<void> _checkPhonePermission() async {
     _checkTelephoneFeature();
     if (await Permission.phone.isGranted) {
       _isPhonePermissionGranted = true;
@@ -86,7 +86,7 @@ class ContactModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void _checkTelephoneFeature() async {
+  Future<void> _checkTelephoneFeature() async {
     if (await NativeMethods().hasTelephoneFeature()) {
       _hasTelephoneFeature = true;
     } else {
@@ -95,19 +95,18 @@ class ContactModel extends ChangeNotifier {
     _isTelephoneFeatureChecked = true;
   }
 
-  void _requestPermission(Permission permission) async {
-    if (await permission.status.isPermanentlyDenied) {
+  Future<void> _requestPermission(Permission permission) async {
+    var permissionStatus = await permission.request();
+    if (permissionStatus == PermissionStatus.permanentlyDenied) {
       await openAppSettings();
-    } else {
-      await permission.request();
     }
   }
 
-  void launchContactsApp() async {
+  Future<void> launchContactsApp() async {
     NativeMethods().launchContactsApp();
   }
 
-  void callPhoneNumber(String number) async {
+  Future<void> callPhoneNumber(String number) async {
     if (_isTelephoneFeatureChecked) {
       if (_isPhonePermissionGranted && _hasTelephoneFeature) {
         NativeMethods().startPhoneCall(number);
@@ -121,18 +120,18 @@ class ContactModel extends ChangeNotifier {
     _loadContactsWithPermissionCheck();
   }
 
-  void requestContactsPermission() async {
+  Future<void> requestContactsPermission() async {
     await _requestPermission(Permission.contacts);
     _loadContactsWithPermissionCheck();
   }
 
-  void requestPhonePermission() async {
+  Future<void> requestPhonePermission() async {
     await _requestPermission(Permission.phone);
     _checkPhonePermission();
   }
 
-  void saveFavContacts(List<String> new_favContacts) async {
-    ContactRepository().setFavItems(new_favContacts);
+  Future<void> saveFavContacts(List<String> newFavContacts) async {
+    ContactRepository().setFavItems(newFavContacts);
     _loadFavItems();
   }
 }

@@ -1,12 +1,12 @@
-import 'package:elder_launcher/models/app_model.dart';
-import 'package:elder_launcher/models/contact_model.dart';
-import 'package:elder_launcher/generated/l10n.dart';
-import 'package:elder_launcher/ui/pages/home_page/home_page.dart';
-import 'package:elder_launcher/ui/router.dart';
-import 'package:elder_launcher/ui/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'generated/l10n.dart';
+import 'models/app_model.dart';
+import 'models/contact_model.dart';
+import 'ui/pages/home_page/home_page.dart';
+import 'ui/router.dart';
+import 'ui/theme.dart';
 
 void main() => {runApp(MyApp())};
 

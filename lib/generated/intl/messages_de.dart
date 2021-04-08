@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "btnAllContacts" : MessageLookupByLibrary.simpleMessage("Alle Kontakte"),
     "btnBackToHome" : MessageLookupByLibrary.simpleMessage("Zurück"),
     "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("Erlaubnis erteilen"),
+    "btnSetDefaultLauncher" : MessageLookupByLibrary.simpleMessage("Als Standard festlegen"),
     "dlgAppsAddRemove" : MessageLookupByLibrary.simpleMessage("Apps hinzufügen/entfernen"),
     "dlgAppsReload" : MessageLookupByLibrary.simpleMessage("App Liste neu laden"),
     "dlgAppsReorder" : MessageLookupByLibrary.simpleMessage("Apps neu anordnen"),
@@ -41,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("Um diesem Bildschirm favorisierte Kontakte hinzuzufügen, erlauben Sie dieser App den Zugriff auf Ihre Kontakte."),
     "msgNoData" : MessageLookupByLibrary.simpleMessage("Keine Daten verfügbar. Versuchen Sie es in wenigen Sekunden erneut."),
     "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("Sie haben keine Favoriten hinzugefügt"),
-    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("Ermöglichen Sie dieser App, Anrufe für Sie zu starten, um das Telefonieren zu vereinfachen.")
+    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("Ermöglichen Sie dieser App, Anrufe für Sie zu starten, um das Telefonieren zu vereinfachen."),
+    "msgNotDefaultLauncher" : MessageLookupByLibrary.simpleMessage("Öffnen Sie Apps und Kontakte schneller, indem Sie Elder Launcher zur Heim-App machen.")
   };
 }

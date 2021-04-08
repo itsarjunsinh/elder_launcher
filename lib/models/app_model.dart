@@ -1,28 +1,39 @@
 import 'dart:async';
 import 'dart:collection';
-import 'package:device_apps/device_apps.dart';
-import 'package:elder_launcher/constants/keys.dart';
-import 'package:elder_launcher/data_sources/app_repository.dart';
-import 'package:elder_launcher/models/item.dart';
-import 'package:elder_launcher/utils/native_methods.dart';
-import 'package:elder_launcher/utils/shared_prefs.dart';
 import 'package:flutter/foundation.dart';
+import 'package:device_apps/device_apps.dart';
+import 'package:flutter/services.dart';
+import '../constants/channels.dart';
+import '../constants/keys.dart';
+import '../data_sources/app_repository.dart';
+import '../models/item.dart';
+import '../utils/native_methods.dart';
+import '../utils/shared_prefs.dart';
 
 class AppModel extends ChangeNotifier {
   bool _isAppListLoaded = false;
   bool _isFavListLoaded = false;
+  bool _canSetDefaultLauncher = false;
 
   List<Item> _allApps = [];
   List<Item> _favApps = [];
 
+  final _appEvent = DeviceApps.listenToAppsChanges();
+  final _methodChannel = MethodChannel(channelCore);
   Timer _refreshTimer;
 
   AppModel() {
     _loadApps();
+    _appEvent.listen((event) {
+      _loadApps();
+    });
     _refreshTimer =
-        Timer.periodic(Duration(minutes: 05), (Timer timer) => _loadApps());
+        Timer.periodic(Duration(minutes: 15), (timer) => _loadApps());
+    _checkCanSetDefaultLauncher();
+    _methodChannel.setMethodCallHandler(_failedSettingDefaultLauncher);
   }
 
+  bool get canSetDefaultLauncher => _canSetDefaultLauncher;
   bool get isAppListLoaded => _isAppListLoaded;
   bool get isFavListLoaded => _isFavListLoaded;
   UnmodifiableListView<Item> get allApps => UnmodifiableListView(_allApps);
@@ -30,35 +41,41 @@ class AppModel extends ChangeNotifier {
 
   @override
   void dispose() {
+    _appEvent.listen((event) {}).cancel();
     _refreshTimer.cancel();
     super.dispose();
   }
 
-  void _loadApps() async {
+  Future<void> _loadApps() async {
     _loadAllItems();
     _loadFavItems();
-    bool isFirstRun = await SharedPrefs().getBool(keyIsFirstRun, true);
+    var isFirstRun = await SharedPrefs().getBool(keyIsFirstRun, true);
     if (isFirstRun) {
       _restoreFavAppsFromDeprecatedList();
     }
   }
 
-  void _loadAllItems() async {
+  Future<void> _loadAllItems() async {
     _allApps = await AppRepository().getAllItems();
     _isAppListLoaded = true;
     notifyListeners();
   }
 
-  void _loadFavItems() async {
+  Future<void> _loadFavItems() async {
     _favApps = await AppRepository().getFavItems();
     _isFavListLoaded = true;
     notifyListeners();
   }
 
+  Future<void> _checkCanSetDefaultLauncher() async {
+    var result = await NativeMethods().canSetDefaultLauncher();
+    if (result != null) _canSetDefaultLauncher = result;
+    notifyListeners();
+  }
+
   /// Restore favourite apps saved with different key in builds prior to v1.0
-  void _restoreFavAppsFromDeprecatedList() async {
-    List<String> deprecatedFavAppIds =
-        await NativeMethods().getDeprecatedPrefsList();
+  Future<void> _restoreFavAppsFromDeprecatedList() async {
+    var deprecatedFavAppIds = await NativeMethods().getDeprecatedPrefsList();
     if (deprecatedFavAppIds.isNotEmpty) {
       saveFavApps(deprecatedFavAppIds);
     }
@@ -73,8 +90,22 @@ class AppModel extends ChangeNotifier {
     _loadApps();
   }
 
-  void saveFavApps(List<String> newFavPackages) async {
+  Future<void> saveFavApps(List<String> newFavPackages) async {
     AppRepository().setFavItems(newFavPackages);
     _loadFavItems();
+  }
+
+  void setDefaultLauncher() {
+    _canSetDefaultLauncher = false; // Hide the dialog
+    NativeMethods().setDefaultLauncher();
+    notifyListeners();
+  }
+
+  Future<void> _failedSettingDefaultLauncher(MethodCall call) async {
+    switch (call.method) {
+      case 'setDefaultLauncherFailure':
+        // Confirm and show set default dialog
+        _checkCanSetDefaultLauncher();
+    }
   }
 }

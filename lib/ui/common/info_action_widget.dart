@@ -1,27 +1,25 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:elder_launcher/constants/custom_functions.dart';
-import 'package:elder_launcher/ui/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import '../../constants/custom_functions.dart';
+import '../theme.dart';
 
 class InfoActionWidget extends StatelessWidget {
   final String message;
   final String buttonLabel;
   final IconData buttonIcon;
   final VoidFunction buttonOnClickAction;
+
   const InfoActionWidget(this.message, this.buttonLabel, this.buttonIcon,
       this.buttonOnClickAction);
+
   const InfoActionWidget.add(
-      {String message, String buttonLabel, VoidFunction buttonOnClickAction})
-      : message = message,
-        buttonLabel = buttonLabel,
-        buttonIcon = Icons.add,
-        buttonOnClickAction = buttonOnClickAction;
+      {this.message, this.buttonLabel, this.buttonOnClickAction})
+      : buttonIcon = Icons.add;
+
   const InfoActionWidget.close(
-      {String message, String buttonLabel, VoidFunction buttonOnClickAction})
-      : message = message,
-        buttonLabel = buttonLabel,
-        buttonIcon = Icons.close,
-        buttonOnClickAction = buttonOnClickAction;
+      {this.message, this.buttonLabel, this.buttonOnClickAction})
+      : buttonIcon = Icons.close;
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -38,7 +36,11 @@ class InfoActionWidget extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-            RaisedButton(
+            ElevatedButton(
+                onPressed: buttonOnClickAction,
+                style: ElevatedButton.styleFrom(
+                  primary: Theme.of(context).primaryColor,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -60,8 +62,7 @@ class InfoActionWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
-                onPressed: buttonOnClickAction)
+                ))
           ],
         ),
       ),

@@ -1,29 +1,47 @@
 import 'package:flutter/services.dart';
+import '../constants/channels.dart';
 
 class NativeMethods {
-  final platform = MethodChannel('arjunsinh.xyz/elder_launcher');
+  final platformCore = MethodChannel(channelCore);
+  final platformContacts = MethodChannel(channelContacts);
+
+  /*
+  ** Contacts & Call
+  */
+
+  Future<bool> hasTelephoneFeature() async {
+    return platformContacts.invokeMethod<bool>('hasTelephoneFeature');
+  }
 
   void launchContactsApp() {
-    platform.invokeMethod('launchContactsApp');
+    platformContacts.invokeMethod('launchContactsApp');
   }
 
   void launchDialerApp(String number) {
-    platform.invokeMethod('launchDialerWithNumber', {'number': number});
+    platformContacts.invokeMethod('launchDialerWithNumber', {'number': number});
   }
 
   void startPhoneCall(String number) {
-    platform.invokeMethod('startPhoneCall', {'number': number});
+    platformContacts.invokeMethod('startPhoneCall', {'number': number});
   }
 
-  Future<bool> hasTelephoneFeature() async {
-    return await platform.invokeMethod<bool>('hasTelephoneFeature');
+  /*
+  ** Core
+  */
+
+  Future<bool> canSetDefaultLauncher() async {
+    return platformCore.invokeMethod<bool>('canSetDefaultLauncher');
+  }
+
+  void setDefaultLauncher() {
+    platformCore.invokeMethod('setDefaultLauncher');
   }
 
   Future<List<String>> getDeprecatedPrefsList() async {
-    List<String> stringList = [];
+    var stringList = <String>[];
     try {
       stringList =
-          await platform.invokeListMethod<String>('getDeprecatedFavAppIds');
+          await platformCore.invokeListMethod<String>('getDeprecatedFavAppIds');
     } on PlatformException catch (e) {
       print(e);
     }

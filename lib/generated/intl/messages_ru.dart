@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "btnAllContacts" : MessageLookupByLibrary.simpleMessage("Все контакты"),
     "btnBackToHome" : MessageLookupByLibrary.simpleMessage("Вернуться домой"),
     "btnGrantPermission" : MessageLookupByLibrary.simpleMessage("Предоставить разрешение"),
+    "btnSetDefaultLauncher" : MessageLookupByLibrary.simpleMessage("По умолчанию"),
     "dlgAppsAddRemove" : MessageLookupByLibrary.simpleMessage("Добавить/удалять программы"),
     "dlgAppsReload" : MessageLookupByLibrary.simpleMessage("Перезагрузить список программы"),
     "dlgAppsReorder" : MessageLookupByLibrary.simpleMessage("Изменение порядка программы"),
@@ -41,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "msgNoContactsPermission" : MessageLookupByLibrary.simpleMessage("Чтобы добавить избранные контакты на этот экран, разрешите этому приложению доступ к вашим контактам."),
     "msgNoData" : MessageLookupByLibrary.simpleMessage("Данные недоступны. Попробуйте еще раз через несколько секунд."),
     "msgNoFavourites" : MessageLookupByLibrary.simpleMessage("Вы не добавили ни одного избранного"),
-    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("Чтобы сделать звонки проще, позвольте этому приложению начинать телефонные звонки для вас.")
+    "msgNoPhonePermission" : MessageLookupByLibrary.simpleMessage("Чтобы сделать звонки проще, позвольте этому приложению начинать телефонные звонки для вас."),
+    "msgNotDefaultLauncher" : MessageLookupByLibrary.simpleMessage("Открывайте приложения и контакты быстрее, сделав Elder Launcher домашним приложением.")
   };
 }

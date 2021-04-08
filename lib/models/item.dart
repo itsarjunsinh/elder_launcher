@@ -13,6 +13,7 @@ class Item {
   const Item(this.id, this.name, this.icon);
 
   @override
+  // ignore: type_annotate_public_apis
   bool operator ==(o) => o is Item && o.id.compareTo(id) == 0;
 
   @override

@@ -1,4 +1,4 @@
-import 'package:elder_launcher/models/item.dart';
+import '../models/item.dart';
 
 typedef VoidFunction = void Function();
 typedef VoidStringFunction = void Function(String);

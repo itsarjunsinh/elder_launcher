@@ -1,8 +1,8 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:elder_launcher/constants/custom_functions.dart';
-import 'package:elder_launcher/models/item.dart';
-import 'package:elder_launcher/ui/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import '../../../constants/custom_functions.dart';
+import '../../../models/item.dart';
+import '../../../ui/theme.dart';
 
 class FavGridView extends StatelessWidget {
   final List<Item> favItems;
@@ -18,7 +18,7 @@ class FavGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AutoSizeGroup itemName = AutoSizeGroup();
+    var itemName = AutoSizeGroup();
 
     return Expanded(
       child: Padding(
@@ -32,6 +32,7 @@ class FavGridView extends StatelessWidget {
               elevation: 4,
               child: InkWell(
                 splashColor: Colors.blue.withAlpha(50),
+                onTap: () => itemOnClickAction(item),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +57,6 @@ class FavGridView extends StatelessWidget {
                     ),
                   ],
                 ),
-                onTap: () => itemOnClickAction(item),
               ),
             );
           }).toList(),
