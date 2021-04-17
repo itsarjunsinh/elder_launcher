@@ -15,6 +15,10 @@ Future CallDialog(BuildContext context, Item contact) {
         contact.name,
         style: TextStyles.dialogTitle,
       ),
+      message: Text(
+        contact.id,
+        style: TextStyles.dialogSubtitle,
+      ),
       actions: [
         CupertinoActionSheetAction(
           onPressed: () => {

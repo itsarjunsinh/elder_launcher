@@ -26,6 +26,7 @@ class TextStyles {
   static const primaryButtonLabel =
       TextStyle(color: Colors.white, fontSize: 50, height: 1);
   static const dialogTitle = TextStyle(color: Colors.black, fontSize: 25);
+  static const dialogSubtitle = TextStyle(color: Colors.black87, fontSize: 24);
   static const dialogAction = TextStyle(color: Colors.brown, fontSize: 22);
   static const dialogActionMain =
       TextStyle(color: Colors.black87, fontSize: 25);
