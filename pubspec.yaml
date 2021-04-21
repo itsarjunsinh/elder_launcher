@@ -1,7 +1,7 @@
 name: elder_launcher
 description: A launcher focused on simplicity and legibility.
 publish_to: 'none'
-version: 1.4.1+9
+version: 1.4.2+10
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

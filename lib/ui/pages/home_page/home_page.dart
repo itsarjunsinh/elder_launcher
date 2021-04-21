@@ -44,6 +44,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ],
+            brightness: Brightness.dark,
             centerTitle: true,
             title: Consumer<DateTimeModel>(
               builder: (_, dateTimeModel, __) => AutoSizeText(

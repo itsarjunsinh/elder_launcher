@@ -7,7 +7,8 @@
     <application
         android:label="Elder Launcher"
         android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round">
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:extractNativeLibs="true"> <!-- Fix for certain devices. https://issuetracker.google.com/issues/127691101#comment42 -->
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
