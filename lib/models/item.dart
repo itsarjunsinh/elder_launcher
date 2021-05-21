@@ -8,7 +8,7 @@ class Item {
   final String id;
 
   final String name;
-  final Uint8List icon;
+  final Uint8List? icon;
 
   const Item(this.id, this.name, this.icon);
 

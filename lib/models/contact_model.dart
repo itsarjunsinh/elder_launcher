@@ -10,16 +10,16 @@ class ContactModel extends ChangeNotifier {
   bool _isContactListLoaded = false;
   bool _isFavListLoaded = false;
   bool _isContactsPermissionChecked = false;
-  bool _isContactsPermissionGranted;
   bool _isPhonePermissionChecked = false;
-  bool _isPhonePermissionGranted;
   bool _isTelephoneFeatureChecked = false;
-  bool _hasTelephoneFeature;
+
+  late bool _hasTelephoneFeature;
+  late bool _isContactsPermissionGranted;
+  late bool _isPhonePermissionGranted;
+  late Timer _refreshTimer;
 
   List<Item> _allContacts = [];
   List<Item> _favContacts = [];
-
-  Timer _refreshTimer;
 
   ContactModel() {
     _loadContactsWithPermissionCheck();

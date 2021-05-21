@@ -14,7 +14,7 @@ import '../../../ui/pages/home_page/fav_grid_view.dart';
 
 class ContactsTab extends StatelessWidget {
   const ContactsTab({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

@@ -39,8 +39,11 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: IconButton(
                   icon: Icon(Icons.edit),
-                  onPressed: () =>
-                      openEditDialog(DefaultTabController.of(context).index),
+                  onPressed: () {
+                    if (DefaultTabController.of(context) != null) {
+                      openEditDialog(DefaultTabController.of(context)!.index);
+                    }
+                  },
                 ),
               ),
             ],

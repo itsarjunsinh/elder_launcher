@@ -20,7 +20,7 @@ class AppModel extends ChangeNotifier {
 
   final _appEvent = DeviceApps.listenToAppsChanges();
   final _methodChannel = MethodChannel(channelCore);
-  Timer _refreshTimer;
+  late final Timer _refreshTimer;
 
   AppModel() {
     _loadApps();
@@ -69,7 +69,7 @@ class AppModel extends ChangeNotifier {
 
   Future<void> _checkCanSetDefaultLauncher() async {
     var result = await NativeMethods().canSetDefaultLauncher();
-    if (result != null) _canSetDefaultLauncher = result;
+    _canSetDefaultLauncher = result;
     notifyListeners();
   }
 

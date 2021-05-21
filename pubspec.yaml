@@ -4,11 +4,11 @@ publish_to: 'none'
 version: 1.4.2+10
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:  
-  auto_size_text: ^2.1.0  
-  contacts_service: ^0.3.10
+  auto_size_text: ^3.0.0-nullsafety.0  
+  contacts_service: ^0.6.1
   device_apps: ^2.0.2
   flutter:
     sdk: flutter

@@ -6,7 +6,7 @@ class MultiSelectWidget extends StatelessWidget {
   final EditModel editModel;
   final bool showId;
 
-  const MultiSelectWidget(this.editModel, {Key key, @required this.showId})
+  const MultiSelectWidget(this.editModel, {Key? key, required this.showId})
       : super(key: key);
 
   @override
@@ -35,9 +35,9 @@ class MultiSelectWidget extends StatelessWidget {
                   style: TextStyles.listTitle,
                 )
               : null,
-          secondary: item.icon.isNotEmpty
+          secondary: item.icon != null
               ? Image(
-                  image: MemoryImage(item.icon),
+                  image: MemoryImage(item.icon!),
                 )
               : CircleAvatar(),
           value: isFav,

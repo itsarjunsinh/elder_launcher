@@ -13,11 +13,15 @@ class InfoActionWidget extends StatelessWidget {
       this.buttonOnClickAction);
 
   const InfoActionWidget.add(
-      {this.message, this.buttonLabel, this.buttonOnClickAction})
+      {required this.message,
+      required this.buttonLabel,
+      required this.buttonOnClickAction})
       : buttonIcon = Icons.add;
 
   const InfoActionWidget.close(
-      {this.message, this.buttonLabel, this.buttonOnClickAction})
+      {required this.message,
+      required this.buttonLabel,
+      required this.buttonOnClickAction})
       : buttonIcon = Icons.close;
 
   @override

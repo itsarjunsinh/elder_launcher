@@ -37,14 +37,14 @@ class AppRepository implements DataRepository {
     var _apps = <Item>[];
 
     for (final app in apps) {
-      if (app != null) {
-        _apps.add(Item(
+      _apps.add(
+        Item(
             app.packageName,
             app.appName,
             app is ApplicationWithIcon
                 ? app.icon as Uint8List // ignore: unnecessary_cast
-                : null));
-      }
+                : null),
+      );
     }
 
     return _apps;

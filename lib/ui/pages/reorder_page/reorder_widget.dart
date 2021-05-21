@@ -7,7 +7,7 @@ class ReorderWidget extends StatelessWidget {
   final EditModel editModel;
   final bool showId;
 
-  const ReorderWidget(this.editModel, {Key key, @required this.showId})
+  const ReorderWidget(this.editModel, {Key? key, required this.showId})
       : super(key: key);
 
   @override
@@ -33,8 +33,8 @@ class ReorderWidget extends StatelessWidget {
 
 class ReorderableCard extends StatelessWidget {
   const ReorderableCard({
-    Key key,
-    @required this.item,
+    Key? key,
+    required this.item,
   }) : super(key: key);
 
   final Item item;
@@ -50,9 +50,9 @@ class ReorderableCard extends StatelessWidget {
             item.name,
             style: TextStyles.listTitle,
           ),
-          leading: item.icon.isNotEmpty
+          leading: item.icon != null
               ? Image(
-                  image: MemoryImage(item.icon),
+                  image: MemoryImage(item.icon!),
                 )
               : CircleAvatar(),
           trailing: Icon(Icons.drag_handle),

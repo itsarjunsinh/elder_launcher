@@ -10,7 +10,11 @@ class NativeMethods {
   */
 
   Future<bool> hasTelephoneFeature() async {
-    return platformContacts.invokeMethod<bool>('hasTelephoneFeature');
+    var hasTelephoneFeatureResult =
+        await platformContacts.invokeMethod<bool>('hasTelephoneFeature');
+    return hasTelephoneFeatureResult != null
+        ? hasTelephoneFeatureResult
+        : false;
   }
 
   void launchContactsApp() {
@@ -30,7 +34,11 @@ class NativeMethods {
   */
 
   Future<bool> canSetDefaultLauncher() async {
-    return platformCore.invokeMethod<bool>('canSetDefaultLauncher');
+    var canSetDefaultLauncherResult =
+        await platformCore.invokeMethod<bool>('canSetDefaultLauncher');
+    return canSetDefaultLauncherResult != null
+        ? canSetDefaultLauncherResult
+        : false;
   }
 
   void setDefaultLauncher() {
@@ -38,13 +46,10 @@ class NativeMethods {
   }
 
   Future<List<String>> getDeprecatedPrefsList() async {
-    var stringList = <String>[];
-    try {
-      stringList =
-          await platformCore.invokeListMethod<String>('getDeprecatedFavAppIds');
-    } on PlatformException catch (e) {
-      print(e);
-    }
-    return stringList;
+    var favAppsInDeprecatedList =
+        await platformCore.invokeListMethod<String>('getDeprecatedFavAppIds');
+    return favAppsInDeprecatedList != null
+        ? favAppsInDeprecatedList
+        : <String>[];
   }
 }

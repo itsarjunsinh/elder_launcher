@@ -56,7 +56,7 @@ class AppDrawer extends StatelessWidget {
   const AppDrawer(
     this.allItems,
     this.itemOnClickAction, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -69,7 +69,7 @@ class AppDrawer extends StatelessWidget {
           return ListTile(
             leading: app.icon != null
                 ? Image(
-                    image: MemoryImage(app.icon),
+                    image: MemoryImage(app.icon!),
                   )
                 : null,
             title: Text(

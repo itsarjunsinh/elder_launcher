@@ -13,7 +13,7 @@ class FavGridView extends StatelessWidget {
     this.favItems,
     this.itemOnClickAction,
     this.openEditScreenFunction, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -37,10 +37,10 @@ class FavGridView extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    if (item.icon.isNotEmpty) ...[
+                    if (item.icon != null) ...[
                       Image(
                         height: 70,
-                        image: MemoryImage(item.icon),
+                        image: MemoryImage(item.icon!),
                       ),
                     ],
                     Flexible(
