@@ -22,7 +22,7 @@ class AppRepository implements DataRepository {
 
     for (var packageName in favPackages) {
       var app = await DeviceApps.getApp(packageName, true);
-      favApps.add(app as ApplicationWithIcon);
+      if (app != null) favApps.add(app as ApplicationWithIcon);
     }
 
     return _toItems(favApps);
