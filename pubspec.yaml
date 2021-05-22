@@ -6,16 +6,16 @@ version: 1.4.2+10
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
-dependencies:  
+dependencies:
   auto_size_text: ^3.0.0-nullsafety.0  
   contacts_service: ^0.6.1
-  device_apps: ^2.0.2
+  device_apps: ^2.1.1
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
   intl: ^0.17.0
-  permission_handler: ^6.1.1
+  permission_handler: ^8.0.0+1
   provider: ^5.0.0
   shared_preferences: ^2.0.5
 
