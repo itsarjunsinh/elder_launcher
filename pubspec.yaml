@@ -23,6 +23,7 @@ dev_dependencies:
   effective_dart: ^1.3.0
   flutter_test:
     sdk: flutter
+  mockito: ^5.0.8
 
 flutter:
   uses-material-design: true
