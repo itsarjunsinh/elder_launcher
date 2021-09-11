@@ -7,6 +7,7 @@ import '../test_data/fake_contacts.dart';
 import '../test_utils/set_mock_contacts.dart';
 
 void main() {
+  /*
   setUpAll(() {
     TestWidgetsFlutterBinding.ensureInitialized();
     setMockContacts();
@@ -21,7 +22,6 @@ void main() {
     );
   });
 
-  /*
   test('Loads fav apps', () async {
     await AppRepository().getFavItems().then(
       (favApps) {
