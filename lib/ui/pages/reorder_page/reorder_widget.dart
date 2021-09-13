@@ -50,7 +50,7 @@ class ReorderableCard extends StatelessWidget {
             item.name,
             style: TextStyles.listTitle,
           ),
-          leading: item.icon != null
+          leading: item.icon?.isNotEmpty ?? false
               ? Image(
                   image: MemoryImage(item.icon!),
                 )

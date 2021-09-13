@@ -35,7 +35,7 @@ class MultiSelectWidget extends StatelessWidget {
                   style: TextStyles.listTitle,
                 )
               : null,
-          secondary: item.icon != null
+          secondary: item.icon?.isNotEmpty ?? false
               ? Image(
                   image: MemoryImage(item.icon!),
                 )
