@@ -6,15 +6,15 @@ import '../../../models/app_model.dart';
 import '../../../models/contact_model.dart';
 import '../../../models/edit_model.dart';
 import '../../../models/item.dart';
-import '../../../ui/common/buttons.dart';
 import '../../../ui/common/info_action_widget.dart';
 import '../../../ui/pages/edit_page/multi_select_widget.dart';
 import '../../../ui/theme.dart';
+import '../../common/elder_page_scaffold.dart';
 
 class EditPage extends StatelessWidget {
-  final EditMode editMode;
-
   const EditPage(this.editMode);
+
+  final EditMode editMode;
 
   @override
   Widget build(BuildContext context) {
@@ -44,35 +44,25 @@ class EditPage extends StatelessWidget {
 
     return ChangeNotifierProvider(
       create: (_) => EditModel(favItems: favItems, allItems: allItems),
-      child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
-        body: SafeArea(
-          child: Column(
+      child: ElderPageScaffold(
+        title: editMode == EditMode.apps
+            ? S.of(context).dlgAppsAddRemove
+            : S.of(context).dlgContactsAddRemove,
+        body: Consumer<EditModel>(
+          builder: (_, editModel, __) => Column(
             children: <Widget>[
-              Flexible(
-                child: Consumer<EditModel>(
-                  builder: (_, editModel, __) => Column(
-                    children: <Widget>[
-                      if (editModel.sortedItems.isNotEmpty) ...[
-                        Expanded(
-                          child: MultiSelectWidget(editModel,
-                              showId: editMode == EditMode.contacts),
-                        ),
-                      ] else ...[
-                        InfoActionWidget.close(
-                          message: S.of(context).msgNoData,
-                          buttonLabel: S.of(context).btnBackToHome,
-                          buttonOnClickAction: backToHome,
-                        )
-                      ]
-                    ],
-                  ),
+              if (editModel.sortedItems.isNotEmpty) ...[
+                Expanded(
+                  child: MultiSelectWidget(editModel,
+                      showId: editMode == EditMode.contacts),
                 ),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: PrimaryButton(S.of(context).btnBackToHome, backToHome),
-              ),
+              ] else ...[
+                InfoActionWidget.close(
+                  message: S.of(context).msgNoData,
+                  buttonLabel: S.of(context).btnBackToHome,
+                  buttonOnClickAction: backToHome,
+                )
+              ]
             ],
           ),
         ),

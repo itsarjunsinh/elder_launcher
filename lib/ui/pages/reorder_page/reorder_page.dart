@@ -6,15 +6,15 @@ import '../../../models/app_model.dart';
 import '../../../models/contact_model.dart';
 import '../../../models/edit_model.dart';
 import '../../../models/item.dart';
-import '../../../ui/common/buttons.dart';
 import '../../../ui/common/info_action_widget.dart';
 import '../../../ui/pages/reorder_page/reorder_widget.dart';
 import '../../../ui/theme.dart';
+import '../../common/elder_page_scaffold.dart';
 
 class ReorderPage extends StatelessWidget {
-  final EditMode editMode;
-
   const ReorderPage(this.editMode);
+
+  final EditMode editMode;
 
   @override
   Widget build(BuildContext context) {
@@ -41,36 +41,25 @@ class ReorderPage extends StatelessWidget {
 
     return ChangeNotifierProvider(
       create: (_) => EditModel(favItems: _favItems),
-      child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
-        body: SafeArea(
-          child: Column(
+      child: ElderPageScaffold(
+        title: editMode == EditMode.apps
+            ? S.of(context).dlgAppsReorder
+            : S.of(context).dlgContactsReorder,
+        body: Consumer<EditModel>(
+          builder: (_, editModel, __) => Column(
             children: <Widget>[
-              Flexible(
-                child: Consumer<EditModel>(
-                  builder: (_, editModel, __) => Column(
-                    children: <Widget>[
-                      if (editModel.sortedItems.isNotEmpty) ...[
-                        Expanded(
-                          child: ReorderWidget(editModel,
-                              showId:
-                                  editMode == EditMode.contacts ? true : false),
-                        ),
-                      ] else ...[
-                        InfoActionWidget.close(
-                          message: S.of(context).msgNoData,
-                          buttonLabel: S.of(context).btnBackToHome,
-                          buttonOnClickAction: backToHome,
-                        )
-                      ]
-                    ],
-                  ),
+              if (editModel.sortedItems.isNotEmpty) ...[
+                Expanded(
+                  child: ReorderWidget(editModel,
+                      showId: editMode == EditMode.contacts ? true : false),
                 ),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: PrimaryButton(S.of(context).btnBackToHome, backToHome),
-              ),
+              ] else ...[
+                InfoActionWidget.close(
+                  message: S.of(context).msgNoData,
+                  buttonLabel: S.of(context).btnBackToHome,
+                  buttonOnClickAction: backToHome,
+                )
+              ]
             ],
           ),
         ),
