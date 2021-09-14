@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:elder_launcher/constants/keys.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../test_data/fake_contacts.dart';
 
@@ -12,7 +13,8 @@ void setMockContacts() {
       MethodChannel('github.com/clovisnicolas/flutter_contacts');
   final allContacts = fakeDeviceContacts;
 
-  contactsChannel.setMockMethodCallHandler((call) async {
+  TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger
+      .setMockMethodCallHandler(contactsChannel, (call) async {
     if (call.method == 'getContacts') {
       print(call.arguments);
       print("Returning");
