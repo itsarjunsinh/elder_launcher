@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:collection';
-import 'package:flutter/foundation.dart';
 import 'package:device_apps/device_apps.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../constants/channels.dart';
 import '../constants/keys.dart';

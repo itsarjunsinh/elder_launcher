@@ -1,7 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import '../../../constants/edit_mode.dart';
 import '../../../generated/l10n.dart';
 import '../../../models/date_time_model.dart';
@@ -47,7 +47,6 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ],
-            brightness: Brightness.dark,
             centerTitle: true,
             title: Consumer<DateTimeModel>(
               builder: (_, dateTimeModel, __) => AutoSizeText(
