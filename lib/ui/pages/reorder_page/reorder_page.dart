@@ -45,24 +45,19 @@ class ReorderPage extends StatelessWidget {
         title: editMode == EditMode.apps
             ? S.of(context).dlgAppsReorder
             : S.of(context).dlgContactsReorder,
-        body: Consumer<EditModel>(
-          builder: (_, editModel, __) => Column(
-            children: <Widget>[
-              if (editModel.sortedItems.isNotEmpty) ...[
-                Expanded(
-                  child: ReorderWidget(editModel,
-                      showId: editMode == EditMode.contacts ? true : false),
-                ),
-              ] else ...[
-                InfoActionWidget.close(
-                  message: S.of(context).msgNoData,
-                  buttonLabel: S.of(context).btnBackToHome,
-                  buttonOnClickAction: backToHome,
-                )
-              ]
-            ],
-          ),
-        ),
+        body: Consumer<EditModel>(builder: (_, editModel, __) {
+          if (editModel.sortedItems.isNotEmpty) {
+            return Expanded(
+              child: ReorderWidget(editModel,
+                  showId: editMode == EditMode.contacts ? true : false),
+            );
+          } else {
+            return InfoActionWidget.close(
+                message: S.of(context).msgNoData,
+                buttonLabel: S.of(context).btnBackToHome,
+                buttonOnClickAction: backToHome);
+          }
+        }),
         floatingActionButton: Consumer<EditModel>(
           builder: (context, editModel, _) {
             if (editModel.isListModified) {

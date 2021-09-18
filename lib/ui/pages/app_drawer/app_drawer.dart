@@ -18,18 +18,13 @@ class AppDrawerScreen extends StatelessWidget {
 
     return ElderPageScaffold(
       title: S.of(context).btnAllApps,
-      body: Consumer<AppModel>(
-        builder: (context, appService, _) => Column(
-          children: <Widget>[
-            if (appService.isAppListLoaded &&
-                appService.allApps.isNotEmpty) ...[
-              AppDrawer(appService.allApps, launchApp)
-            ] else ...[
-              LoadingWidget()
-            ]
-          ],
-        ),
-      ),
+      body: Consumer<AppModel>(builder: (context, appService, _) {
+        if (appService.isAppListLoaded && appService.allApps.isNotEmpty) {
+          return AppDrawer(appService.allApps, launchApp);
+        } else {
+          return LoadingWidget();
+        }
+      }),
     );
   }
 }

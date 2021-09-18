@@ -48,24 +48,20 @@ class EditPage extends StatelessWidget {
         title: editMode == EditMode.apps
             ? S.of(context).dlgAppsAddRemove
             : S.of(context).dlgContactsAddRemove,
-        body: Consumer<EditModel>(
-          builder: (_, editModel, __) => Column(
-            children: <Widget>[
-              if (editModel.sortedItems.isNotEmpty) ...[
-                Expanded(
-                  child: MultiSelectWidget(editModel,
-                      showId: editMode == EditMode.contacts),
-                ),
-              ] else ...[
-                InfoActionWidget.close(
-                  message: S.of(context).msgNoData,
-                  buttonLabel: S.of(context).btnBackToHome,
-                  buttonOnClickAction: backToHome,
-                )
-              ]
-            ],
-          ),
-        ),
+        body: Consumer<EditModel>(builder: (_, editModel, __) {
+          if (editModel.sortedItems.isNotEmpty) {
+            return Expanded(
+              child: MultiSelectWidget(editModel,
+                  showId: editMode == EditMode.contacts),
+            );
+          } else {
+            return InfoActionWidget.close(
+              message: S.of(context).msgNoData,
+              buttonLabel: S.of(context).btnBackToHome,
+              buttonOnClickAction: backToHome,
+            );
+          }
+        }),
         floatingActionButton: Consumer<EditModel>(
           builder: (context, editModel, _) {
             if (editModel.isListModified) {
