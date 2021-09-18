@@ -19,6 +19,7 @@ class MultiSelectWidget extends StatelessWidget {
 
     return ListView.separated(
       itemCount: _allItems.length,
+      padding: EdgeInsets.symmetric(vertical: 6),
       itemBuilder: (context, position) {
         var item = _allItems[position];
         var isFav = editModel.isFav(position);

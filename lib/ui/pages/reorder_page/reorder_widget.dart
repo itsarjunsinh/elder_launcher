@@ -20,7 +20,7 @@ class ReorderWidget extends StatelessWidget {
 
     return ReorderableListView(
       onReorder: reorderItems,
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: EdgeInsets.symmetric(vertical: 6),
       children: _favItems
           .map((item) => ReorderableCard(
                 item: item,
@@ -42,7 +42,7 @@ class ReorderableCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: 2, vertical: 6),
+      margin: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListTile(

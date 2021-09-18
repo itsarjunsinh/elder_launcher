@@ -45,6 +45,7 @@ class AppDrawer extends StatelessWidget {
     return Flexible(
       child: ListView.separated(
         itemCount: allItems.length,
+        padding: EdgeInsets.symmetric(vertical: 6),
         itemBuilder: (context, position) {
           var app = allItems[position];
           return ListTile(

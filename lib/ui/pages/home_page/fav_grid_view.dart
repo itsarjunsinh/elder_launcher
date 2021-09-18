@@ -19,18 +19,16 @@ class FavGridView extends StatelessWidget {
     var itemName = AutoSizeGroup();
 
     return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(4, 4, 4, 4),
-        child: GridView.count(
-          childAspectRatio: 1.25,
-          crossAxisCount: 2,
-          children: favItems.map((item) {
-            return FavItemCard(
-                item: item,
-                itemOnClickAction: itemOnClickAction,
-                itemName: itemName);
-          }).toList(),
-        ),
+      child: GridView.count(
+        childAspectRatio: 1.25,
+        crossAxisCount: 2,
+        padding: EdgeInsets.all(6),
+        children: favItems.map((item) {
+          return FavItemCard(
+              item: item,
+              itemOnClickAction: itemOnClickAction,
+              itemName: itemName);
+        }).toList(),
       ),
     );
   }
