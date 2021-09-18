@@ -7,12 +7,10 @@ import '../../../ui/theme.dart';
 class FavGridView extends StatelessWidget {
   final List<Item> favItems;
   final VoidItemFunction itemOnClickAction;
-  final VoidFunction openEditScreenFunction;
 
   const FavGridView(
     this.favItems,
-    this.itemOnClickAction,
-    this.openEditScreenFunction, {
+    this.itemOnClickAction, {
     Key? key,
   }) : super(key: key);
 

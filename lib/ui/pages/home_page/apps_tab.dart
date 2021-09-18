@@ -42,7 +42,7 @@ class AppsTab extends StatelessWidget {
                   appModel.favApps.isNotEmpty &&
                   !appModel.canSetDefaultLauncher) ...[
                 // Show Favourite Apps
-                FavGridView(appModel.favApps, launchApp, openEditScreen),
+                FavGridView(appModel.favApps, launchApp),
               ] else if (appModel.isFavListLoaded &&
                   appModel.favApps.isNotEmpty &&
                   appModel.canSetDefaultLauncher) ...[
@@ -52,7 +52,7 @@ class AppsTab extends StatelessWidget {
                     S.of(context).btnSetDefaultLauncher,
                     Icons.home,
                     setDefaultLauncher),
-                FavGridView(appModel.favApps, launchApp, openEditScreen)
+                FavGridView(appModel.favApps, launchApp)
               ] else if (appModel.isFavListLoaded &&
                   appModel.favApps.isEmpty) ...[
                 // Show Add Favourites Prompt
