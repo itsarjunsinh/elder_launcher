@@ -28,7 +28,7 @@ class InfoActionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[

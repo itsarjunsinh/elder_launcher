@@ -11,6 +11,7 @@ import '../../../ui/common/info_action_widget.dart';
 import '../../../ui/common/loading_widget.dart';
 import '../../../ui/pages/home_page/call_dialog.dart';
 import '../../../ui/pages/home_page/fav_grid_view.dart';
+import '../../common/action_panel.dart';
 
 class ContactsTab extends StatelessWidget {
   const ContactsTab({
@@ -60,11 +61,14 @@ class ContactsTab extends StatelessWidget {
                     contactModel.isTelephoneFeatureChecked &&
                     contactModel.hasTelephoneFeature) ...[
                   // Show Favourite Contacts with Phone Permission Prompt
-                  InfoActionWidget(
-                      S.of(context).msgNoPhonePermission,
-                      S.of(context).btnGrantPermission,
-                      Icons.phone,
-                      requestPhonePermission),
+                  ActionPanel(
+                    heading: S.of(context).btnGrantPermission,
+                    body: InfoActionWidget(
+                        S.of(context).msgNoPhonePermission,
+                        S.of(context).btnGrantPermission,
+                        Icons.phone,
+                        requestPhonePermission),
+                  ),
                   FavGridView(contactModel.favContacts, openContactDialog)
                 ] else if (contactModel.isFavListLoaded &&
                     contactModel.favContacts.isEmpty) ...[

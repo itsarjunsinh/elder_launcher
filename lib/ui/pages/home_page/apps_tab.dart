@@ -9,6 +9,7 @@ import '../../../ui/common/buttons.dart';
 import '../../../ui/common/info_action_widget.dart';
 import '../../../ui/common/loading_widget.dart';
 import '../../../ui/pages/home_page/fav_grid_view.dart';
+import '../../common/action_panel.dart';
 
 class AppsTab extends StatelessWidget {
   const AppsTab({
@@ -47,11 +48,14 @@ class AppsTab extends StatelessWidget {
                   appModel.favApps.isNotEmpty &&
                   appModel.canSetDefaultLauncher) ...[
                 // Show Favourite Apps with Set Default Launcher Prompt
-                InfoActionWidget(
-                    S.of(context).msgNotDefaultLauncher,
-                    S.of(context).btnSetDefaultLauncher,
-                    Icons.home,
-                    setDefaultLauncher),
+                ActionPanel(
+                  heading: S.of(context).btnSetDefaultLauncher,
+                  body: InfoActionWidget(
+                      S.of(context).msgNotDefaultLauncher,
+                      S.of(context).btnSetDefaultLauncher,
+                      Icons.home,
+                      setDefaultLauncher),
+                ),
                 FavGridView(appModel.favApps, launchApp)
               ] else if (appModel.isFavListLoaded &&
                   appModel.favApps.isEmpty) ...[
