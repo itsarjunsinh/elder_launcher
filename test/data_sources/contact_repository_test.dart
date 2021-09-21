@@ -1,3 +1,4 @@
+/*
 import 'package:collection/collection.dart';
 import 'package:elder_launcher/constants/keys.dart';
 import 'package:elder_launcher/data_sources/contact_repository.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../test_data/fake_contacts.dart';
 import '../test_utils/set_mock_contacts.dart';
+*/
 
 void main() {
   /*
