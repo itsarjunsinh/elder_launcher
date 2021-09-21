@@ -22,7 +22,12 @@ class AppDrawerScreen extends StatelessWidget {
         if (appService.isAppListLoaded && appService.allApps.isNotEmpty) {
           return AppDrawer(appService.allApps, launchApp);
         } else {
-          return LoadingWidget();
+          return Flex(
+            direction: Axis.vertical,
+            children: [
+              LoadingWidget(),
+            ],
+          );
         }
       }),
     );
@@ -42,31 +47,29 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: ListView.separated(
-        itemCount: allItems.length,
-        padding: EdgeInsets.symmetric(vertical: 6),
-        itemBuilder: (context, position) {
-          var app = allItems[position];
-          return ListTile(
-            leading: app.icon?.isNotEmpty ?? false
-                ? Image(
-                    image: MemoryImage(app.icon!),
-                  )
-                : CircleAvatar(),
-            title: Text(
-              app.name,
-              style: TextStyles.listTitle,
-            ),
-            onTap: () => itemOnClickAction(app.id),
-          );
-        },
-        separatorBuilder: (_, __) {
-          return Divider(
-            thickness: Values.dividerThickness,
-          );
-        },
-      ),
+    return ListView.separated(
+      itemCount: allItems.length,
+      padding: EdgeInsets.symmetric(vertical: 6),
+      itemBuilder: (context, position) {
+        var app = allItems[position];
+        return ListTile(
+          leading: app.icon?.isNotEmpty ?? false
+              ? Image(
+                  image: MemoryImage(app.icon!),
+                )
+              : CircleAvatar(),
+          title: Text(
+            app.name,
+            style: TextStyles.listTitle,
+          ),
+          onTap: () => itemOnClickAction(app.id),
+        );
+      },
+      separatorBuilder: (_, __) {
+        return Divider(
+          thickness: Values.dividerThickness,
+        );
+      },
     );
   }
 }

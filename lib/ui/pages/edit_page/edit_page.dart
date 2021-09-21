@@ -50,10 +50,8 @@ class EditPage extends StatelessWidget {
             : S.of(context).dlgContactsAddRemove,
         body: Consumer<EditModel>(builder: (_, editModel, __) {
           if (editModel.sortedItems.isNotEmpty) {
-            return Expanded(
-              child: MultiSelectWidget(editModel,
-                  showId: editMode == EditMode.contacts),
-            );
+            return MultiSelectWidget(editModel,
+                showId: editMode == EditMode.contacts);
           } else {
             return InfoActionWidget.close(
               message: S.of(context).msgNoData,

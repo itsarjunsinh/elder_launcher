@@ -47,10 +47,8 @@ class ReorderPage extends StatelessWidget {
             : S.of(context).dlgContactsReorder,
         body: Consumer<EditModel>(builder: (_, editModel, __) {
           if (editModel.sortedItems.isNotEmpty) {
-            return Expanded(
-              child: ReorderWidget(editModel,
-                  showId: editMode == EditMode.contacts ? true : false),
-            );
+            return ReorderWidget(editModel,
+                showId: editMode == EditMode.contacts ? true : false);
           } else {
             return InfoActionWidget.close(
                 message: S.of(context).msgNoData,
