@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
           ],
           supportedLocales: S.delegate.supportedLocales,
-          theme: lightTheme,
+          theme: tealTheme,
           darkTheme: darkTheme,
         ));
   }
