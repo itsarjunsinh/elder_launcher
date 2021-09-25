@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../colors.dart';
 import '../theme.dart';
 
 class ActionPanel extends StatefulWidget {
@@ -26,6 +27,9 @@ class _ActionPanelState extends State<ActionPanel> {
       },
       children: [
         ExpansionPanel(
+          backgroundColor: Theme.of(context).brightness == Brightness.light
+              ? elderDarkBlueGrey
+              : elderTeal,
           headerBuilder: (_, __) {
             return Align(
               alignment: AlignmentDirectional.centerStart,
@@ -38,7 +42,10 @@ class _ActionPanelState extends State<ActionPanel> {
               ),
             );
           },
-          body: widget.body,
+          body: Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: widget.body,
+          ),
           canTapOnHeader: true,
           isExpanded: active,
         ),

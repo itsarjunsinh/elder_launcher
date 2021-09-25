@@ -54,6 +54,7 @@ class InfoActionWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 8.0),
                         child: Icon(
                           buttonIcon,
+                          color: Colors.white,
                           size: 35,
                         ),
                       ),
