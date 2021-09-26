@@ -8,29 +8,32 @@ import 'ui/pages/home_page/home_page.dart';
 import 'ui/router.dart';
 import 'ui/theme.dart';
 
-void main() => {runApp(MyApp())};
+void main() => {runApp(const MyApp())};
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider<AppModel>(create: (_) => AppModel()),
-          ChangeNotifierProvider<ContactModel>(create: (_) => ContactModel())
+      providers: [
+        ChangeNotifierProvider<AppModel>(create: (_) => AppModel()),
+        ChangeNotifierProvider<ContactModel>(create: (_) => ContactModel()),
+      ],
+      child: MaterialApp(
+        title: 'Elder Launcher',
+        home: const DefaultTabController(length: 2, child: HomePage()),
+        onGenerateRoute: generateRoute,
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
         ],
-        child: MaterialApp(
-          title: 'Elder Launcher',
-          home: DefaultTabController(length: 2, child: HomePage()),
-          onGenerateRoute: generateRoute,
-          localizationsDelegates: [
-            S.delegate,
-            GlobalCupertinoLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
-          theme: lightTheme,
-          darkTheme: darkTheme,
-        ));
+        supportedLocales: S.delegate.supportedLocales,
+        theme: tealTheme,
+        darkTheme: darkTheme,
+      ),
+    );
   }
 }

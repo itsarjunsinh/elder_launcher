@@ -5,6 +5,7 @@ import '../../../generated/l10n.dart';
 import '../../../models/contact_model.dart';
 import '../../../models/item.dart';
 import '../../../ui/theme.dart';
+import '../../../utils/color_util.dart';
 
 // ignore: non_constant_identifier_names
 Future CallDialog(BuildContext context, Item contact) {
@@ -13,11 +14,15 @@ Future CallDialog(BuildContext context, Item contact) {
     builder: (context) => CupertinoActionSheet(
       title: Text(
         contact.name,
-        style: TextStyles.dialogTitle,
+        style: TextStyles.dialogTitle.copyWith(
+          color: ColorUtil().colorOnPrimary(context),
+        ),
       ),
       message: Text(
         contact.id,
-        style: TextStyles.dialogSubtitle,
+        style: TextStyles.dialogSubtitle.copyWith(
+          color: ColorUtil().colorOnPrimary(context),
+        ),
       ),
       actions: [
         CupertinoActionSheetAction(
@@ -32,8 +37,8 @@ Future CallDialog(BuildContext context, Item contact) {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 4, 0),
                   child: Icon(
                     Icons.call,
                     color: Colors.green,

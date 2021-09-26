@@ -8,13 +8,13 @@ class Item {
   final String id;
 
   final String name;
-  final Uint8List icon;
+  final Uint8List? icon;
 
   const Item(this.id, this.name, this.icon);
 
   @override
-  // ignore: type_annotate_public_apis
-  bool operator ==(o) => o is Item && o.id.compareTo(id) == 0;
+  // ignore: type_annotate_public_apis, avoid_renaming_method_parameters
+  bool operator ==(Object o) => o is Item && o.id.compareTo(id) == 0;
 
   @override
   int get hashCode => id.hashCode;

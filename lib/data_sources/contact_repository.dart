@@ -28,27 +28,47 @@ class ContactRepository implements DataRepository {
     SharedPrefs().setList(keyFavContacts, favNumbers);
   }
 
+  // TODO: Performance optimization
   List<item.Item> _toDistinctItems(Iterable<Contact> contacts) {
     var _contacts = <item.Item>{};
 
     for (var contact in contacts) {
       var numbers = <String>{};
 
-      for (var number in contact.phones) {
-        numbers.add(number.value.replaceAll(
-          RegExp('[^a-zA-Z0-9+]+'),
-          '',
-        ));
+      if (contact.phones != null) {
+        for (var number in contact.phones!) {
+          if (number.value != null) {
+            numbers.add(
+              number.value!.replaceAll(
+                RegExp('[^a-zA-Z0-9+]+'),
+                '',
+              ),
+            );
+          }
+        }
       }
 
       for (var number in numbers) {
-        _contacts.add(item.Item(number, contact.displayName, contact.avatar));
+        if (contact.displayName != null) {
+          _contacts.add(
+            item.Item(number, contact.displayName!, contact.avatar),
+          );
+        } else {
+          _contacts.add(
+            item.Item(number, number, contact.avatar),
+          );
+        }
       }
     }
     return _contacts.toList();
   }
 
   item.Item _toItem(String number, Iterable<Contact> contacts) {
-    return item.Item(number, contacts.first.displayName, contacts.first.avatar);
+    if (contacts.first.displayName != null) {
+      return item.Item(
+          number, contacts.first.displayName!, contacts.first.avatar);
+    } else {
+      return item.Item(number, number, contacts.first.avatar);
+    }
   }
 }

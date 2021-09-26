@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:collection';
-import 'package:flutter/foundation.dart';
 import 'package:device_apps/device_apps.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../constants/channels.dart';
 import '../constants/keys.dart';
@@ -19,8 +19,8 @@ class AppModel extends ChangeNotifier {
   List<Item> _favApps = [];
 
   final _appEvent = DeviceApps.listenToAppsChanges();
-  final _methodChannel = MethodChannel(channelCore);
-  Timer _refreshTimer;
+  final _methodChannel = const MethodChannel(channelCore);
+  late final Timer _refreshTimer;
 
   AppModel() {
     _loadApps();
@@ -28,7 +28,7 @@ class AppModel extends ChangeNotifier {
       _loadApps();
     });
     _refreshTimer =
-        Timer.periodic(Duration(minutes: 15), (timer) => _loadApps());
+        Timer.periodic(const Duration(minutes: 15), (timer) => _loadApps());
     _checkCanSetDefaultLauncher();
     _methodChannel.setMethodCallHandler(_failedSettingDefaultLauncher);
   }
@@ -69,7 +69,7 @@ class AppModel extends ChangeNotifier {
 
   Future<void> _checkCanSetDefaultLauncher() async {
     var result = await NativeMethods().canSetDefaultLauncher();
-    if (result != null) _canSetDefaultLauncher = result;
+    _canSetDefaultLauncher = result;
     notifyListeners();
   }
 

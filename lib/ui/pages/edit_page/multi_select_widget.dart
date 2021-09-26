@@ -6,7 +6,7 @@ class MultiSelectWidget extends StatelessWidget {
   final EditModel editModel;
   final bool showId;
 
-  const MultiSelectWidget(this.editModel, {Key key, @required this.showId})
+  const MultiSelectWidget(this.editModel, {Key? key, required this.showId})
       : super(key: key);
 
   @override
@@ -19,6 +19,7 @@ class MultiSelectWidget extends StatelessWidget {
 
     return ListView.separated(
       itemCount: _allItems.length,
+      padding: const EdgeInsets.symmetric(vertical: 6),
       itemBuilder: (context, position) {
         var item = _allItems[position];
         var isFav = editModel.isFav(position);
@@ -35,11 +36,11 @@ class MultiSelectWidget extends StatelessWidget {
                   style: TextStyles.listTitle,
                 )
               : null,
-          secondary: item.icon.isNotEmpty
+          secondary: item.icon?.isNotEmpty ?? false
               ? Image(
-                  image: MemoryImage(item.icon),
+                  image: MemoryImage(item.icon!),
                 )
-              : CircleAvatar(),
+              : const CircleAvatar(),
           value: isFav,
           onChanged: (isChecked) {
             toggleFav(position);
@@ -47,7 +48,7 @@ class MultiSelectWidget extends StatelessWidget {
         );
       },
       separatorBuilder: (_, __) {
-        return Divider(
+        return const Divider(
           thickness: Values.dividerThickness,
         );
       },

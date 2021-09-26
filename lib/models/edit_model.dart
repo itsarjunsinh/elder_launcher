@@ -11,9 +11,9 @@ class EditModel extends ChangeNotifier {
   var _allItems = <Item>[];
   var _favItems = <Item>[];
 
-  EditModel({@required List<Item> favItems, List<Item> allItems}) {
+  EditModel({required List<Item> favItems, List<Item>? allItems}) {
     _favItems = favItems;
-    _allItems = allItems ?? [];
+    if (allItems != null) _allItems = allItems;
     _generateSortedList();
   }
 

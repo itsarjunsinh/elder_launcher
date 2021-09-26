@@ -11,10 +11,11 @@ import '../../../ui/common/info_action_widget.dart';
 import '../../../ui/common/loading_widget.dart';
 import '../../../ui/pages/home_page/call_dialog.dart';
 import '../../../ui/pages/home_page/fav_grid_view.dart';
+import '../../common/action_panel.dart';
 
 class ContactsTab extends StatelessWidget {
   const ContactsTab({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -52,8 +53,7 @@ class ContactsTab extends StatelessWidget {
                     contactModel.isPhonePermissionChecked &&
                     contactModel.isPhonePermissionGranted) ...[
                   // Show Favourite Contacts
-                  FavGridView(contactModel.favContacts, openContactDialog,
-                      openEditScreen)
+                  FavGridView(contactModel.favContacts, openContactDialog)
                 ] else if (contactModel.isFavListLoaded &&
                     contactModel.favContacts.isNotEmpty &&
                     contactModel.isPhonePermissionChecked &&
@@ -61,13 +61,15 @@ class ContactsTab extends StatelessWidget {
                     contactModel.isTelephoneFeatureChecked &&
                     contactModel.hasTelephoneFeature) ...[
                   // Show Favourite Contacts with Phone Permission Prompt
-                  InfoActionWidget(
-                      S.of(context).msgNoPhonePermission,
-                      S.of(context).btnGrantPermission,
-                      Icons.phone,
-                      requestPhonePermission),
-                  FavGridView(contactModel.favContacts, openContactDialog,
-                      openEditScreen)
+                  ActionPanel(
+                    heading: S.of(context).btnGrantPermission,
+                    body: InfoActionWidget(
+                        S.of(context).msgNoPhonePermission,
+                        S.of(context).btnGrantPermission,
+                        Icons.phone,
+                        requestPhonePermission),
+                  ),
+                  FavGridView(contactModel.favContacts, openContactDialog)
                 ] else if (contactModel.isFavListLoaded &&
                     contactModel.favContacts.isEmpty) ...[
                   // Show Add Favourites Prompt
@@ -89,7 +91,7 @@ class ContactsTab extends StatelessWidget {
                         requestContactsPermission),
                   )
                 ] else ...[
-                  LoadingWidget(),
+                  const LoadingWidget(),
                 ],
               ],
             ),

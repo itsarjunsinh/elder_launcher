@@ -6,15 +6,15 @@ import '../../../models/app_model.dart';
 import '../../../models/contact_model.dart';
 import '../../../models/edit_model.dart';
 import '../../../models/item.dart';
-import '../../../ui/common/buttons.dart';
 import '../../../ui/common/info_action_widget.dart';
 import '../../../ui/pages/reorder_page/reorder_widget.dart';
 import '../../../ui/theme.dart';
+import '../../common/elder_page_scaffold.dart';
 
 class ReorderPage extends StatelessWidget {
-  final EditMode editMode;
+  const ReorderPage(this.editMode, {Key? key}) : super(key: key);
 
-  const ReorderPage(this.editMode);
+  final EditMode editMode;
 
   @override
   Widget build(BuildContext context) {
@@ -41,47 +41,30 @@ class ReorderPage extends StatelessWidget {
 
     return ChangeNotifierProvider(
       create: (_) => EditModel(favItems: _favItems),
-      child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
-        body: SafeArea(
-          child: Column(
-            children: <Widget>[
-              Flexible(
-                child: Consumer<EditModel>(
-                  builder: (_, editModel, __) => Column(
-                    children: <Widget>[
-                      if (editModel.sortedItems.isNotEmpty) ...[
-                        Expanded(
-                          child: ReorderWidget(editModel,
-                              showId:
-                                  editMode == EditMode.contacts ? true : false),
-                        ),
-                      ] else ...[
-                        InfoActionWidget.close(
-                          message: S.of(context).msgNoData,
-                          buttonLabel: S.of(context).btnBackToHome,
-                          buttonOnClickAction: backToHome,
-                        )
-                      ]
-                    ],
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: PrimaryButton(S.of(context).btnBackToHome, backToHome),
-              ),
-            ],
-          ),
-        ),
+      child: ElderPageScaffold(
+        title: editMode == EditMode.apps
+            ? S.of(context).dlgAppsReorder
+            : S.of(context).dlgContactsReorder,
+        body: Consumer<EditModel>(builder: (_, editModel, __) {
+          if (editModel.sortedItems.isNotEmpty) {
+            return ReorderWidget(editModel,
+                showId: editMode == EditMode.contacts ? true : false);
+          } else {
+            return InfoActionWidget.close(
+                message: S.of(context).msgNoData,
+                buttonLabel: S.of(context).btnBackToHome,
+                buttonOnClickAction: backToHome);
+          }
+        }),
         floatingActionButton: Consumer<EditModel>(
           builder: (context, editModel, _) {
             if (editModel.isListModified) {
               return Padding(
-                padding: EdgeInsets.only(bottom: Values.fabSafeBottomPadding),
+                padding:
+                    const EdgeInsets.only(bottom: Values.fabSafeBottomPadding),
                 child: FloatingActionButton.extended(
-                  icon: Icon(Icons.save),
-                  label: Text('Save'),
+                  icon: const Icon(Icons.save),
+                  label: const Text('Save'),
                   onPressed: () {
                     saveFavItems(editModel.getFavIds());
                     Navigator.pop(context);
@@ -89,7 +72,7 @@ class ReorderPage extends StatelessWidget {
                 ),
               );
             } else {
-              return Container(height: 0, width: 0);
+              return const SizedBox(height: 0, width: 0);
             }
           },
         ),

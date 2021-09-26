@@ -1,20 +1,49 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'colors.dart';
 
-ThemeData lightTheme = ThemeData(
-    primaryColor: elderTeal,
-    accentColor: elderPink,
-    backgroundColor: elderWhite,
-    cardColor: elderBlueGrey,
+/* Light Themes */
+ThemeData baseLightTheme = ThemeData.from(
+    colorScheme: const ColorScheme.light(
+      background: youCard,
+      secondary: youBlue,
+      surface: elderBlueGrey,
+    ),
     textTheme: Typography.blackMountainView);
 
-ThemeData darkTheme = ThemeData(
-    primaryColor: elderDarkGrey,
-    accentColor: elderPink,
-    backgroundColor: elderBlack,
-    cardColor: elderDarkGreySecondary,
-    dividerTheme: DividerThemeData(color: elderBlueGrey),
+ThemeData tealTheme = baseLightTheme.copyWith(
+  colorScheme: baseLightTheme.colorScheme.copyWith(
+    primary: elderTeal,
+  ),
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
+    backgroundColor: youPeach,
+  ),
+  primaryColor: elderTeal,
+  splashColor: elderTeal,
+);
+
+/* Dark Themes */
+ThemeData baseDarkTheme = ThemeData.from(
+    colorScheme: const ColorScheme.dark(
+      background: youBlackDim,
+      primary: youBlack,
+      secondary: youBlue,
+      surface: elderDarkGrey,
+    ),
     textTheme: Typography.whiteMountainView);
+
+ThemeData darkTheme = baseDarkTheme.copyWith(
+  appBarTheme: const AppBarTheme(color: youBlack),
+  cupertinoOverrideTheme: const CupertinoThemeData(
+    primaryColor: elderWhite,
+  ),
+  dividerTheme: const DividerThemeData(color: elderDarkGreySecondary),
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
+    backgroundColor: youPeach,
+  ),
+  primaryColor: youBlack,
+  splashColor: elderBlack,
+);
 
 class TextStyles {
   static const cardTitle = TextStyle(fontSize: 30);
@@ -22,14 +51,16 @@ class TextStyles {
   static const headerTime = TextStyle(fontSize: 40);
   static const headerDate = TextStyle(color: Colors.white, fontSize: 30);
   static const infoMessage = TextStyle(fontSize: 25);
-  static const actionButtonLabel = TextStyle(fontSize: 30);
+  static const actionButtonLabel = TextStyle(color: Colors.white, fontSize: 30);
   static const primaryButtonLabel =
       TextStyle(color: Colors.white, fontSize: 50, height: 1);
-  static const dialogTitle = TextStyle(color: Colors.black, fontSize: 25);
-  static const dialogSubtitle = TextStyle(color: Colors.black87, fontSize: 24);
-  static const dialogAction = TextStyle(color: Colors.brown, fontSize: 22);
-  static const dialogActionMain =
-      TextStyle(color: Colors.black87, fontSize: 25);
+  static const dialogTitle = TextStyle(fontSize: 25);
+  static const dialogSubtitle = TextStyle(fontSize: 24);
+  static const dialogAction = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.bold,
+  );
+  static const dialogActionMain = TextStyle(fontSize: 25);
 }
 
 class Values {

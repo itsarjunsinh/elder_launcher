@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class DateTimeModel extends ChangeNotifier {
-  Timer _timer;
+  late final Timer _timer;
   String _date = '';
   String _time = '';
 
   DateTimeModel() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) => _updateDateTime());
+    _timer = Timer.periodic(
+        const Duration(seconds: 1), (timer) => _updateDateTime());
   }
 
   String get date => _date;

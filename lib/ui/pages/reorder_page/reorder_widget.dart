@@ -7,7 +7,7 @@ class ReorderWidget extends StatelessWidget {
   final EditModel editModel;
   final bool showId;
 
-  const ReorderWidget(this.editModel, {Key key, @required this.showId})
+  const ReorderWidget(this.editModel, {Key? key, required this.showId})
       : super(key: key);
 
   @override
@@ -20,7 +20,7 @@ class ReorderWidget extends StatelessWidget {
 
     return ReorderableListView(
       onReorder: reorderItems,
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 6),
       children: _favItems
           .map((item) => ReorderableCard(
                 item: item,
@@ -33,8 +33,8 @@ class ReorderWidget extends StatelessWidget {
 
 class ReorderableCard extends StatelessWidget {
   const ReorderableCard({
-    Key key,
-    @required this.item,
+    Key? key,
+    required this.item,
   }) : super(key: key);
 
   final Item item;
@@ -42,7 +42,7 @@ class ReorderableCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: 2, vertical: 6),
+      margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListTile(
@@ -50,12 +50,12 @@ class ReorderableCard extends StatelessWidget {
             item.name,
             style: TextStyles.listTitle,
           ),
-          leading: item.icon.isNotEmpty
+          leading: item.icon?.isNotEmpty ?? false
               ? Image(
-                  image: MemoryImage(item.icon),
+                  image: MemoryImage(item.icon!),
                 )
-              : CircleAvatar(),
-          trailing: Icon(Icons.drag_handle),
+              : const CircleAvatar(),
+          trailing: const Icon(Icons.drag_handle),
         ),
       ),
     );

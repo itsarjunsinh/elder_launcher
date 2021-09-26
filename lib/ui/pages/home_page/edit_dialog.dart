@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../constants/edit_mode.dart';
 import '../../../constants/route_names.dart';
@@ -6,6 +7,7 @@ import '../../../generated/l10n.dart';
 import '../../../models/app_model.dart';
 import '../../../models/contact_model.dart';
 import '../../../ui/theme.dart';
+import '../../../utils/color_util.dart';
 
 // ignore: non_constant_identifier_names
 Future EditDialog(BuildContext context, EditMode editMode) {
@@ -14,7 +16,9 @@ Future EditDialog(BuildContext context, EditMode editMode) {
     builder: (context) => CupertinoActionSheet(
       title: Text(
         S.of(context).dlgEditTitle,
-        style: TextStyles.dialogTitle,
+        style: TextStyles.dialogTitle.copyWith(
+          color: ColorUtil().colorOnPrimary(context),
+        ),
       ),
       actions: [
         CupertinoActionSheetAction(

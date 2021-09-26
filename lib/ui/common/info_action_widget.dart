@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
 import '../../constants/custom_functions.dart';
 import '../theme.dart';
 
@@ -9,22 +9,32 @@ class InfoActionWidget extends StatelessWidget {
   final IconData buttonIcon;
   final VoidFunction buttonOnClickAction;
 
-  const InfoActionWidget(this.message, this.buttonLabel, this.buttonIcon,
-      this.buttonOnClickAction);
+  const InfoActionWidget(
+      this.message, this.buttonLabel, this.buttonIcon, this.buttonOnClickAction,
+      {Key? key})
+      : super(key: key);
 
   const InfoActionWidget.add(
-      {this.message, this.buttonLabel, this.buttonOnClickAction})
-      : buttonIcon = Icons.add;
+      {required this.message,
+      required this.buttonLabel,
+      required this.buttonOnClickAction,
+      Key? key})
+      : buttonIcon = Icons.add,
+        super(key: key);
 
   const InfoActionWidget.close(
-      {this.message, this.buttonLabel, this.buttonOnClickAction})
-      : buttonIcon = Icons.close;
+      {required this.message,
+      required this.buttonLabel,
+      required this.buttonOnClickAction,
+      Key? key})
+      : buttonIcon = Icons.close,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -50,6 +60,7 @@ class InfoActionWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 8.0),
                         child: Icon(
                           buttonIcon,
+                          color: Colors.white,
                           size: 35,
                         ),
                       ),
