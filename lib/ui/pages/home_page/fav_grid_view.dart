@@ -22,7 +22,7 @@ class FavGridView extends StatelessWidget {
       child: GridView.count(
         childAspectRatio: 1.25,
         crossAxisCount: 2,
-        padding: EdgeInsets.all(6),
+        padding: const EdgeInsets.all(6),
         children: favItems.map((item) {
           return FavItemCard(
               item: item,

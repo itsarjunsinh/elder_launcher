@@ -9,6 +9,8 @@ import '../../../ui/theme.dart';
 import '../../common/elder_page_scaffold.dart';
 
 class AppDrawerScreen extends StatelessWidget {
+  const AppDrawerScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     void launchApp(String packageName) {
@@ -24,7 +26,7 @@ class AppDrawerScreen extends StatelessWidget {
         } else {
           return Flex(
             direction: Axis.vertical,
-            children: [
+            children: const [
               LoadingWidget(),
             ],
           );
@@ -49,7 +51,7 @@ class AppDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: allItems.length,
-      padding: EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.symmetric(vertical: 6),
       itemBuilder: (context, position) {
         var app = allItems[position];
         return ListTile(
@@ -57,7 +59,7 @@ class AppDrawer extends StatelessWidget {
               ? Image(
                   image: MemoryImage(app.icon!),
                 )
-              : CircleAvatar(),
+              : const CircleAvatar(),
           title: Text(
             app.name,
             style: TextStyles.listTitle,
@@ -66,7 +68,7 @@ class AppDrawer extends StatelessWidget {
         );
       },
       separatorBuilder: (_, __) {
-        return Divider(
+        return const Divider(
           thickness: Values.dividerThickness,
         );
       },

@@ -12,7 +12,7 @@ import '../../../ui/theme.dart';
 import '../../common/elder_page_scaffold.dart';
 
 class ReorderPage extends StatelessWidget {
-  const ReorderPage(this.editMode);
+  const ReorderPage(this.editMode, {Key? key}) : super(key: key);
 
   final EditMode editMode;
 
@@ -60,10 +60,11 @@ class ReorderPage extends StatelessWidget {
           builder: (context, editModel, _) {
             if (editModel.isListModified) {
               return Padding(
-                padding: EdgeInsets.only(bottom: Values.fabSafeBottomPadding),
+                padding:
+                    const EdgeInsets.only(bottom: Values.fabSafeBottomPadding),
                 child: FloatingActionButton.extended(
-                  icon: Icon(Icons.save),
-                  label: Text('Save'),
+                  icon: const Icon(Icons.save),
+                  label: const Text('Save'),
                   onPressed: () {
                     saveFavItems(editModel.getFavIds());
                     Navigator.pop(context);
@@ -71,7 +72,7 @@ class ReorderPage extends StatelessWidget {
                 ),
               );
             } else {
-              return Container(height: 0, width: 0);
+              return const SizedBox(height: 0, width: 0);
             }
           },
         ),

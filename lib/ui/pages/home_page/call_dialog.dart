@@ -37,8 +37,8 @@ Future CallDialog(BuildContext context, Item contact) {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 4, 0),
                   child: Icon(
                     Icons.call,
                     color: Colors.green,

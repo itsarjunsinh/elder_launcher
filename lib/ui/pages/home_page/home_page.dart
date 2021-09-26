@@ -11,6 +11,8 @@ import '../../../ui/pages/home_page/edit_dialog.dart';
 import '../../../ui/theme.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var _appBarTextSizeGroup = AutoSizeGroup();
@@ -38,7 +40,7 @@ class HomePage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: IconButton(
-                  icon: Icon(Icons.edit),
+                  icon: const Icon(Icons.edit),
                   onPressed: () {
                     if (DefaultTabController.of(context) != null) {
                       openEditDialog(DefaultTabController.of(context)!.index);
@@ -56,7 +58,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             bottom: PreferredSize(
-              preferredSize: Size(0, 80),
+              preferredSize: const Size(0, 80),
               child: Column(
                 children: <Widget>[
                   Consumer<DateTimeModel>(
@@ -73,8 +75,8 @@ class HomePage extends StatelessWidget {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 4.0, 0),
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 4.0, 0),
                               child: Icon(Icons.apps),
                             ),
                             Flexible(
@@ -82,7 +84,7 @@ class HomePage extends StatelessWidget {
                                 S.of(context).Apps,
                                 group: _appBarTextSizeGroup,
                                 maxLines: 1,
-                                style: TextStyle(fontSize: 50),
+                                style: const TextStyle(fontSize: 50),
                               ),
                             ),
                           ],
@@ -94,8 +96,8 @@ class HomePage extends StatelessWidget {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 4.0, 0),
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 4.0, 0),
                               child: Icon(Icons.contacts),
                             ),
                             Flexible(
@@ -103,7 +105,7 @@ class HomePage extends StatelessWidget {
                                 S.of(context).Contacts,
                                 group: _appBarTextSizeGroup,
                                 maxLines: 1,
-                                style: TextStyle(fontSize: 50),
+                                style: const TextStyle(fontSize: 50),
                               ),
                             )
                           ],
@@ -115,7 +117,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          body: TabBarView(children: <Widget>[AppsTab(), ContactsTab()]),
+          body: const TabBarView(children: <Widget>[AppsTab(), ContactsTab()]),
         ),
       ),
     );

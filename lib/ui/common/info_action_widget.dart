@@ -9,20 +9,26 @@ class InfoActionWidget extends StatelessWidget {
   final IconData buttonIcon;
   final VoidFunction buttonOnClickAction;
 
-  const InfoActionWidget(this.message, this.buttonLabel, this.buttonIcon,
-      this.buttonOnClickAction);
+  const InfoActionWidget(
+      this.message, this.buttonLabel, this.buttonIcon, this.buttonOnClickAction,
+      {Key? key})
+      : super(key: key);
 
   const InfoActionWidget.add(
       {required this.message,
       required this.buttonLabel,
-      required this.buttonOnClickAction})
-      : buttonIcon = Icons.add;
+      required this.buttonOnClickAction,
+      Key? key})
+      : buttonIcon = Icons.add,
+        super(key: key);
 
   const InfoActionWidget.close(
       {required this.message,
       required this.buttonLabel,
-      required this.buttonOnClickAction})
-      : buttonIcon = Icons.close;
+      required this.buttonOnClickAction,
+      Key? key})
+      : buttonIcon = Icons.close,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {

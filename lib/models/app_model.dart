@@ -19,7 +19,7 @@ class AppModel extends ChangeNotifier {
   List<Item> _favApps = [];
 
   final _appEvent = DeviceApps.listenToAppsChanges();
-  final _methodChannel = MethodChannel(channelCore);
+  final _methodChannel = const MethodChannel(channelCore);
   late final Timer _refreshTimer;
 
   AppModel() {
@@ -28,7 +28,7 @@ class AppModel extends ChangeNotifier {
       _loadApps();
     });
     _refreshTimer =
-        Timer.periodic(Duration(minutes: 15), (timer) => _loadApps());
+        Timer.periodic(const Duration(minutes: 15), (timer) => _loadApps());
     _checkCanSetDefaultLauncher();
     _methodChannel.setMethodCallHandler(_failedSettingDefaultLauncher);
   }

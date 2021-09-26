@@ -8,7 +8,8 @@ class DateTimeModel extends ChangeNotifier {
   String _time = '';
 
   DateTimeModel() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) => _updateDateTime());
+    _timer = Timer.periodic(
+        const Duration(seconds: 1), (timer) => _updateDateTime());
   }
 
   String get date => _date;

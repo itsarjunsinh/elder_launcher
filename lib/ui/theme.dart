@@ -4,7 +4,7 @@ import 'colors.dart';
 
 /* Light Themes */
 ThemeData baseLightTheme = ThemeData.from(
-    colorScheme: ColorScheme.light(
+    colorScheme: const ColorScheme.light(
       background: youCard,
       secondary: youBlue,
       surface: elderBlueGrey,
@@ -15,7 +15,7 @@ ThemeData tealTheme = baseLightTheme.copyWith(
   colorScheme: baseLightTheme.colorScheme.copyWith(
     primary: elderTeal,
   ),
-  floatingActionButtonTheme: FloatingActionButtonThemeData(
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: youPeach,
   ),
   primaryColor: elderTeal,
@@ -24,7 +24,7 @@ ThemeData tealTheme = baseLightTheme.copyWith(
 
 /* Dark Themes */
 ThemeData baseDarkTheme = ThemeData.from(
-    colorScheme: ColorScheme.dark(
+    colorScheme: const ColorScheme.dark(
       background: youBlackDim,
       primary: youBlack,
       secondary: youBlue,
@@ -33,12 +33,12 @@ ThemeData baseDarkTheme = ThemeData.from(
     textTheme: Typography.whiteMountainView);
 
 ThemeData darkTheme = baseDarkTheme.copyWith(
-  appBarTheme: AppBarTheme(color: youBlack),
-  cupertinoOverrideTheme: CupertinoThemeData(
+  appBarTheme: const AppBarTheme(color: youBlack),
+  cupertinoOverrideTheme: const CupertinoThemeData(
     primaryColor: elderWhite,
   ),
-  dividerTheme: DividerThemeData(color: elderDarkGreySecondary),
-  floatingActionButtonTheme: FloatingActionButtonThemeData(
+  dividerTheme: const DividerThemeData(color: elderDarkGreySecondary),
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: youPeach,
   ),
   primaryColor: youBlack,

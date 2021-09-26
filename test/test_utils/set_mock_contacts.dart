@@ -16,8 +16,8 @@ void setMockContacts() {
   TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger
       .setMockMethodCallHandler(contactsChannel, (call) async {
     if (call.method == 'getContacts') {
-      print(call.arguments);
-      print("Returning");
+      //print(call.arguments);
+      //print("Returning");
       return allContacts;
     }
 

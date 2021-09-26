@@ -24,8 +24,8 @@ class ContactModel extends ChangeNotifier {
   ContactModel() {
     _loadContactsWithPermissionCheck();
     _checkPhonePermission();
-    _refreshTimer = Timer.periodic(
-        Duration(minutes: 10), (timer) => _loadContactsWithPermissionCheck());
+    _refreshTimer = Timer.periodic(const Duration(minutes: 10),
+        (timer) => _loadContactsWithPermissionCheck());
   }
 
   bool get isContactListLoaded => _isContactListLoaded;

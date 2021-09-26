@@ -91,7 +91,7 @@ class ContactsTab extends StatelessWidget {
                         requestContactsPermission),
                   )
                 ] else ...[
-                  LoadingWidget(),
+                  const LoadingWidget(),
                 ],
               ],
             ),

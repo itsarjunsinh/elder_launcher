@@ -2,8 +2,8 @@ import 'package:flutter/services.dart';
 import '../constants/channels.dart';
 
 class NativeMethods {
-  final platformCore = MethodChannel(channelCore);
-  final platformContacts = MethodChannel(channelContacts);
+  final platformCore = const MethodChannel(channelCore);
+  final platformContacts = const MethodChannel(channelContacts);
 
   /*
   ** Contacts & Call
@@ -12,9 +12,7 @@ class NativeMethods {
   Future<bool> hasTelephoneFeature() async {
     var hasTelephoneFeatureResult =
         await platformContacts.invokeMethod<bool>('hasTelephoneFeature');
-    return hasTelephoneFeatureResult != null
-        ? hasTelephoneFeatureResult
-        : false;
+    return hasTelephoneFeatureResult ?? false;
   }
 
   void launchContactsApp() {
@@ -36,9 +34,7 @@ class NativeMethods {
   Future<bool> canSetDefaultLauncher() async {
     var canSetDefaultLauncherResult =
         await platformCore.invokeMethod<bool>('canSetDefaultLauncher');
-    return canSetDefaultLauncherResult != null
-        ? canSetDefaultLauncherResult
-        : false;
+    return canSetDefaultLauncherResult ?? false;
   }
 
   void setDefaultLauncher() {
@@ -48,8 +44,6 @@ class NativeMethods {
   Future<List<String>> getDeprecatedPrefsList() async {
     var favAppsInDeprecatedList =
         await platformCore.invokeListMethod<String>('getDeprecatedFavAppIds');
-    return favAppsInDeprecatedList != null
-        ? favAppsInDeprecatedList
-        : <String>[];
+    return favAppsInDeprecatedList ?? <String>[];
   }
 }

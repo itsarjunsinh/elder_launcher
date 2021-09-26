@@ -19,7 +19,7 @@ class MultiSelectWidget extends StatelessWidget {
 
     return ListView.separated(
       itemCount: _allItems.length,
-      padding: EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.symmetric(vertical: 6),
       itemBuilder: (context, position) {
         var item = _allItems[position];
         var isFav = editModel.isFav(position);
@@ -40,7 +40,7 @@ class MultiSelectWidget extends StatelessWidget {
               ? Image(
                   image: MemoryImage(item.icon!),
                 )
-              : CircleAvatar(),
+              : const CircleAvatar(),
           value: isFav,
           onChanged: (isChecked) {
             toggleFav(position);
@@ -48,7 +48,7 @@ class MultiSelectWidget extends StatelessWidget {
         );
       },
       separatorBuilder: (_, __) {
-        return Divider(
+        return const Divider(
           thickness: Values.dividerThickness,
         );
       },

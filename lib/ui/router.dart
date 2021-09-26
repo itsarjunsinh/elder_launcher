@@ -11,9 +11,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
   switch (settings.name) {
     case homePageRoute:
-      return _getPageRoute(settings.name!, HomePage());
+      return _getPageRoute(settings.name!, const HomePage());
     case appDrawerRoute:
-      return _getPageRoute(settings.name!, AppDrawerScreen());
+      return _getPageRoute(settings.name!, const AppDrawerScreen());
     case editPageRoute:
       var editMode = settings.arguments as EditMode;
       return _getPageRoute(settings.name!, EditPage(editMode));
@@ -22,7 +22,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(settings.name!, ReorderPage(editMode));
     default:
       return MaterialPageRoute(
-        builder: (_) => Scaffold(
+        builder: (_) => const Scaffold(
           body: Center(
             child: Text('Undefined Route'),
           ),

@@ -37,7 +37,9 @@ class ElderPageScaffold extends StatelessWidget {
         children: <Widget>[
           Flexible(
             child: ClipRRect(
-              borderRadius: BorderRadius.only(topRight: Radius.circular(20)),
+              borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(20),
+              ),
               child: Container(
                 color: Theme.of(context).backgroundColor,
                 child: body,
