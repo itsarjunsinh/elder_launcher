@@ -33,6 +33,11 @@ The app relies heavily on the following open source Flutter packages:
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/5.png" height="350" alt="Favourite App selection screen">
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/6.png" height="350" alt="Favourite Contacts reorder screen">
 </span>
+<br/>
+
+### Dark mode (Android 10+)
+Can be enabled from system settings
+
 <span>
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/7.png" height="350" alt="Dark Mode: Homescreen with favourite apps">
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/8.png" height="350" alt="Dark Mode: Homescreen with favourite contacts">
