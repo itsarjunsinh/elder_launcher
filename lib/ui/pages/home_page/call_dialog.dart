@@ -5,7 +5,6 @@ import '../../../generated/l10n.dart';
 import '../../../models/contact_model.dart';
 import '../../../models/item.dart';
 import '../../../ui/theme.dart';
-import '../../../utils/color_util.dart';
 
 // ignore: non_constant_identifier_names
 Future CallDialog(BuildContext context, Item contact) {
@@ -15,13 +14,13 @@ Future CallDialog(BuildContext context, Item contact) {
       title: Text(
         contact.name,
         style: TextStyles.dialogTitle.copyWith(
-          color: ColorUtil().colorOnPrimary(context),
+          color: Theme.of(context).colorScheme.onBackground,
         ),
       ),
       message: Text(
         contact.id,
         style: TextStyles.dialogSubtitle.copyWith(
-          color: ColorUtil().colorOnPrimary(context),
+          color: Theme.of(context).colorScheme.onBackground,
         ),
       ),
       actions: [

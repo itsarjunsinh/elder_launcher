@@ -7,7 +7,6 @@ import '../../../generated/l10n.dart';
 import '../../../models/app_model.dart';
 import '../../../models/contact_model.dart';
 import '../../../ui/theme.dart';
-import '../../../utils/color_util.dart';
 
 // ignore: non_constant_identifier_names
 Future EditDialog(BuildContext context, EditMode editMode) {
@@ -17,7 +16,7 @@ Future EditDialog(BuildContext context, EditMode editMode) {
       title: Text(
         S.of(context).dlgEditTitle,
         style: TextStyles.dialogTitle.copyWith(
-          color: ColorUtil().colorOnPrimary(context),
+          color: Theme.of(context).colorScheme.onBackground,
         ),
       ),
       actions: [
