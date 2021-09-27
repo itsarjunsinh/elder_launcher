@@ -5,6 +5,7 @@ import '../ui/pages/app_drawer/app_drawer.dart';
 import '../ui/pages/edit_page/edit_page.dart';
 import '../ui/pages/home_page/home_page.dart';
 import '../ui/pages/reorder_page/reorder_page.dart';
+import '../ui/pages/settings_page/settings_page.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   if (settings.name == null) throw 'Route Name is null!';
@@ -20,6 +21,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case reorderPageRoute:
       var editMode = settings.arguments as EditMode;
       return _getPageRoute(settings.name!, ReorderPage(editMode));
+    case settingsPageRoute:
+      return _getPageRoute(settings.name!, const SettingsPage());
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(

@@ -16,6 +16,7 @@
     "dlgCall" : "Téléphoner",
     "dlgEditTitle": "Modifier les favoris",
     "dlgCancel": "Annuler",
+    "dlgOpenSettings": "Modifier les paramètres",
     "dlgAppsAddRemove": "Ajouter/supprimer des Apps",
     "dlgAppsReorder": "Réorganiser les Apps",
     "dlgAppsReload": "Recharger la liste des Apps",

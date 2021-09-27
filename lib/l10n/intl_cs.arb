@@ -16,6 +16,7 @@
     "dlgCall" : "Volat",
     "dlgEditTitle": "Změnit Oblíbené",
     "dlgCancel": "Zrušit",
+    "dlgOpenSettings": "Změnit nastavení",
     "dlgAppsAddRemove": "Přidat/Odebrat Aplikace",
     "dlgAppsReorder": "Přeuspořádat Aplikace",
     "dlgAppsReload": "Znovu načíst Seznam Aplikací",
