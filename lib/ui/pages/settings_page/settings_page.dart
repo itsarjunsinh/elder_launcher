@@ -14,18 +14,6 @@ class SettingsPage extends StatelessWidget {
         builder: (_, settingsModel, __) => ListView(
           children: [
             const Text('Appearance Settings'),
-            const Text('Active Theme:'),
-            // TODO: Add theme switcher
-            const CheckboxListTile(
-              title: Text('Follow System Dark Mode'),
-              value: true,
-              onChanged: null,
-            ),
-            const CheckboxListTile(
-              title: Text('Make Homescreen Background Colored'),
-              value: false,
-              onChanged: null,
-            ),
             const CheckboxListTile(
               title: Text('Allow Homescreen Rotation'),
               value: true,

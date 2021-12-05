@@ -22,22 +22,19 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<ContactModel>(create: (_) => ContactModel()),
         ChangeNotifierProvider<SettingsModel>(create: (_) => SettingsModel()),
       ],
-      child: Selector<SettingsModel, ThemeData>(
-        selector: (_, settingsModel) => settingsModel.currentTheme,
-        builder: (_, currentTheme, __) => MaterialApp(
-          title: 'Elder Launcher',
-          home: const DefaultTabController(length: 2, child: HomePage()),
-          onGenerateRoute: generateRoute,
-          localizationsDelegates: const [
-            S.delegate,
-            GlobalCupertinoLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
-          theme: tealTheme,
-          darkTheme: darkTheme,
-        ),
+      child: MaterialApp(
+        title: 'Elder Launcher',
+        home: const DefaultTabController(length: 2, child: HomePage()),
+        onGenerateRoute: generateRoute,
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        theme: tealTheme,
+        darkTheme: darkTheme,
       ),
     );
   }
