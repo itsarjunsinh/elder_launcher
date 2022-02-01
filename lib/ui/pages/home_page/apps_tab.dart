@@ -37,16 +37,16 @@ class AppsTab extends StatelessWidget {
     return Column(children: <Widget>[
       Flexible(
         child: Consumer<AppProvider>(
-          builder: (_, AppProvider, __) => Column(
+          builder: (_, appProvider, __) => Column(
             children: <Widget>[
-              if (AppProvider.isFavListLoaded &&
-                  AppProvider.favApps.isNotEmpty &&
-                  !AppProvider.canSetDefaultLauncher) ...[
+              if (appProvider.isFavListLoaded &&
+                  appProvider.favApps.isNotEmpty &&
+                  !appProvider.canSetDefaultLauncher) ...[
                 // Show Favourite Apps
-                FavGridView(AppProvider.favApps, launchApp),
-              ] else if (AppProvider.isFavListLoaded &&
-                  AppProvider.favApps.isNotEmpty &&
-                  AppProvider.canSetDefaultLauncher) ...[
+                FavGridView(appProvider.favApps, launchApp),
+              ] else if (appProvider.isFavListLoaded &&
+                  appProvider.favApps.isNotEmpty &&
+                  appProvider.canSetDefaultLauncher) ...[
                 // Show Favourite Apps with Set Default Launcher Prompt
                 ActionPanel(
                   heading: S.of(context).btnSetDefaultLauncher,
@@ -56,9 +56,9 @@ class AppsTab extends StatelessWidget {
                       Icons.home,
                       setDefaultLauncher),
                 ),
-                FavGridView(AppProvider.favApps, launchApp)
-              ] else if (AppProvider.isFavListLoaded &&
-                  AppProvider.favApps.isEmpty) ...[
+                FavGridView(appProvider.favApps, launchApp)
+              ] else if (appProvider.isFavListLoaded &&
+                  appProvider.favApps.isEmpty) ...[
                 // Show Add Favourites Prompt
                 Expanded(
                   child: InfoActionWidget.add(

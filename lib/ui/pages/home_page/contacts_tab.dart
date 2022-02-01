@@ -43,20 +43,20 @@ class ContactsTab extends StatelessWidget {
       children: <Widget>[
         Flexible(
           child: Consumer<ContactProvider>(
-            builder: (_, ContactProvider, __) => Column(
+            builder: (_, contactProvider, __) => Column(
               children: <Widget>[
-                if (ContactProvider.isFavListLoaded &&
-                    ContactProvider.favContacts.isNotEmpty &&
-                    ContactProvider.isPhonePermissionChecked &&
-                    ContactProvider.isPhonePermissionGranted) ...[
+                if (contactProvider.isFavListLoaded &&
+                    contactProvider.favContacts.isNotEmpty &&
+                    contactProvider.isPhonePermissionChecked &&
+                    contactProvider.isPhonePermissionGranted) ...[
                   // Show Favourite Contacts
-                  FavGridView(ContactProvider.favContacts, openContactDialog)
-                ] else if (ContactProvider.isFavListLoaded &&
-                    ContactProvider.favContacts.isNotEmpty &&
-                    ContactProvider.isPhonePermissionChecked &&
-                    !ContactProvider.isPhonePermissionGranted &&
-                    ContactProvider.isTelephoneFeatureChecked &&
-                    ContactProvider.hasTelephoneFeature) ...[
+                  FavGridView(contactProvider.favContacts, openContactDialog)
+                ] else if (contactProvider.isFavListLoaded &&
+                    contactProvider.favContacts.isNotEmpty &&
+                    contactProvider.isPhonePermissionChecked &&
+                    !contactProvider.isPhonePermissionGranted &&
+                    contactProvider.isTelephoneFeatureChecked &&
+                    contactProvider.hasTelephoneFeature) ...[
                   // Show Favourite Contacts with Phone Permission Prompt
                   ActionPanel(
                     heading: S.of(context).btnGrantPermission,
@@ -66,9 +66,9 @@ class ContactsTab extends StatelessWidget {
                         Icons.phone,
                         requestPhonePermission),
                   ),
-                  FavGridView(ContactProvider.favContacts, openContactDialog)
-                ] else if (ContactProvider.isFavListLoaded &&
-                    ContactProvider.favContacts.isEmpty) ...[
+                  FavGridView(contactProvider.favContacts, openContactDialog)
+                ] else if (contactProvider.isFavListLoaded &&
+                    contactProvider.favContacts.isEmpty) ...[
                   // Show Add Favourites Prompt
                   Expanded(
                     child: InfoActionWidget.add(
@@ -77,8 +77,8 @@ class ContactsTab extends StatelessWidget {
                       buttonOnClickAction: openEditScreen,
                     ),
                   ),
-                ] else if (ContactProvider.isContactsPermissionChecked &&
-                    !ContactProvider.isContactsPermissionGranted) ...[
+                ] else if (contactProvider.isContactsPermissionChecked &&
+                    !contactProvider.isContactsPermissionGranted) ...[
                   // Show Contacts Permission Prompt
                   Expanded(
                     child: InfoActionWidget(
