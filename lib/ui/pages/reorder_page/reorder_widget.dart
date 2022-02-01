@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import '../../../models/edit_model.dart';
 import '../../../models/item.dart';
+import '../../../services/edit_service.dart';
 import '../../../ui/theme.dart';
 
 class ReorderWidget extends StatelessWidget {
-  final EditModel editModel;
+  final EditService editService;
   final bool showId;
 
-  const ReorderWidget(this.editModel, {Key? key, required this.showId})
+  const ReorderWidget(this.editService, {Key? key, required this.showId})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _favItems = editModel.sortedItems;
+    final _favItems = editService.sortedItems;
 
     void reorderItems(int oldIndex, int newIndex) {
-      editModel.reorderFavItems(oldIndex, newIndex);
+      editService.reorderFavItems(oldIndex, newIndex);
     }
 
     return ReorderableListView(

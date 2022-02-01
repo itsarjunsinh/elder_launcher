@@ -4,8 +4,8 @@ import '../../../constants/edit_mode.dart';
 import '../../../generated/l10n.dart';
 import '../../../providers/app_provider.dart';
 import '../../../providers/contact_provider.dart';
-import '../../../models/edit_model.dart';
 import '../../../models/item.dart';
+import '../../../services/edit_service.dart';
 import '../../../ui/common/info_action_widget.dart';
 import '../../../ui/pages/edit_page/multi_select_widget.dart';
 import '../../../ui/theme.dart';
@@ -42,14 +42,14 @@ class EditPage extends StatelessWidget {
     }
 
     return ChangeNotifierProvider(
-      create: (_) => EditModel(favItems: favItems, allItems: allItems),
+      create: (_) => EditService(favItems: favItems, allItems: allItems),
       child: ElderPageScaffold(
         title: editMode == EditMode.apps
             ? S.of(context).dlgAppsAddRemove
             : S.of(context).dlgContactsAddRemove,
-        body: Consumer<EditModel>(builder: (_, editModel, __) {
-          if (editModel.sortedItems.isNotEmpty) {
-            return MultiSelectWidget(editModel,
+        body: Consumer<EditService>(builder: (_, editService, __) {
+          if (editService.sortedItems.isNotEmpty) {
+            return MultiSelectWidget(editService,
                 showId: editMode == EditMode.contacts);
           } else {
             return InfoActionWidget.close(
@@ -59,9 +59,9 @@ class EditPage extends StatelessWidget {
             );
           }
         }),
-        floatingActionButton: Consumer<EditModel>(
-          builder: (context, editModel, _) {
-            if (editModel.isListModified) {
+        floatingActionButton: Consumer<EditService>(
+          builder: (context, editService, _) {
+            if (editService.isListModified) {
               return Padding(
                 padding:
                     const EdgeInsets.only(bottom: Values.fabSafeBottomPadding),
@@ -69,7 +69,7 @@ class EditPage extends StatelessWidget {
                   icon: const Icon(Icons.save),
                   label: const Text('Save'),
                   onPressed: () {
-                    saveFavItems(editModel.getFavIds());
+                    saveFavItems(editService.getFavIds());
                     Navigator.pop(context);
                   },
                 ),
