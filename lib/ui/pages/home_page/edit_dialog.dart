@@ -68,19 +68,6 @@ Future EditDialog(BuildContext context, EditMode editMode) {
             ),
           ),
         ),
-        CupertinoActionSheetAction(
-          onPressed: () => {
-            Navigator.pop(context),
-            Navigator.pushNamed(context, settingsPageRoute)
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: Text(
-              S.of(context).dlgOpenSettings,
-              style: TextStyles.dialogAction,
-            ),
-          ),
-        ),
       ],
       cancelButton: Padding(
         padding: const EdgeInsets.all(4.0),
