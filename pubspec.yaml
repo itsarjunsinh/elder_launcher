@@ -7,7 +7,7 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  auto_size_text: ^3.0.0-nullsafety.0  
+  auto_size_text: ^3.0.0  
   contacts_service: ^0.6.3
   device_apps: ^2.1.1
   flutter:
@@ -15,9 +15,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.17.0
-  permission_handler: ^8.1.6
-  provider: ^6.0.0
-  shared_preferences: ^2.0.8
+  permission_handler: ^8.3.0
+  provider: ^6.0.2
+  shared_preferences: ^2.0.12
 
 dev_dependencies:
   flutter_lints: ^1.0.4
