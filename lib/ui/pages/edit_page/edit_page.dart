@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../constants/edit_mode.dart';
 import '../../../generated/l10n.dart';
-import '../../../models/app_model.dart';
-import '../../../models/contact_model.dart';
+import '../../../providers/app_provider.dart';
+import '../../../providers/contact_provider.dart';
 import '../../../models/edit_model.dart';
 import '../../../models/item.dart';
 import '../../../ui/common/info_action_widget.dart';
@@ -22,11 +22,11 @@ class EditPage extends StatelessWidget {
     List<Item> favItems;
 
     if (editMode == EditMode.apps) {
-      allItems = Provider.of<AppModel>(context).allApps;
-      favItems = Provider.of<AppModel>(context).favApps;
+      allItems = context.read<AppProvider>().allApps;
+      favItems = context.read<AppProvider>().favApps;
     } else {
-      allItems = Provider.of<ContactModel>(context).allContacts;
-      favItems = Provider.of<ContactModel>(context).favContacts;
+      allItems = context.read<ContactProvider>().allContacts;
+      favItems = context.read<ContactProvider>().favContacts;
     }
 
     void backToHome() {
@@ -35,10 +35,9 @@ class EditPage extends StatelessWidget {
 
     void saveFavItems(List<String> newFavItems) {
       if (editMode == EditMode.apps) {
-        Provider.of<AppModel>(context, listen: false).saveFavApps(newFavItems);
+        context.read<AppProvider>().saveFavApps(newFavItems);
       } else {
-        Provider.of<ContactModel>(context, listen: false)
-            .saveFavContacts(newFavItems);
+        context.read<ContactProvider>().saveFavContacts(newFavItems);
       }
     }
 

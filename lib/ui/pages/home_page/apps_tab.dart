@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../constants/edit_mode.dart';
 import '../../../constants/route_names.dart';
 import '../../../generated/l10n.dart';
-import '../../../models/app_model.dart';
+import '../../../providers/app_provider.dart';
 import '../../../models/item.dart';
 import '../../../ui/common/buttons.dart';
 import '../../../ui/common/info_action_widget.dart';
@@ -27,26 +27,26 @@ class AppsTab extends StatelessWidget {
     }
 
     void launchApp(Item app) {
-      Provider.of<AppModel>(context, listen: false).launchApp(app.id);
+      context.read<AppProvider>().launchApp(app.id);
     }
 
     void setDefaultLauncher() {
-      Provider.of<AppModel>(context, listen: false).setDefaultLauncher();
+      context.read<AppProvider>().setDefaultLauncher();
     }
 
     return Column(children: <Widget>[
       Flexible(
-        child: Consumer<AppModel>(
-          builder: (_, appModel, __) => Column(
+        child: Consumer<AppProvider>(
+          builder: (_, AppProvider, __) => Column(
             children: <Widget>[
-              if (appModel.isFavListLoaded &&
-                  appModel.favApps.isNotEmpty &&
-                  !appModel.canSetDefaultLauncher) ...[
+              if (AppProvider.isFavListLoaded &&
+                  AppProvider.favApps.isNotEmpty &&
+                  !AppProvider.canSetDefaultLauncher) ...[
                 // Show Favourite Apps
-                FavGridView(appModel.favApps, launchApp),
-              ] else if (appModel.isFavListLoaded &&
-                  appModel.favApps.isNotEmpty &&
-                  appModel.canSetDefaultLauncher) ...[
+                FavGridView(AppProvider.favApps, launchApp),
+              ] else if (AppProvider.isFavListLoaded &&
+                  AppProvider.favApps.isNotEmpty &&
+                  AppProvider.canSetDefaultLauncher) ...[
                 // Show Favourite Apps with Set Default Launcher Prompt
                 ActionPanel(
                   heading: S.of(context).btnSetDefaultLauncher,
@@ -56,9 +56,9 @@ class AppsTab extends StatelessWidget {
                       Icons.home,
                       setDefaultLauncher),
                 ),
-                FavGridView(appModel.favApps, launchApp)
-              ] else if (appModel.isFavListLoaded &&
-                  appModel.favApps.isEmpty) ...[
+                FavGridView(AppProvider.favApps, launchApp)
+              ] else if (AppProvider.isFavListLoaded &&
+                  AppProvider.favApps.isEmpty) ...[
                 // Show Add Favourites Prompt
                 Expanded(
                   child: InfoActionWidget.add(

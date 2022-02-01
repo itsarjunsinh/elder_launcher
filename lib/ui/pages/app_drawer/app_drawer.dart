@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../constants/custom_functions.dart';
 import '../../../generated/l10n.dart';
-import '../../../models/app_model.dart';
+import '../../../providers/app_provider.dart';
 import '../../../models/item.dart';
 import '../../../ui/common/loading_widget.dart';
 import '../../../ui/theme.dart';
@@ -14,13 +14,13 @@ class AppDrawerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void launchApp(String packageName) {
-      Provider.of<AppModel>(context, listen: false).launchApp(packageName);
+      context.read<AppProvider>().launchApp(packageName);
       Navigator.pop(context);
     }
 
     return ElderPageScaffold(
       title: S.of(context).btnAllApps,
-      body: Consumer<AppModel>(builder: (context, appService, _) {
+      body: Consumer<AppProvider>(builder: (context, appService, _) {
         if (appService.isAppListLoaded && appService.allApps.isNotEmpty) {
           return AppDrawer(appService.allApps, launchApp);
         } else {

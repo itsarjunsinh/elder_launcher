@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../generated/l10n.dart';
-import '../../../models/contact_model.dart';
+import '../../../providers/contact_provider.dart';
 import '../../../models/item.dart';
 import '../../../ui/theme.dart';
 
@@ -27,8 +27,7 @@ Future CallDialog(BuildContext context, Item contact) {
         CupertinoActionSheetAction(
           onPressed: () => {
             Navigator.pop(context),
-            Provider.of<ContactModel>(context, listen: false)
-                .callPhoneNumber(contact.id)
+            context.read<ContactProvider>().callPhoneNumber(contact.id)
           },
           isDefaultAction: true,
           child: Padding(

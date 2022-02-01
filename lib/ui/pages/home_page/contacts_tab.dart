@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../constants/edit_mode.dart';
 import '../../../constants/route_names.dart';
 import '../../../generated/l10n.dart';
-import '../../../models/contact_model.dart';
+import '../../../providers/contact_provider.dart';
 import '../../../models/item.dart';
 import '../../../ui/common/buttons.dart';
 import '../../../ui/common/info_action_widget.dart';
@@ -20,7 +20,7 @@ class ContactsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void openAllContacts() {
-      Provider.of<ContactModel>(context, listen: false).launchContactsApp();
+      context.read<ContactProvider>().launchContactsApp();
     }
 
     void openContactDialog(Item contact) {
@@ -32,33 +32,31 @@ class ContactsTab extends StatelessWidget {
     }
 
     void requestContactsPermission() {
-      Provider.of<ContactModel>(context, listen: false)
-          .requestContactsPermission();
+      context.read<ContactProvider>().requestContactsPermission();
     }
 
     void requestPhonePermission() {
-      Provider.of<ContactModel>(context, listen: false)
-          .requestPhonePermission();
+      context.read<ContactProvider>().requestPhonePermission();
     }
 
     return Column(
       children: <Widget>[
         Flexible(
-          child: Consumer<ContactModel>(
-            builder: (_, contactModel, __) => Column(
+          child: Consumer<ContactProvider>(
+            builder: (_, ContactProvider, __) => Column(
               children: <Widget>[
-                if (contactModel.isFavListLoaded &&
-                    contactModel.favContacts.isNotEmpty &&
-                    contactModel.isPhonePermissionChecked &&
-                    contactModel.isPhonePermissionGranted) ...[
+                if (ContactProvider.isFavListLoaded &&
+                    ContactProvider.favContacts.isNotEmpty &&
+                    ContactProvider.isPhonePermissionChecked &&
+                    ContactProvider.isPhonePermissionGranted) ...[
                   // Show Favourite Contacts
-                  FavGridView(contactModel.favContacts, openContactDialog)
-                ] else if (contactModel.isFavListLoaded &&
-                    contactModel.favContacts.isNotEmpty &&
-                    contactModel.isPhonePermissionChecked &&
-                    !contactModel.isPhonePermissionGranted &&
-                    contactModel.isTelephoneFeatureChecked &&
-                    contactModel.hasTelephoneFeature) ...[
+                  FavGridView(ContactProvider.favContacts, openContactDialog)
+                ] else if (ContactProvider.isFavListLoaded &&
+                    ContactProvider.favContacts.isNotEmpty &&
+                    ContactProvider.isPhonePermissionChecked &&
+                    !ContactProvider.isPhonePermissionGranted &&
+                    ContactProvider.isTelephoneFeatureChecked &&
+                    ContactProvider.hasTelephoneFeature) ...[
                   // Show Favourite Contacts with Phone Permission Prompt
                   ActionPanel(
                     heading: S.of(context).btnGrantPermission,
@@ -68,9 +66,9 @@ class ContactsTab extends StatelessWidget {
                         Icons.phone,
                         requestPhonePermission),
                   ),
-                  FavGridView(contactModel.favContacts, openContactDialog)
-                ] else if (contactModel.isFavListLoaded &&
-                    contactModel.favContacts.isEmpty) ...[
+                  FavGridView(ContactProvider.favContacts, openContactDialog)
+                ] else if (ContactProvider.isFavListLoaded &&
+                    ContactProvider.favContacts.isEmpty) ...[
                   // Show Add Favourites Prompt
                   Expanded(
                     child: InfoActionWidget.add(
@@ -79,8 +77,8 @@ class ContactsTab extends StatelessWidget {
                       buttonOnClickAction: openEditScreen,
                     ),
                   ),
-                ] else if (contactModel.isContactsPermissionChecked &&
-                    !contactModel.isContactsPermissionGranted) ...[
+                ] else if (ContactProvider.isContactsPermissionChecked &&
+                    !ContactProvider.isContactsPermissionGranted) ...[
                   // Show Contacts Permission Prompt
                   Expanded(
                     child: InfoActionWidget(
