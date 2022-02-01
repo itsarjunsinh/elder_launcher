@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../constants/edit_mode.dart';
 import '../../../generated/l10n.dart';
-import '../../../models/date_time_model.dart';
+import '../../../providers/date_time_provider.dart';
 import '../../../ui/pages/home_page/apps_tab.dart';
 import '../../../ui/pages/home_page/contacts_tab.dart';
 import '../../../ui/pages/home_page/edit_dialog.dart';
@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
     return WillPopScope(
       onWillPop: () => Future.value(false),
       child: ChangeNotifierProvider(
-        create: (_) => DateTimeModel(),
+        create: (_) => DateTimeProvider(),
         child: Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
           appBar: AppBar(
@@ -49,9 +49,9 @@ class HomePage extends StatelessWidget {
               ),
             ],
             centerTitle: true,
-            title: Consumer<DateTimeModel>(
-              builder: (_, dateTimeModel, __) => AutoSizeText(
-                dateTimeModel.time,
+            title: Consumer<DateTimeProvider>(
+              builder: (_, dateTimeProvider, __) => AutoSizeText(
+                dateTimeProvider.time,
                 maxLines: 1,
                 style: TextStyles.headerTime,
               ),
@@ -60,9 +60,9 @@ class HomePage extends StatelessWidget {
               preferredSize: const Size(0, 80),
               child: Column(
                 children: <Widget>[
-                  Consumer<DateTimeModel>(
-                    builder: (_, dateTimeModel, __) => AutoSizeText(
-                      dateTimeModel.date,
+                  Consumer<DateTimeProvider>(
+                    builder: (_, dateTimeProvider, __) => AutoSizeText(
+                      dateTimeProvider.date,
                       group: _appBarTextSizeGroup,
                       maxLines: 1,
                       style: TextStyles.headerDate,
