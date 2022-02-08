@@ -23,4 +23,14 @@ class SharedPrefs {
     var prefs = await SharedPreferences.getInstance();
     await prefs.setBool(key, value);
   }
+
+  Future<int> getInt(String key, int defaultValue) async {
+    var prefs = await SharedPreferences.getInstance();
+    return prefs.getInt(key) ?? defaultValue;
+  }
+
+  Future<void> setInt(String key, int value) async {
+    var prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(key, value);
+  }
 }

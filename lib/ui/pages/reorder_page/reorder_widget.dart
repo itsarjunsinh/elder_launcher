@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
-import '../../../models/edit_model.dart';
 import '../../../models/item.dart';
+import '../../../services/edit_service.dart';
 import '../../../ui/theme.dart';
 
 class ReorderWidget extends StatelessWidget {
-  final EditModel editModel;
+  final EditService editService;
   final bool showId;
 
-  const ReorderWidget(this.editModel, {Key? key, required this.showId})
+  const ReorderWidget(this.editService, {Key? key, required this.showId})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _favItems = editModel.sortedItems;
+    final _favItems = editService.sortedItems;
 
     void reorderItems(int oldIndex, int newIndex) {
-      editModel.reorderFavItems(oldIndex, newIndex);
+      editService.reorderFavItems(oldIndex, newIndex);
     }
 
     return ReorderableListView(
       onReorder: reorderItems,
-      padding: const EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.all(6),
       children: _favItems
           .map((item) => ReorderableCard(
                 item: item,
@@ -42,7 +42,7 @@ class ReorderableCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+      margin: const EdgeInsets.symmetric(vertical: 2),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListTile(

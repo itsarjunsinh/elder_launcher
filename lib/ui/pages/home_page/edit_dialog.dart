@@ -4,10 +4,9 @@ import 'package:provider/provider.dart';
 import '../../../constants/edit_mode.dart';
 import '../../../constants/route_names.dart';
 import '../../../generated/l10n.dart';
-import '../../../models/app_model.dart';
-import '../../../models/contact_model.dart';
+import '../../../providers/app_provider.dart';
+import '../../../providers/contact_provider.dart';
 import '../../../ui/theme.dart';
-import '../../../utils/color_util.dart';
 
 // ignore: non_constant_identifier_names
 Future EditDialog(BuildContext context, EditMode editMode) {
@@ -17,7 +16,7 @@ Future EditDialog(BuildContext context, EditMode editMode) {
       title: Text(
         S.of(context).dlgEditTitle,
         style: TextStyles.dialogTitle.copyWith(
-          color: ColorUtil().colorOnPrimary(context),
+          color: Theme.of(context).colorScheme.onBackground,
         ),
       ),
       actions: [
@@ -55,9 +54,9 @@ Future EditDialog(BuildContext context, EditMode editMode) {
           onPressed: () => {
             Navigator.pop(context),
             if (editMode == EditMode.apps)
-              {Provider.of<AppModel>(context, listen: false).reloadLists()}
+              {context.read<AppProvider>().reloadLists()}
             else
-              {Provider.of<ContactModel>(context, listen: false).reloadLists()}
+              {context.read<ContactProvider>().reloadLists()}
           },
           child: Padding(
             padding: const EdgeInsets.all(4.0),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/item.dart';
 
-class EditModel extends ChangeNotifier {
+class EditService extends ChangeNotifier {
   final sortedItems = <Item>[];
   final _favPositions = <int>[];
 
@@ -11,7 +11,7 @@ class EditModel extends ChangeNotifier {
   var _allItems = <Item>[];
   var _favItems = <Item>[];
 
-  EditModel({required List<Item> favItems, List<Item>? allItems}) {
+  EditService({required List<Item> favItems, List<Item>? allItems}) {
     _favItems = favItems;
     if (allItems != null) _allItems = allItems;
     _generateSortedList();

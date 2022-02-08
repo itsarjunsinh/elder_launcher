@@ -10,7 +10,7 @@ import '../models/item.dart';
 import '../utils/native_methods.dart';
 import '../utils/shared_prefs.dart';
 
-class AppModel extends ChangeNotifier {
+class AppProvider extends ChangeNotifier {
   bool _isAppListLoaded = false;
   bool _isFavListLoaded = false;
   bool _canSetDefaultLauncher = false;
@@ -20,9 +20,10 @@ class AppModel extends ChangeNotifier {
 
   final _appEvent = DeviceApps.listenToAppsChanges();
   final _methodChannel = const MethodChannel(channelCore);
+  final AppRepository _repository;
   late final Timer _refreshTimer;
 
-  AppModel() {
+  AppProvider(this._repository) {
     _loadApps();
     _appEvent.listen((event) {
       _loadApps();
@@ -56,13 +57,13 @@ class AppModel extends ChangeNotifier {
   }
 
   Future<void> _loadAllItems() async {
-    _allApps = await AppRepository().getAllItems();
+    _allApps = await _repository.getAllItems();
     _isAppListLoaded = true;
     notifyListeners();
   }
 
   Future<void> _loadFavItems() async {
-    _favApps = await AppRepository().getFavItems();
+    _favApps = await _repository.getFavItems();
     _isFavListLoaded = true;
     notifyListeners();
   }
@@ -91,7 +92,7 @@ class AppModel extends ChangeNotifier {
   }
 
   Future<void> saveFavApps(List<String> newFavPackages) async {
-    AppRepository().setFavItems(newFavPackages);
+    _repository.setFavItems(newFavPackages);
     _loadFavItems();
   }
 

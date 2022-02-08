@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import '../../../models/edit_model.dart';
+import '../../../services/edit_service.dart';
 import '../../../ui/theme.dart';
 
 class MultiSelectWidget extends StatelessWidget {
-  final EditModel editModel;
+  final EditService editService;
   final bool showId;
 
-  const MultiSelectWidget(this.editModel, {Key? key, required this.showId})
+  const MultiSelectWidget(this.editService, {Key? key, required this.showId})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _allItems = editModel.sortedItems;
+    final _allItems = editService.sortedItems;
 
     void toggleFav(int position) {
-      editModel.toggleFav(position);
+      editService.toggleFav(position);
     }
 
     return ListView.separated(
@@ -22,7 +22,7 @@ class MultiSelectWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 6),
       itemBuilder: (context, position) {
         var item = _allItems[position];
-        var isFav = editModel.isFav(position);
+        var isFav = editService.isFav(position);
 
         return CheckboxListTile(
           key: Key(item.id),

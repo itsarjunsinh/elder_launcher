@@ -6,7 +6,7 @@ import '../data_sources/contact_repository.dart';
 import '../models/item.dart';
 import '../utils/native_methods.dart';
 
-class ContactModel extends ChangeNotifier {
+class ContactProvider extends ChangeNotifier {
   bool _isContactListLoaded = false;
   bool _isFavListLoaded = false;
   bool _isContactsPermissionChecked = false;
@@ -21,7 +21,9 @@ class ContactModel extends ChangeNotifier {
   List<Item> _allContacts = [];
   List<Item> _favContacts = [];
 
-  ContactModel() {
+  final ContactRepository _repository;
+
+  ContactProvider(this._repository) {
     _loadContactsWithPermissionCheck();
     _checkPhonePermission();
     _refreshTimer = Timer.periodic(const Duration(minutes: 10),
@@ -64,13 +66,13 @@ class ContactModel extends ChangeNotifier {
   }
 
   Future<void> _loadAllItems() async {
-    _allContacts = await ContactRepository().getAllItems();
+    _allContacts = await _repository.getAllItems();
     _isContactListLoaded = true;
     notifyListeners();
   }
 
   Future<void> _loadFavItems() async {
-    _favContacts = await ContactRepository().getFavItems();
+    _favContacts = await _repository.getFavItems();
     _isFavListLoaded = true;
     notifyListeners();
   }
@@ -131,7 +133,7 @@ class ContactModel extends ChangeNotifier {
   }
 
   Future<void> saveFavContacts(List<String> newFavContacts) async {
-    ContactRepository().setFavItems(newFavContacts);
+    _repository.setFavItems(newFavContacts);
     _loadFavItems();
   }
 }

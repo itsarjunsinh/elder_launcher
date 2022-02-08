@@ -16,6 +16,7 @@
     "dlgCall" : "Bel",
     "dlgEditTitle": "Wijzig favorieten",
     "dlgCancel": "Annuleer",
+    "dlgOpenSettings": "Instellingen veranderen",
     "dlgAppsAddRemove": "Toevoegen/verwijderen apps",
     "dlgAppsReorder": "Apps sorteren",
     "dlgAppsReload": "App lijst opnieuw laden",

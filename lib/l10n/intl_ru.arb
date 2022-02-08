@@ -16,6 +16,7 @@
     "dlgCall" : "звонок",
     "dlgEditTitle": "Редактировать избранное",
     "dlgCancel": "Отмена",
+    "dlgOpenSettings": "Изменить настройки",
     "dlgAppsAddRemove": "Добавить/удалять программы",
     "dlgAppsReorder": "Изменение порядка программы",
     "dlgAppsReload": "Перезагрузить список программы",

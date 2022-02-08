@@ -2,12 +2,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class DateTimeModel extends ChangeNotifier {
+class DateTimeProvider extends ChangeNotifier {
   late final Timer _timer;
   String _date = '';
   String _time = '';
 
-  DateTimeModel() {
+  DateTimeProvider() {
     _timer = Timer.periodic(
         const Duration(seconds: 1), (timer) => _updateDateTime());
   }

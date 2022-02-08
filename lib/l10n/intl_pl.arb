@@ -16,6 +16,7 @@
     "dlgCall" : "Połączenie",
     "dlgEditTitle": "Zmień ulubione",
     "dlgCancel": "Anulować",
+    "dlgOpenSettings": "Zmień ustawienia",
     "dlgAppsAddRemove": "Dodaj/Usuń Aplikacje",
     "dlgAppsReorder": "Zmień kolejność aplikacji",
     "dlgAppsReload": "Załaduj ponownie listę aplikacji",
